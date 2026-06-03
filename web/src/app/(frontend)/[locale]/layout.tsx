@@ -9,13 +9,23 @@ import { routing } from '@/i18n/routing'
 import { ThemeProvider } from '@/components/theme-provider'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { SITE_URL } from '@/lib/site'
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: '研翌数据科技 · Yanyi Data Technology',
     template: '%s · 研翌数据科技',
   },
   description: '科技为爱而生，让健康与品质同行。研翌数据科技以自研 AI 技术底座赋能多场景智能体。',
+  openGraph: {
+    type: 'website',
+    siteName: '研翌数据科技 · Yanyi Data Technology',
+    title: '研翌数据科技 · AI + HI 健康智能体',
+    description: '以自研 AI 技术底座，打造懂情感、懂健康的智能伙伴。',
+  },
+  twitter: { card: 'summary_large_image' },
+  alternates: { languages: { zh: `${SITE_URL}/zh`, en: `${SITE_URL}/en` } },
 }
 
 export function generateStaticParams() {

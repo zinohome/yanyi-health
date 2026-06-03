@@ -1,67 +1,57 @@
-# Payload Blank Template
+# 研翌数据科技 官网 (Yanyi Data Technology Website)
 
-This template comes configured with the bare minimum to get started on anything you need.
+基于 **Payload CMS 3 + Next.js (App Router) + shadcn/ui + Tailwind v4 + PostgreSQL** 的公司官网。中英双语、明暗双模、科技蓝、区块化页面构建器。
 
-## Quick start
+## 技术栈
 
-This template can be deployed directly from our Cloud hosting and it will setup MongoDB and cloud S3 object storage for media.
+- **Next.js 16** App Router（前台 + Payload 后台同一应用）
+- **Payload CMS 3** + PostgreSQL（`@payloadcms/db-postgres`），内容本地化 zh/en
+- **next-intl** 双语路由（`/zh` `/en`）
+- **Tailwind CSS v4 + shadcn/ui**，`next-themes` 明暗双模
+- 字体：Sora / Manrope / JetBrains Mono（运行时异步加载）
 
-## Quick Start - local setup
+## 本地开发
 
-To spin up this template locally, follow these steps:
+```bash
+# 1. 启动数据库
+docker compose up -d
 
-### Clone
+# 2. 安装依赖
+npm install
 
-After you click the `Deploy` button above, you'll want to have standalone copy of this repo on your machine. If you've already cloned this repo, skip to [Development](#development).
+# 3. 配置环境变量
+cp .env.example .env   # 填入 DATABASE_URL / PAYLOAD_SECRET / NEXT_PUBLIC_SITE_URL
 
-### Development
+# 4. 开发服务器
+npm run dev            # http://localhost:3000  ·  后台 /admin
 
-1. First [clone the repo](#clone) if you have not done so already
-2. `cd my-project && cp .env.example .env` to copy the example environment variables. You'll need to add the `MONGODB_URL` from your Cloud project to your `.env` if you want to use S3 storage and the MongoDB database that was created for you.
+# 5. 创建管理员（首次）
+NODE_OPTIONS="--import=tsx/esm" npx tsx scripts/create-admin.ts
 
-3. `pnpm install && pnpm dev` to install dependencies and start the dev server
-4. open `http://localhost:3000` to open the app in your browser
+# 6. 灌入示例内容（双语）
+npm run seed
+```
 
-That's it! Changes made in `./src` will be reflected in your app. Follow the on-screen instructions to login and create your first admin user. Then check out [Production](#production) once you're ready to build and serve your app, and [Deployment](#deployment) when you're ready to go live.
+## 常用命令
 
-#### Docker (Optional)
+| 命令 | 说明 |
+|---|---|
+| `npm run dev` | 开发服务器 |
+| `npm run build` | 生产构建 |
+| `npm run seed` | 重新灌入双语示例内容（会清空后重灌） |
+| `npm run generate:types` | 生成 Payload 类型 |
+| `npm run test` | 单元测试（Vitest） |
 
-If you prefer to use Docker for local development instead of a local MongoDB instance, the provided docker-compose.yml file can be used.
+## 内容管理
 
-To do so, follow these steps:
+- 后台 `/admin`：营销页（Pages，区块构建器）、产品、资讯、案例、合作伙伴、团队、招聘、表单留资。
+- 营销页由可复用**区块**拼装（Hero / 技术架构 / 能力 / 场景 / 产品矩阵 / 案例 / 数据 / FAQ / CTA …），所有文案中英双语可编辑。
 
-- Modify the `MONGODB_URL` in your `.env` file to `mongodb://127.0.0.1/<dbname>`
-- Modify the `docker-compose.yml` file's `MONGODB_URL` to match the above `<dbname>`
-- Run `docker-compose up` to start the database, optionally pass `-d` to run in the background.
+## 上线前待替换（占位内容）
 
-## How it works
+详见 `docs/superpowers/specs` 设计文档「待用户提供清单」：
+联系方式、ICP 备案号、公司 logo、真实团队信息、真实客户/案例授权、合作伙伴 logo、表单通知邮箱与邮件服务。
 
-The Payload config is tailored specifically to the needs of most websites. It is pre-configured in the following ways:
+## 部署
 
-### Collections
-
-See the [Collections](https://payloadcms.com/docs/configuration/collections) docs for details on how to extend this functionality.
-
-- #### Users (Authentication)
-
-  Users are auth-enabled collections that have access to the admin panel.
-
-  For additional help, see the official [Auth Example](https://github.com/payloadcms/payload/tree/main/examples/auth) or the [Authentication](https://payloadcms.com/docs/authentication/overview#authentication-overview) docs.
-
-- #### Media
-
-  This is the uploads enabled collection. It features pre-configured sizes, focal point and manual resizing to help you manage your pictures.
-
-### Docker
-
-Alternatively, you can use [Docker](https://www.docker.com) to spin up this template locally. To do so, follow these steps:
-
-1. Follow [steps 1 and 2 from above](#development), the docker-compose file will automatically use the `.env` file in your project root
-1. Next run `docker-compose up`
-1. Follow [steps 4 and 5 from above](#development) to login and create your first admin user
-
-That's it! The Docker instance will help you get up and running quickly while also standardizing the development environment across your teams.
-
-## Questions
-
-If you have any issues or questions, reach out to us on [Discord](https://discord.com/invite/payload) or start a [GitHub discussion](https://github.com/payloadcms/payload/discussions).
+单一 Next.js 应用，需 PostgreSQL。支持 Docker / Vercel(+外接 Postgres)。媒体可接 S3/OSS。
