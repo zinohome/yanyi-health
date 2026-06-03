@@ -6,79 +6,68 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * 研翌数据科技 — 科技蓝设计令牌
- * Light = 白底 + 科技蓝点缀；Dark = 深蓝黑底 + 霓虹蓝发光
+ * 研翌数据科技 — 人文暖科技设计系统 (Humanist Deep-Tech)
+ * 冷暖双色：科技蓝(primary) × 暖琥珀(accent) —— 呼应「科技，为爱而生」
+ * Light = 暖纸白；Dark = 暖墨炭
  */
 :root {
-  --radius: 0.7rem;
+  --radius: 0.85rem;
 
-  --background: oklch(0.99 0.004 250);
-  --foreground: oklch(0.18 0.03 255);
+  --background: oklch(0.985 0.008 85); /* 暖纸白 */
+  --foreground: oklch(0.23 0.02 65);
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.18 0.03 255);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.18 0.03 255);
+  --card: oklch(0.997 0.005 85);
+  --card-foreground: oklch(0.23 0.02 65);
+  --popover: oklch(0.997 0.005 85);
+  --popover-foreground: oklch(0.23 0.02 65);
 
-  --primary: oklch(0.55 0.2 256); /* 科技蓝 ≈ #2D7FF9 */
+  --primary: oklch(0.52 0.16 256); /* 科技蓝 */
   --primary-foreground: oklch(0.99 0.01 250);
 
-  --secondary: oklch(0.96 0.012 250);
-  --secondary-foreground: oklch(0.25 0.03 255);
+  --secondary: oklch(0.95 0.012 82);
+  --secondary-foreground: oklch(0.28 0.02 65);
 
-  --muted: oklch(0.965 0.008 250);
-  --muted-foreground: oklch(0.52 0.02 250);
+  --muted: oklch(0.955 0.011 82);
+  --muted-foreground: oklch(0.47 0.018 62);
 
-  --accent: oklch(0.93 0.04 250);
-  --accent-foreground: oklch(0.25 0.05 256);
+  --accent: oklch(0.7 0.14 48); /* 暖琥珀/珊瑚 —— "爱" */
+  --accent-foreground: oklch(0.27 0.07 48);
 
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.9 0.012 250);
-  --input: oklch(0.9 0.012 250);
-  --ring: oklch(0.55 0.2 256);
-
-  --chart-1: oklch(0.55 0.2 256);
-  --chart-2: oklch(0.65 0.16 220);
-  --chart-3: oklch(0.7 0.14 190);
-  --chart-4: oklch(0.6 0.18 280);
-  --chart-5: oklch(0.62 0.17 240);
+  --border: oklch(0.9 0.013 78);
+  --input: oklch(0.9 0.013 78);
+  --ring: oklch(0.52 0.16 256);
 }
 
 .dark {
-  --background: oklch(0.17 0.03 260);
-  --foreground: oklch(0.97 0.01 250);
+  --background: oklch(0.185 0.012 66); /* 暖墨炭 */
+  --foreground: oklch(0.95 0.012 85);
 
-  --card: oklch(0.21 0.035 260);
-  --card-foreground: oklch(0.97 0.01 250);
-  --popover: oklch(0.21 0.035 260);
-  --popover-foreground: oklch(0.97 0.01 250);
+  --card: oklch(0.225 0.014 66);
+  --card-foreground: oklch(0.95 0.012 85);
+  --popover: oklch(0.225 0.014 66);
+  --popover-foreground: oklch(0.95 0.012 85);
 
-  --primary: oklch(0.68 0.19 256); /* 霓虹蓝 */
-  --primary-foreground: oklch(0.14 0.03 260);
+  --primary: oklch(0.7 0.155 256); /* 亮科技蓝 */
+  --primary-foreground: oklch(0.16 0.02 66);
 
-  --secondary: oklch(0.26 0.035 260);
-  --secondary-foreground: oklch(0.95 0.01 250);
+  --secondary: oklch(0.26 0.014 66);
+  --secondary-foreground: oklch(0.94 0.012 85);
 
-  --muted: oklch(0.25 0.03 260);
-  --muted-foreground: oklch(0.72 0.02 250);
+  --muted: oklch(0.262 0.014 66);
+  --muted-foreground: oklch(0.74 0.015 82);
 
-  --accent: oklch(0.32 0.07 258);
-  --accent-foreground: oklch(0.97 0.01 250);
+  --accent: oklch(0.77 0.14 52); /* 暖琥珀 */
+  --accent-foreground: oklch(0.2 0.05 52);
 
   --destructive: oklch(0.62 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.3 0.03 260);
-  --input: oklch(0.32 0.03 260);
-  --ring: oklch(0.68 0.19 256);
-
-  --chart-1: oklch(0.68 0.19 256);
-  --chart-2: oklch(0.72 0.15 210);
-  --chart-3: oklch(0.78 0.13 185);
-  --chart-4: oklch(0.7 0.17 285);
-  --chart-5: oklch(0.7 0.16 240);
+  --border: oklch(0.31 0.014 66);
+  --input: oklch(0.33 0.014 66);
+  --ring: oklch(0.7 0.155 256);
 }
 
 @theme inline {
@@ -101,20 +90,16 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
 
   --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei',
     'Hiragino Sans GB', sans-serif;
-  --font-display: 'Sora', 'PingFang SC', 'Microsoft YaHei', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces', 'Noto Serif SC', Georgia, 'Songti SC', 'STSong', serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
 }
 
@@ -126,16 +111,18 @@
     background-color: var(--background);
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
   ::selection {
-    background-color: color-mix(in oklch, var(--primary) 28%, transparent);
+    background-color: color-mix(in oklch, var(--accent) 32%, transparent);
   }
 }
 
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
+    font-optical-sizing: auto;
   }
   .font-mono {
     font-family: var(--font-mono);
@@ -144,16 +131,29 @@
   .eyebrow {
     font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     font-size: 0.72rem;
+    font-weight: 500;
   }
-  /* 渐变文字 */
+  /* 冷色渐变文字（蓝） */
   .text-gradient {
     background-image: linear-gradient(
-      120deg,
+      115deg,
       var(--foreground) 0%,
-      var(--foreground) 35%,
+      var(--foreground) 42%,
       var(--primary) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* 冷暖渐变文字（蓝→暖）—— 用于情感标语 */
+  .text-gradient-warm {
+    background-image: linear-gradient(
+      115deg,
+      var(--primary) 0%,
+      var(--foreground) 45%,
+      var(--accent) 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -161,12 +161,12 @@
   }
   /* 卡片描边发光（hover） */
   .card-glow {
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .card-glow:hover {
-    border-color: color-mix(in oklch, var(--primary) 55%, transparent);
-    box-shadow: 0 14px 50px -18px color-mix(in oklch, var(--primary) 55%, transparent);
-    transform: translateY(-3px);
+    border-color: color-mix(in oklch, var(--primary) 50%, var(--border));
+    box-shadow: 0 18px 60px -22px color-mix(in oklch, var(--primary) 45%, transparent);
+    transform: translateY(-4px);
   }
 }
 
@@ -175,9 +175,9 @@
 @layer base {
   .js [data-reveal] {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(22px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--reveal-delay, 0ms);
   }
   .js [data-reveal='shown'] {
@@ -193,42 +193,61 @@
   }
 }
 
-/* 科技感工具类：发光网格背景 */
+/* 精密网格背景 */
 @utility tech-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklch, var(--border) 60%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklch, var(--border) 60%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
+    linear-gradient(to right, color-mix(in oklch, var(--border) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--border) 55%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
 }
 
 @utility glow {
-  box-shadow: 0 0 0 1px color-mix(in oklch, var(--primary) 30%, transparent),
-    0 8px 40px -8px color-mix(in oklch, var(--primary) 45%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--primary) 28%, transparent),
+    0 10px 50px -12px color-mix(in oklch, var(--primary) 42%, transparent);
+}
+
+/* 冷暖渐变网格氛围（hero / cta） */
+@utility aurora {
+  background-image:
+    radial-gradient(42rem 30rem at 18% 8%, color-mix(in oklch, var(--primary) 30%, transparent), transparent 70%),
+    radial-gradient(38rem 28rem at 88% 22%, color-mix(in oklch, var(--accent) 26%, transparent), transparent 70%);
+}
+
+/* 胶片颗粒叠加层（全站氛围） */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* 富文本排版 */
 .prose-tech {
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--foreground);
+  font-size: 1.05rem;
 }
 .prose-tech h1,
 .prose-tech h2,
 .prose-tech h3 {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.01em;
   margin-top: 2em;
   margin-bottom: 0.6em;
   line-height: 1.25;
 }
 .prose-tech h2 {
-  font-size: 1.6rem;
+  font-size: 1.75rem;
 }
 .prose-tech h3 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
 }
 .prose-tech p {
-  margin: 1em 0;
+  margin: 1.1em 0;
   color: var(--muted-foreground);
 }
 .prose-tech a {
@@ -238,12 +257,12 @@
 }
 .prose-tech ul,
 .prose-tech ol {
-  margin: 1em 0;
+  margin: 1.1em 0;
   padding-left: 1.4em;
   color: var(--muted-foreground);
 }
 .prose-tech li {
-  margin: 0.4em 0;
+  margin: 0.45em 0;
 }
 .prose-tech ul {
   list-style: disc;
@@ -252,7 +271,7 @@
   list-style: decimal;
 }
 .prose-tech blockquote {
-  border-left: 3px solid var(--primary);
+  border-left: 3px solid var(--accent);
   padding-left: 1em;
   margin: 1.4em 0;
   color: var(--muted-foreground);

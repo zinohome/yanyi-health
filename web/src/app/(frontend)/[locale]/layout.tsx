@@ -51,7 +51,7 @@ export default async function LocaleLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap';document.head.appendChild(l);})();",
+              "document.documentElement.classList.add('js');(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Manrope:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap';document.head.appendChild(l);})();",
           }}
         />
       </head>
@@ -68,6 +68,7 @@ export default async function LocaleLayout({
               <main className="flex-1">{children}</main>
               <SiteFooter />
             </div>
+            <div className="grain-overlay" aria-hidden />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
