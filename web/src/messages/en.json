@@ -1,0 +1,23 @@
+{
+  "brand": { "name": "Yanyi", "full": "Yanyi Data Technology Co., Ltd." },
+  "nav": {
+    "technology": "Technology",
+    "products": "Products",
+    "about": "About",
+    "blog": "Insights",
+    "contact": "Contact",
+    "cta": "Contact Sales"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "company": "Yanyi Data Technology Co., Ltd.",
+    "slogan": "Technology born for love — for lasting health and quality of life",
+    "icp": "[ICP license — to be replaced]"
+  },
+  "home": {
+    "heroTitle": "AI + HI — intelligent companions that understand emotion and health",
+    "heroSubtitle": "Built on our in-house AI foundation, powering intelligent agents across health, insurance, education and industry.",
+    "ctaPrimary": "Book a Demo",
+    "ctaSecondary": "Explore the Technology"
+  }
+}

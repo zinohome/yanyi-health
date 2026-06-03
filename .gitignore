@@ -1,0 +1,22 @@
+# ===== 保密内容：绝不提交到远程仓库 =====
+# BP、财务、客户资料、现有站点素材（机密）
+/reference/
+# 私有产品源码（CozyEngineV2 等，机密）
+/github/
+# 代码索引
+/.codegraph/
+# 演示/会议二进制资料
+/docs/*.pptx
+/docs/*.docx
+/docs/*.pdf
+# 会话记忆
+/.remember/
+
+# ===== 依赖与构建 =====
+node_modules/
+web/.next/
+web/build/
+web/dist/
+web/.env
+*.log
+.DS_Store

@@ -1,0 +1,23 @@
+{
+  "brand": { "name": "研翌数据", "full": "北京研翌数据科技有限公司" },
+  "nav": {
+    "technology": "技术底座",
+    "products": "产品矩阵",
+    "about": "关于我们",
+    "blog": "资讯",
+    "contact": "联系我们",
+    "cta": "商务咨询"
+  },
+  "footer": {
+    "rights": "保留所有权利",
+    "company": "北京研翌数据科技有限公司",
+    "slogan": "科技为爱而生，让健康与品质同行",
+    "icp": "[ICP 备案号 待替换]"
+  },
+  "home": {
+    "heroTitle": "用 AI + HI，打造懂情感、懂健康的智能伙伴",
+    "heroSubtitle": "科技为爱而生，让健康与品质同行。我们以自研 AI 技术底座，赋能健康、保险、教育与工业等多场景智能体。",
+    "ctaPrimary": "预约 Demo",
+    "ctaSecondary": "了解技术底座"
+  }
+}
