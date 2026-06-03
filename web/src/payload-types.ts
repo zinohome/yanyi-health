@@ -67,8 +67,17 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
+    pages: Page;
+    posts: Post;
+    categories: Category;
+    products: Product;
+    cases: Case;
+    partners: Partner;
+    team: Team;
+    jobs: Job;
+    'form-submissions': FormSubmission;
     media: Media;
+    users: User;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -76,8 +85,17 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
+    posts: PostsSelect<false> | PostsSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
+    cases: CasesSelect<false> | CasesSelect<true>;
+    partners: PartnersSelect<false> | PartnersSelect<true>;
+    team: TeamSelect<false> | TeamSelect<true>;
+    jobs: JobsSelect<false> | JobsSelect<true>;
+    'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -87,8 +105,16 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: ('false' | 'none' | 'null') | false | null | ('zh' | 'en') | ('zh' | 'en')[];
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'site-settings': SiteSetting;
+    header: Header;
+    footer: Footer;
+  };
+  globalsSelect: {
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    header: HeaderSelect<false> | HeaderSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+  };
   locale: 'zh' | 'en';
   widgets: {
     collections: CollectionsWidget;
@@ -119,6 +145,735 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  title: string;
+  /**
+   * 用于 URL，建议英文小写短横线，如 self-ceo
+   */
+  slug: string;
+  status: 'draft' | 'published';
+  layout?:
+    | (
+        | HeroBlock
+        | ValuePropsBlock
+        | TechArchitectureBlock
+        | CapabilityGridBlock
+        | ScenarioShowcaseBlock
+        | ProductMatrixBlock
+        | StatsMetricsBlock
+        | CaseHighlightsBlock
+        | LogoWallBlock
+        | ContentMediaBlock
+        | TimelineBlock
+        | TeamPreviewBlock
+        | FaqBlock
+        | CtaBannerBlock
+        | RichTextBlock
+      )[]
+    | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock".
+ */
+export interface HeroBlock {
+  eyebrow?: string | null;
+  title: string;
+  subtitle?: string | null;
+  primaryCta?: {
+    label?: string | null;
+    /**
+     * 相对路径如 /products 或完整 URL
+     */
+    href?: string | null;
+  };
+  secondaryCta?: {
+    label?: string | null;
+    /**
+     * 相对路径如 /products 或完整 URL
+     */
+    href?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'hero';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ValuePropsBlock".
+ */
+export interface ValuePropsBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  items?:
+    | {
+        icon?:
+          | (
+              | 'brain'
+              | 'cpu'
+              | 'database'
+              | 'mic'
+              | 'wrench'
+              | 'network'
+              | 'shield'
+              | 'sparkles'
+              | 'heart'
+              | 'activity'
+              | 'graduation-cap'
+              | 'factory'
+              | 'building-2'
+              | 'rocket'
+              | 'zap'
+              | 'lock'
+              | 'users'
+              | 'layers'
+              | 'bot'
+              | 'message-circle'
+              | 'gauge'
+              | 'workflow'
+            )
+          | null;
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'valueProps';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TechArchitectureBlock".
+ */
+export interface TechArchitectureBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  domains?:
+    | {
+        icon?:
+          | (
+              | 'brain'
+              | 'cpu'
+              | 'database'
+              | 'mic'
+              | 'wrench'
+              | 'network'
+              | 'shield'
+              | 'sparkles'
+              | 'heart'
+              | 'activity'
+              | 'graduation-cap'
+              | 'factory'
+              | 'building-2'
+              | 'rocket'
+              | 'zap'
+              | 'lock'
+              | 'users'
+              | 'layers'
+              | 'bot'
+              | 'message-circle'
+              | 'gauge'
+              | 'workflow'
+            )
+          | null;
+        name?: string | null;
+        /**
+         * 如 大脑 / 小脑
+         */
+        role?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  note?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'techArchitecture';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityGridBlock".
+ */
+export interface CapabilityGridBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  capabilities?:
+    | {
+        icon?:
+          | (
+              | 'brain'
+              | 'cpu'
+              | 'database'
+              | 'mic'
+              | 'wrench'
+              | 'network'
+              | 'shield'
+              | 'sparkles'
+              | 'heart'
+              | 'activity'
+              | 'graduation-cap'
+              | 'factory'
+              | 'building-2'
+              | 'rocket'
+              | 'zap'
+              | 'lock'
+              | 'users'
+              | 'layers'
+              | 'bot'
+              | 'message-circle'
+              | 'gauge'
+              | 'workflow'
+            )
+          | null;
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'capabilityGrid';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScenarioShowcaseBlock".
+ */
+export interface ScenarioShowcaseBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  scenarios?:
+    | {
+        icon?:
+          | (
+              | 'brain'
+              | 'cpu'
+              | 'database'
+              | 'mic'
+              | 'wrench'
+              | 'network'
+              | 'shield'
+              | 'sparkles'
+              | 'heart'
+              | 'activity'
+              | 'graduation-cap'
+              | 'factory'
+              | 'building-2'
+              | 'rocket'
+              | 'zap'
+              | 'lock'
+              | 'users'
+              | 'layers'
+              | 'bot'
+              | 'message-circle'
+              | 'gauge'
+              | 'workflow'
+            )
+          | null;
+        name?: string | null;
+        description?: string | null;
+        link?: {
+          label?: string | null;
+          /**
+           * 相对路径如 /products 或完整 URL
+           */
+          href?: string | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'scenarioShowcase';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductMatrixBlock".
+ */
+export interface ProductMatrixBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  /**
+   * 留空则自动展示全部产品（按排序）
+   */
+  products?: (number | Product)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'productMatrix';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: number;
+  name: string;
+  /**
+   * 用于 URL，建议英文小写短横线，如 self-ceo
+   */
+  slug: string;
+  /**
+   * 一句话定位
+   */
+  tagline?: string | null;
+  icon?:
+    | (
+        | 'brain'
+        | 'cpu'
+        | 'database'
+        | 'mic'
+        | 'wrench'
+        | 'network'
+        | 'shield'
+        | 'sparkles'
+        | 'heart'
+        | 'activity'
+        | 'graduation-cap'
+        | 'factory'
+        | 'building-2'
+        | 'rocket'
+        | 'zap'
+        | 'lock'
+        | 'users'
+        | 'layers'
+        | 'bot'
+        | 'message-circle'
+        | 'gauge'
+        | 'workflow'
+      )
+    | null;
+  scenario?: ('health' | 'insurance' | 'education' | 'industry' | 'platform') | null;
+  /**
+   * 简介（卡片/列表用）
+   */
+  summary?: string | null;
+  /**
+   * 解决什么问题 / 面向场景
+   */
+  problem?: string | null;
+  features?:
+    | {
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * 目标用户
+   */
+  audience?: string | null;
+  cover?: (number | null) | Media;
+  gallery?: (number | Media)[] | null;
+  /**
+   * 数字越小越靠前
+   */
+  order?: number | null;
+  status: 'draft' | 'published';
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
+export interface Media {
+  id: number;
+  alt?: string | null;
+  caption?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatsMetricsBlock".
+ */
+export interface StatsMetricsBlock {
+  title?: string | null;
+  stats?:
+    | {
+        /**
+         * 如 <300ms、1000+
+         */
+        value?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'statsMetrics';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseHighlightsBlock".
+ */
+export interface CaseHighlightsBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  /**
+   * 留空则自动展示最新案例
+   */
+  cases?: (number | Case)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'caseHighlights';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cases".
+ */
+export interface Case {
+  id: number;
+  title: string;
+  /**
+   * 用于 URL，建议英文小写短横线，如 self-ceo
+   */
+  slug: string;
+  /**
+   * 客户（可匿名，如「某头部港险机构」）
+   */
+  client?: string | null;
+  industry?: ('health' | 'insurance' | 'education' | 'industry') | null;
+  summary?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  metrics?:
+    | {
+        value?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  relatedProduct?: (number | null) | Product;
+  logo?: (number | null) | Media;
+  /**
+   * 数字越小越靠前
+   */
+  order?: number | null;
+  status: 'draft' | 'published';
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LogoWallBlock".
+ */
+export interface LogoWallBlock {
+  title?: string | null;
+  /**
+   * 留空则自动展示全部合作伙伴
+   */
+  partners?: (number | Partner)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'logoWall';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners".
+ */
+export interface Partner {
+  id: number;
+  name: string;
+  logo?: (number | null) | Media;
+  url?: string | null;
+  tier?: ('strategic' | 'ecosystem') | null;
+  /**
+   * 数字越小越靠前
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentMediaBlock".
+ */
+export interface ContentMediaBlock {
+  title?: string | null;
+  body?: string | null;
+  media?: (number | null) | Media;
+  mediaPosition?: ('left' | 'right') | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contentMedia';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TimelineBlock".
+ */
+export interface TimelineBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  milestones?:
+    | {
+        /**
+         * 如 2025、2026Q1
+         */
+        period?: string | null;
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'timeline';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamPreviewBlock".
+ */
+export interface TeamPreviewBlock {
+  title?: string | null;
+  subtitle?: string | null;
+  /**
+   * 留空则自动展示全部成员
+   */
+  members?: (number | Team)[] | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'teamPreview';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team".
+ */
+export interface Team {
+  id: number;
+  name: string;
+  /**
+   * 头衔 / 能力画像
+   */
+  role?: string | null;
+  bio?: string | null;
+  photo?: (number | null) | Media;
+  /**
+   * 数字越小越靠前
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock".
+ */
+export interface FaqBlock {
+  title?: string | null;
+  items?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faq';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaBannerBlock".
+ */
+export interface CtaBannerBlock {
+  title: string;
+  subtitle?: string | null;
+  primaryCta?: {
+    label?: string | null;
+    /**
+     * 相对路径如 /products 或完整 URL
+     */
+    href?: string | null;
+  };
+  secondaryCta?: {
+    label?: string | null;
+    /**
+     * 相对路径如 /products 或完整 URL
+     */
+    href?: string | null;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'ctaBanner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextBlock".
+ */
+export interface RichTextBlock {
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'richTextBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts".
+ */
+export interface Post {
+  id: number;
+  title: string;
+  /**
+   * 用于 URL，建议英文小写短横线，如 self-ceo
+   */
+  slug: string;
+  excerpt?: string | null;
+  cover?: (number | null) | Media;
+  category?: (number | null) | Category;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  author?: string | null;
+  publishedAt?: string | null;
+  status: 'draft' | 'published';
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  title: string;
+  /**
+   * 用于 URL，建议英文小写短横线，如 self-ceo
+   */
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "jobs".
+ */
+export interface Job {
+  id: number;
+  title: string;
+  /**
+   * 用于 URL，建议英文小写短横线，如 self-ceo
+   */
+  slug: string;
+  department?: ('engineering' | 'ai' | 'product' | 'design' | 'business' | 'operations') | null;
+  /**
+   * 如 北京 / 远程
+   */
+  location?: string | null;
+  type?: ('fulltime' | 'intern' | 'parttime') | null;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * 数字越小越靠前
+   */
+  order?: number | null;
+  status: 'draft' | 'published';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "form-submissions".
+ */
+export interface FormSubmission {
+  id: number;
+  name: string;
+  company?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  intent?: ('business' | 'trial' | 'investment' | 'careers' | 'other') | null;
+  message?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -141,25 +896,6 @@ export interface User {
     | null;
   password?: string | null;
   collection: 'users';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
- */
-export interface Media {
-  id: number;
-  alt: string;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -186,12 +922,48 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'users';
-        value: number | User;
+        relationTo: 'pages';
+        value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'posts';
+        value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: number | Product;
+      } | null)
+    | ({
+        relationTo: 'cases';
+        value: number | Case;
+      } | null)
+    | ({
+        relationTo: 'partners';
+        value: number | Partner;
+      } | null)
+    | ({
+        relationTo: 'team';
+        value: number | Team;
+      } | null)
+    | ({
+        relationTo: 'jobs';
+        value: number | Job;
+      } | null)
+    | ({
+        relationTo: 'form-submissions';
+        value: number | FormSubmission;
       } | null)
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'users';
+        value: number | User;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -237,6 +1009,457 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  status?: T;
+  layout?:
+    | T
+    | {
+        hero?: T | HeroBlockSelect<T>;
+        valueProps?: T | ValuePropsBlockSelect<T>;
+        techArchitecture?: T | TechArchitectureBlockSelect<T>;
+        capabilityGrid?: T | CapabilityGridBlockSelect<T>;
+        scenarioShowcase?: T | ScenarioShowcaseBlockSelect<T>;
+        productMatrix?: T | ProductMatrixBlockSelect<T>;
+        statsMetrics?: T | StatsMetricsBlockSelect<T>;
+        caseHighlights?: T | CaseHighlightsBlockSelect<T>;
+        logoWall?: T | LogoWallBlockSelect<T>;
+        contentMedia?: T | ContentMediaBlockSelect<T>;
+        timeline?: T | TimelineBlockSelect<T>;
+        teamPreview?: T | TeamPreviewBlockSelect<T>;
+        faq?: T | FaqBlockSelect<T>;
+        ctaBanner?: T | CtaBannerBlockSelect<T>;
+        richTextBlock?: T | RichTextBlockSelect<T>;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "HeroBlock_select".
+ */
+export interface HeroBlockSelect<T extends boolean = true> {
+  eyebrow?: T;
+  title?: T;
+  subtitle?: T;
+  primaryCta?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
+  secondaryCta?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ValuePropsBlock_select".
+ */
+export interface ValuePropsBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  items?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TechArchitectureBlock_select".
+ */
+export interface TechArchitectureBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  domains?:
+    | T
+    | {
+        icon?: T;
+        name?: T;
+        role?: T;
+        description?: T;
+        id?: T;
+      };
+  note?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CapabilityGridBlock_select".
+ */
+export interface CapabilityGridBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  capabilities?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ScenarioShowcaseBlock_select".
+ */
+export interface ScenarioShowcaseBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  scenarios?:
+    | T
+    | {
+        icon?: T;
+        name?: T;
+        description?: T;
+        link?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ProductMatrixBlock_select".
+ */
+export interface ProductMatrixBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  products?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "StatsMetricsBlock_select".
+ */
+export interface StatsMetricsBlockSelect<T extends boolean = true> {
+  title?: T;
+  stats?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CaseHighlightsBlock_select".
+ */
+export interface CaseHighlightsBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  cases?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LogoWallBlock_select".
+ */
+export interface LogoWallBlockSelect<T extends boolean = true> {
+  title?: T;
+  partners?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContentMediaBlock_select".
+ */
+export interface ContentMediaBlockSelect<T extends boolean = true> {
+  title?: T;
+  body?: T;
+  media?: T;
+  mediaPosition?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TimelineBlock_select".
+ */
+export interface TimelineBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  milestones?:
+    | T
+    | {
+        period?: T;
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TeamPreviewBlock_select".
+ */
+export interface TeamPreviewBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  members?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock_select".
+ */
+export interface FaqBlockSelect<T extends boolean = true> {
+  title?: T;
+  items?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CtaBannerBlock_select".
+ */
+export interface CtaBannerBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
+  primaryCta?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
+  secondaryCta?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RichTextBlock_select".
+ */
+export interface RichTextBlockSelect<T extends boolean = true> {
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "posts_select".
+ */
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  cover?: T;
+  category?: T;
+  content?: T;
+  author?: T;
+  publishedAt?: T;
+  status?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  tagline?: T;
+  icon?: T;
+  scenario?: T;
+  summary?: T;
+  problem?: T;
+  features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  audience?: T;
+  cover?: T;
+  gallery?: T;
+  order?: T;
+  status?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cases_select".
+ */
+export interface CasesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  client?: T;
+  industry?: T;
+  summary?: T;
+  content?: T;
+  metrics?:
+    | T
+    | {
+        value?: T;
+        label?: T;
+        id?: T;
+      };
+  relatedProduct?: T;
+  logo?: T;
+  order?: T;
+  status?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "partners_select".
+ */
+export interface PartnersSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  url?: T;
+  tier?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team_select".
+ */
+export interface TeamSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
+  bio?: T;
+  photo?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "jobs_select".
+ */
+export interface JobsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  department?: T;
+  location?: T;
+  type?: T;
+  description?: T;
+  order?: T;
+  status?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "form-submissions_select".
+ */
+export interface FormSubmissionsSelect<T extends boolean = true> {
+  name?: T;
+  company?: T;
+  email?: T;
+  phone?: T;
+  intent?: T;
+  message?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media_select".
+ */
+export interface MediaSelect<T extends boolean = true> {
+  alt?: T;
+  caption?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
@@ -256,24 +1479,6 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
- */
-export interface MediaSelect<T extends boolean = true> {
-  alt?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  url?: T;
-  thumbnailURL?: T;
-  filename?: T;
-  mimeType?: T;
-  filesize?: T;
-  width?: T;
-  height?: T;
-  focalX?: T;
-  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -314,6 +1519,154 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  companyName?: string | null;
+  logo?: (number | null) | Media;
+  slogan?: string | null;
+  email?: string | null;
+  phone?: string | null;
+  address?: string | null;
+  wechatQR?: (number | null) | Media;
+  social?:
+    | {
+        platform?: string | null;
+        url?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  icp?: string | null;
+  defaultMeta?: {
+    title?: string | null;
+    description?: string | null;
+    image?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
+export interface Header {
+  id: number;
+  navItems?:
+    | {
+        label?: string | null;
+        href?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  cta?: {
+    label?: string | null;
+    href?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  columns?:
+    | {
+        title?: string | null;
+        links?:
+          | {
+              label?: string | null;
+              href?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  copyright?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  companyName?: T;
+  logo?: T;
+  slogan?: T;
+  email?: T;
+  phone?: T;
+  address?: T;
+  wechatQR?: T;
+  social?:
+    | T
+    | {
+        platform?: T;
+        url?: T;
+        id?: T;
+      };
+  icp?: T;
+  defaultMeta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header_select".
+ */
+export interface HeaderSelect<T extends boolean = true> {
+  navItems?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+        id?: T;
+      };
+  cta?:
+    | T
+    | {
+        label?: T;
+        href?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  columns?:
+    | T
+    | {
+        title?: T;
+        links?:
+          | T
+          | {
+              label?: T;
+              href?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  copyright?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
