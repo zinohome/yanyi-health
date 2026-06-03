@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+/* 显式声明源码扫描范围（src 下所有组件/页面） */
+@source '../../**/*.{ts,tsx}';
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -167,21 +170,22 @@
   }
 }
 
-/* 进入视口的渐显动画（配合 Reveal 组件） */
+/* 进入视口的渐显动画（配合 Reveal 组件）
+   仅在 JS 可用（html.js）时隐藏，保证无 JS / SEO 时内容始终可见 */
 @layer base {
-  [data-reveal] {
+  .js [data-reveal] {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     transition-delay: var(--reveal-delay, 0ms);
   }
-  [data-reveal='shown'] {
+  .js [data-reveal='shown'] {
     opacity: 1;
     transform: none;
   }
   @media (prefers-reduced-motion: reduce) {
-    [data-reveal] {
+    .js [data-reveal] {
       opacity: 1;
       transform: none;
       transition: none;
