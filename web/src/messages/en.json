@@ -19,5 +19,56 @@
     "heroSubtitle": "Built on our in-house AI foundation, powering intelligent agents across health, insurance, education and industry.",
     "ctaPrimary": "Book a Demo",
     "ctaSecondary": "Explore the Technology"
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "A unified AI foundation, distilled into intelligent agents and solutions for every industry scenario.",
+    "eyebrow": "PRODUCTS",
+    "audience": "Target users",
+    "capabilities": "Core capabilities",
+    "problem": "Problem solved",
+    "backToProducts": "Back to products"
+  },
+  "blog": {
+    "title": "Insights",
+    "subtitle": "Company news, technical perspectives and industry insights.",
+    "eyebrow": "INSIGHTS",
+    "readMore": "Read more",
+    "backToBlog": "Back to insights",
+    "empty": "No articles yet — stay tuned."
+  },
+  "careers": {
+    "title": "Join Us",
+    "subtitle": "Build the future of AI for health and quality of life with us.",
+    "eyebrow": "CAREERS",
+    "empty": "No open roles right now — feel free to send your CV to the email below.",
+    "apply": "Apply"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Whether it's partnership, a product trial or investment, we'd love to hear from you.",
+    "eyebrow": "CONTACT",
+    "formTitle": "Business Inquiry",
+    "name": "Name",
+    "company": "Company / Organization",
+    "email": "Email",
+    "phone": "Phone",
+    "intent": "Inquiry type",
+    "message": "Message",
+    "submit": "Submit",
+    "submitting": "Submitting…",
+    "success": "Submitted — we'll be in touch shortly!",
+    "error": "Submission failed. Please retry later or email us directly.",
+    "intents": {
+      "business": "Business inquiry",
+      "trial": "Product trial",
+      "investment": "Investment",
+      "careers": "Careers",
+      "other": "Other"
+    },
+    "infoTitle": "Get in touch",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "addressLabel": "Address"
   }
 }

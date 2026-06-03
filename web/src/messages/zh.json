@@ -19,5 +19,56 @@
     "heroSubtitle": "科技为爱而生，让健康与品质同行。我们以自研 AI 技术底座，赋能健康、保险、教育与工业等多场景智能体。",
     "ctaPrimary": "预约 Demo",
     "ctaSecondary": "了解技术底座"
+  },
+  "products": {
+    "title": "产品矩阵",
+    "subtitle": "以统一的 AI 技术底座，沉淀面向不同行业场景的智能体与解决方案。",
+    "eyebrow": "PRODUCTS",
+    "audience": "目标用户",
+    "capabilities": "核心能力",
+    "problem": "解决的问题",
+    "backToProducts": "返回产品矩阵"
+  },
+  "blog": {
+    "title": "资讯",
+    "subtitle": "公司动态、技术观点与行业洞察。",
+    "eyebrow": "INSIGHTS",
+    "readMore": "阅读全文",
+    "backToBlog": "返回资讯列表",
+    "empty": "暂无文章，敬请期待。"
+  },
+  "careers": {
+    "title": "加入我们",
+    "subtitle": "与我们一起，用 AI 守护健康与品质生活。",
+    "eyebrow": "CAREERS",
+    "empty": "暂无在招岗位，欢迎投递简历至下方邮箱。",
+    "apply": "投递简历"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "无论是商务合作、产品试用还是投资洽谈，欢迎与我们取得联系。",
+    "eyebrow": "CONTACT",
+    "formTitle": "商务咨询",
+    "name": "姓名",
+    "company": "公司 / 机构",
+    "email": "邮箱",
+    "phone": "电话",
+    "intent": "咨询类型",
+    "message": "留言",
+    "submit": "提交",
+    "submitting": "提交中…",
+    "success": "提交成功，我们会尽快与您联系！",
+    "error": "提交失败，请稍后重试或直接邮件联系我们。",
+    "intents": {
+      "business": "商务咨询",
+      "trial": "产品试用",
+      "investment": "投资合作",
+      "careers": "加入我们",
+      "other": "其他"
+    },
+    "infoTitle": "联系方式",
+    "emailLabel": "邮箱",
+    "phoneLabel": "电话",
+    "addressLabel": "地址"
   }
 }
