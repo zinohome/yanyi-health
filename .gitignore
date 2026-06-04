@@ -21,3 +21,4 @@ web/.env
 web/media/
 *.log
 .DS_Store
+web/public/scenes/china/
