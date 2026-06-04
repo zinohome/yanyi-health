@@ -2,11 +2,10 @@ import type { TechArchitectureBlock as T } from '@/payload-types'
 import { Section, SectionHeader } from '@/components/section'
 import { Reveal } from '@/components/reveal'
 import { Icon } from '@/lib/icons'
-import { ArchitectureDiagram } from '@/components/brand/architecture-diagram'
+import { PlatformArchitecture } from '@/components/brand/platform-architecture'
 
 export function TechArchitecture({ block, locale }: { block: T; locale: string }) {
   const domains = block.domains ?? []
-  const centerLabel = locale === 'en' ? 'Foundation' : '技术底座'
   return (
     <Section className="overflow-hidden">
       <div
@@ -16,10 +15,10 @@ export function TechArchitecture({ block, locale }: { block: T; locale: string }
       <div className="relative">
         <SectionHeader eyebrow="TECHNOLOGY FOUNDATION" title={block.title} subtitle={block.subtitle} align="center" />
 
-        {/* 四域协同架构图 */}
-        <Reveal delay={80} className="mx-auto mt-14 max-w-4xl">
+        {/* 分层平台架构图 */}
+        <Reveal delay={80} className="mx-auto mt-14 max-w-5xl">
           <div className="card-glow rounded-3xl border border-border bg-card/40 p-4 backdrop-blur sm:p-8">
-            <ArchitectureDiagram domains={domains} centerLabel={centerLabel} />
+            <PlatformArchitecture locale={locale} />
           </div>
         </Reveal>
 

@@ -78,8 +78,8 @@ async function run() {
     })
     const page = home.docs[0]
     if (page && Array.isArray(page.layout)) {
-      const layout = page.layout.map((b: Record<string, unknown>) =>
-        b.blockType === 'contentMedia' ? { ...b, media: probMedia.id } : b,
+      const layout = (page.layout as unknown as Array<Record<string, unknown>>).map((b) =>
+        (b as { blockType?: string }).blockType === 'contentMedia' ? { ...b, media: probMedia.id } : b,
       )
       await payload.update({ collection: 'pages', id: page.id, locale, data: { layout } as never })
     }
