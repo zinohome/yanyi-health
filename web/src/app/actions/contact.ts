@@ -42,7 +42,7 @@ export async function submitContact(
     // 邮件通知（配置 SMTP 后生效；失败不影响提交）
     try {
       await payload.sendEmail({
-        to: process.env.NOTIFY_EMAIL || 'perffie@163.com',
+        to: process.env.NOTIFY_EMAIL || 'contact@yanyi.com',
         replyTo: email || undefined,
         subject: `【官网留资】${intent} · ${name}`,
         text: [
