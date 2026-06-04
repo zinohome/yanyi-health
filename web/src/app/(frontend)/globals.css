@@ -266,6 +266,26 @@
 .animate-spin-slow {
   animation: spin-slow 60s linear infinite;
 }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+/* 旋转/轨道动画的统一降级保护 */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-core * {
+    animation: none !important;
+  }
+}
 /* 架构图数据流 */
 @keyframes dashflow {
   to {

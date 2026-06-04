@@ -454,13 +454,30 @@ export interface Product {
     | null;
   scenario?: ('maternal' | 'perinatal' | 'youth' | 'adult' | 'sports' | 'elderly' | 'industry') | null;
   /**
-   * 简介（卡片/列表用）
+   * 简介（卡片/列表用，一句话）
    */
   summary?: string | null;
   /**
-   * 解决什么问题 / 面向场景
+   * 概述（详情页开篇，2-3 句）
+   */
+  overview?: string | null;
+  /**
+   * 挑战背景（详情页痛点段落）
    */
   problem?: string | null;
+  painPoints?:
+    | {
+        value?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  workflow?:
+    | {
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   audience?:
     | {
         value?: string | null;
@@ -468,6 +485,13 @@ export interface Product {
       }[]
     | null;
   features?:
+    | {
+        title?: string | null;
+        description?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  highlights?:
     | {
         title?: string | null;
         description?: string | null;
@@ -1330,7 +1354,21 @@ export interface ProductsSelect<T extends boolean = true> {
   icon?: T;
   scenario?: T;
   summary?: T;
+  overview?: T;
   problem?: T;
+  painPoints?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
+  workflow?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
   audience?:
     | T
     | {
@@ -1338,6 +1376,13 @@ export interface ProductsSelect<T extends boolean = true> {
         id?: T;
       };
   features?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        id?: T;
+      };
+  highlights?:
     | T
     | {
         title?: T;
