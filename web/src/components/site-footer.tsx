@@ -9,6 +9,7 @@ export async function SiteFooter() {
   const base = `/${locale}`
 
   const items = [
+    { href: base, label: tn('home') },
     { href: `${base}/solutions`, label: tn('solutions') },
     { href: `${base}/technology`, label: tn('technology') },
     { href: `${base}/clinical-research`, label: tn('clinical') },

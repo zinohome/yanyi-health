@@ -1,6 +1,7 @@
 {
   "brand": { "name": "研翌数据", "full": "北京研翌数据科技有限公司" },
   "nav": {
+    "home": "首页",
     "solutions": "解决方案",
     "technology": "核心技术",
     "clinical": "科研合作",
