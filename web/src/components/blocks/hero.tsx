@@ -3,15 +3,18 @@ import { ArrowRight } from 'lucide-react'
 import type { HeroBlock as HeroBlockType } from '@/payload-types'
 import { Button } from '@/components/ui/button'
 import { Reveal } from '@/components/reveal'
+import { AuroraCore } from '@/components/aurora-core'
 import { localeHref } from '@/lib/utils'
 
 export function Hero({ block, locale }: { block: HeroBlockType; locale: string }) {
   return (
     <section className="relative overflow-hidden">
       {/* 氛围层：极光冷暖网格 + 精密栅格 + 顶部柔光 */}
-      <div className="aurora pointer-events-none absolute inset-0 opacity-70" />
-      <div className="tech-grid pointer-events-none absolute inset-0 opacity-[0.35] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_72%)]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+      <div className="aurora pointer-events-none absolute inset-0 opacity-80" />
+      <div className="tech-grid pointer-events-none absolute inset-0 opacity-[0.4] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_75%)]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+      {/* 「科技·为爱而生」核心视觉 */}
+      <AuroraCore className="left-1/2 top-[34%] size-[34rem] -translate-x-1/2 -translate-y-1/2 opacity-70 sm:size-[44rem]" />
 
       <div className="relative mx-auto flex max-w-5xl flex-col items-center px-4 pb-24 pt-28 text-center sm:px-6 sm:pb-32 sm:pt-36 lg:pt-40">
         {block.eyebrow ? (

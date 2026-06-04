@@ -13,25 +13,25 @@
 :root {
   --radius: 0.85rem;
 
-  --background: oklch(0.985 0.008 85); /* 暖纸白 */
-  --foreground: oklch(0.23 0.02 65);
+  --background: oklch(0.985 0.01 75); /* 暖纸白 */
+  --foreground: oklch(0.22 0.025 262);
 
-  --card: oklch(0.997 0.005 85);
-  --card-foreground: oklch(0.23 0.02 65);
-  --popover: oklch(0.997 0.005 85);
-  --popover-foreground: oklch(0.23 0.02 65);
+  --card: oklch(0.998 0.006 85);
+  --card-foreground: oklch(0.22 0.025 262);
+  --popover: oklch(0.998 0.006 85);
+  --popover-foreground: oklch(0.22 0.025 262);
 
-  --primary: oklch(0.52 0.16 256); /* 科技蓝 */
+  --primary: oklch(0.55 0.2 256); /* 科技蓝（更鲜明） */
   --primary-foreground: oklch(0.99 0.01 250);
 
-  --secondary: oklch(0.95 0.012 82);
-  --secondary-foreground: oklch(0.28 0.02 65);
+  --secondary: oklch(0.95 0.018 252);
+  --secondary-foreground: oklch(0.28 0.03 260);
 
-  --muted: oklch(0.955 0.011 82);
-  --muted-foreground: oklch(0.47 0.018 62);
+  --muted: oklch(0.955 0.014 252);
+  --muted-foreground: oklch(0.46 0.025 262);
 
-  --accent: oklch(0.7 0.14 48); /* 暖琥珀/珊瑚 —— "爱" */
-  --accent-foreground: oklch(0.27 0.07 48);
+  --accent: oklch(0.68 0.17 38); /* 暖珊瑚 —— "爱" */
+  --accent-foreground: oklch(0.27 0.08 40);
 
   --destructive: oklch(0.58 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
@@ -42,32 +42,32 @@
 }
 
 .dark {
-  --background: oklch(0.185 0.012 66); /* 暖墨炭 */
-  --foreground: oklch(0.95 0.012 85);
+  --background: oklch(0.17 0.035 264); /* 深科技蓝墨 */
+  --foreground: oklch(0.96 0.012 250);
 
-  --card: oklch(0.225 0.014 66);
-  --card-foreground: oklch(0.95 0.012 85);
-  --popover: oklch(0.225 0.014 66);
-  --popover-foreground: oklch(0.95 0.012 85);
+  --card: oklch(0.215 0.04 264);
+  --card-foreground: oklch(0.96 0.012 250);
+  --popover: oklch(0.215 0.04 264);
+  --popover-foreground: oklch(0.96 0.012 250);
 
-  --primary: oklch(0.7 0.155 256); /* 亮科技蓝 */
-  --primary-foreground: oklch(0.16 0.02 66);
+  --primary: oklch(0.72 0.18 256); /* 亮科技蓝 */
+  --primary-foreground: oklch(0.15 0.03 264);
 
-  --secondary: oklch(0.26 0.014 66);
-  --secondary-foreground: oklch(0.94 0.012 85);
+  --secondary: oklch(0.26 0.04 264);
+  --secondary-foreground: oklch(0.95 0.012 250);
 
-  --muted: oklch(0.262 0.014 66);
-  --muted-foreground: oklch(0.74 0.015 82);
+  --muted: oklch(0.26 0.038 264);
+  --muted-foreground: oklch(0.76 0.022 250);
 
-  --accent: oklch(0.77 0.14 52); /* 暖琥珀 */
-  --accent-foreground: oklch(0.2 0.05 52);
+  --accent: oklch(0.78 0.16 46); /* 暖珊瑚琥珀 */
+  --accent-foreground: oklch(0.2 0.06 46);
 
   --destructive: oklch(0.62 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.31 0.014 66);
-  --input: oklch(0.33 0.014 66);
-  --ring: oklch(0.7 0.155 256);
+  --border: oklch(0.34 0.04 264);
+  --input: oklch(0.34 0.04 264);
+  --ring: oklch(0.72 0.18 256);
 }
 
 @theme inline {
@@ -109,13 +109,27 @@
   }
   body {
     background-color: var(--background);
+    /* 全站环境光：左上科技蓝 + 右上暖珊瑚，永不冷清 */
+    background-image:
+      radial-gradient(
+        58rem 42rem at 10% -8%,
+        color-mix(in oklch, var(--primary) 18%, transparent),
+        transparent 62%
+      ),
+      radial-gradient(
+        52rem 40rem at 96% 4%,
+        color-mix(in oklch, var(--accent) 15%, transparent),
+        transparent 60%
+      );
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     font-feature-settings: 'rlig' 1, 'calt' 1;
   }
   ::selection {
-    background-color: color-mix(in oklch, var(--accent) 32%, transparent);
+    background-color: color-mix(in oklch, var(--accent) 34%, transparent);
   }
 }
 
@@ -165,7 +179,8 @@
   }
   .card-glow:hover {
     border-color: color-mix(in oklch, var(--primary) 50%, var(--border));
-    box-shadow: 0 18px 60px -22px color-mix(in oklch, var(--primary) 45%, transparent);
+    box-shadow: 0 18px 55px -22px color-mix(in oklch, var(--primary) 45%, transparent),
+      0 8px 34px -20px color-mix(in oklch, var(--accent) 42%, transparent);
     transform: translateY(-4px);
   }
 }
@@ -202,15 +217,60 @@
 }
 
 @utility glow {
-  box-shadow: 0 0 0 1px color-mix(in oklch, var(--primary) 28%, transparent),
-    0 10px 50px -12px color-mix(in oklch, var(--primary) 42%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--primary) 32%, transparent),
+    0 10px 50px -12px color-mix(in oklch, var(--primary) 48%, transparent);
 }
 
-/* 冷暖渐变网格氛围（hero / cta） */
+@utility warm-glow {
+  box-shadow: 0 0 0 1px color-mix(in oklch, var(--accent) 32%, transparent),
+    0 10px 50px -12px color-mix(in oklch, var(--accent) 48%, transparent);
+}
+
+/* 冷暖渐变网格氛围（hero / cta）—— 蓝与暖同场，更浓郁 */
 @utility aurora {
   background-image:
-    radial-gradient(42rem 30rem at 18% 8%, color-mix(in oklch, var(--primary) 30%, transparent), transparent 70%),
-    radial-gradient(38rem 28rem at 88% 22%, color-mix(in oklch, var(--accent) 26%, transparent), transparent 70%);
+    radial-gradient(40rem 30rem at 16% 6%, color-mix(in oklch, var(--primary) 42%, transparent), transparent 68%),
+    radial-gradient(36rem 28rem at 86% 18%, color-mix(in oklch, var(--accent) 38%, transparent), transparent 68%),
+    radial-gradient(30rem 24rem at 60% 96%, color-mix(in oklch, var(--primary) 24%, transparent), transparent 70%);
+}
+
+/* 卡片：微弱蓝调底 + hover 冷暖描边发光 */
+@utility card-tint {
+  background-image: linear-gradient(
+    160deg,
+    color-mix(in oklch, var(--primary) 5%, transparent),
+    transparent 55%
+  );
+}
+
+/* 心核呼吸动效 */
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+.animate-breathe {
+  animation: breathe 6s ease-in-out infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 60s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-breathe,
+  .animate-spin-slow {
+    animation: none;
+  }
 }
 
 /* 胶片颗粒叠加层（全站氛围） */

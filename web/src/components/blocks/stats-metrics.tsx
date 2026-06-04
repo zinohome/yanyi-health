@@ -16,7 +16,7 @@ export function StatsMetrics({ block }: { block: T }) {
             delay={i * 80}
             className="bg-background p-8 text-center"
           >
-            <div className="font-display text-3xl font-bold text-gradient sm:text-4xl">{s.value}</div>
+            <div className="font-display text-3xl font-bold text-gradient-warm sm:text-4xl">{s.value}</div>
             <div className="mt-2 text-sm text-muted-foreground">{s.label}</div>
           </Reveal>
         ))}

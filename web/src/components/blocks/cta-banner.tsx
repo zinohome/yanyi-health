@@ -9,10 +9,11 @@ export function CtaBanner({ block, locale }: { block: T; locale: string }) {
   return (
     <Section>
       <Reveal className="relative overflow-hidden rounded-3xl border border-primary/30 bg-card px-6 py-16 text-center sm:px-12">
-        <div className="tech-grid pointer-events-none absolute inset-0 opacity-40" />
+        <div className="aurora pointer-events-none absolute inset-0 opacity-90" />
+        <div className="tech-grid pointer-events-none absolute inset-0 opacity-30" />
         <div
-          className="pointer-events-none absolute left-1/2 top-0 size-[30rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-50 blur-[100px]"
-          style={{ background: 'radial-gradient(circle, var(--primary), transparent 60%)' }}
+          className="pointer-events-none absolute -bottom-20 right-0 size-[26rem] rounded-full opacity-50 blur-[100px]"
+          style={{ background: 'radial-gradient(circle, var(--accent), transparent 62%)' }}
         />
         <div className="relative mx-auto max-w-2xl">
           <h2 className="font-display text-3xl font-bold tracking-tight text-balance sm:text-4xl">
