@@ -6,7 +6,7 @@ export const buildSiteSettings = (lang: Lang) => {
   return {
     companyName: t('北京研翌数据科技有限公司', 'Yanyi Data Technology Co., Ltd.'),
     slogan: t('让 AI 长期理解人的健康状态', 'Helping AI understand human health over a lifetime'),
-    email: '',
+    email: 'perffie@163.com',
     wechatId: 'perffie',
     phone: '18600576849',
     address: '',
