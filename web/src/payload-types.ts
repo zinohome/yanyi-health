@@ -1537,6 +1537,10 @@ export interface SiteSetting {
   logo?: (number | null) | Media;
   slogan?: string | null;
   email?: string | null;
+  wechatId?: string | null;
+  /**
+   * 仅后台留存，默认不在页面展示
+   */
   phone?: string | null;
   address?: string | null;
   wechatQR?: (number | null) | Media;
@@ -1608,6 +1612,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   logo?: T;
   slogan?: T;
   email?: T;
+  wechatId?: T;
   phone?: T;
   address?: T;
   wechatQR?: T;

@@ -13,7 +13,8 @@ export const SiteSettings: GlobalConfig = {
       label: '联系方式',
       fields: [
         { name: 'email', type: 'email' },
-        { name: 'phone', type: 'text' },
+        { name: 'wechatId', type: 'text', label: '微信号' },
+        { name: 'phone', type: 'text', admin: { description: '仅后台留存，默认不在页面展示' } },
         { name: 'address', type: 'text', localized: true },
         { name: 'wechatQR', type: 'upload', relationTo: 'media' },
       ],

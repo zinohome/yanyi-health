@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, MessageCircle, MapPin } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { PageHero } from '@/components/page-hero'
@@ -20,6 +20,9 @@ export default async function ContactPage({
   const t = await getTranslations('contact')
   const settings = await getSiteSettings(locale as Locale)
   const qr = (typeof settings?.wechatQR === 'object' ? settings?.wechatQR : null) as Media | null
+  const wechatId = settings?.wechatId
+  const email = settings?.email
+  const address = settings?.address
 
   return (
     <>
@@ -36,23 +39,25 @@ export default async function ContactPage({
                   <Mail className="mt-0.5 size-5 text-primary" />
                   <div>
                     <div className="text-muted-foreground">{t('emailLabel')}</div>
-                    <div className="font-medium">{settings?.email || '[邮箱 待替换]'}</div>
+                    <div className="font-medium">{email || '[邮箱 待提供]'}</div>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Phone className="mt-0.5 size-5 text-primary" />
+                  <MessageCircle className="mt-0.5 size-5 text-primary" />
                   <div>
-                    <div className="text-muted-foreground">{t('phoneLabel')}</div>
-                    <div className="font-medium">{settings?.phone || '[电话 待替换]'}</div>
+                    <div className="text-muted-foreground">{t('wechatLabel')}</div>
+                    <div className="font-medium">{wechatId || '—'}</div>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 size-5 text-primary" />
-                  <div>
-                    <div className="text-muted-foreground">{t('addressLabel')}</div>
-                    <div className="font-medium">{settings?.address || '[地址 待替换]'}</div>
-                  </div>
-                </li>
+                {address ? (
+                  <li className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 size-5 text-primary" />
+                    <div>
+                      <div className="text-muted-foreground">{t('addressLabel')}</div>
+                      <div className="font-medium">{address}</div>
+                    </div>
+                  </li>
+                ) : null}
               </ul>
             </div>
 
@@ -62,11 +67,12 @@ export default async function ContactPage({
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={qr.url} alt="WeChat QR" className="size-full object-cover" />
                 ) : (
-                  <div className="tech-grid grid size-full place-items-center text-xs text-muted-foreground">
-                    [微信二维码 待替换]
+                  <div className="tech-grid grid size-full place-items-center px-3 text-center text-xs text-muted-foreground">
+                    {wechatId ? `微信：${wechatId}` : '[微信二维码 待替换]'}
                   </div>
                 )}
               </div>
+              <p className="mt-3 text-xs text-muted-foreground">{t('wechatLabel')}</p>
             </div>
           </div>
         </div>

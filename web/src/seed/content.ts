@@ -6,10 +6,11 @@ export const buildSiteSettings = (lang: Lang) => {
   return {
     companyName: t('北京研翌数据科技有限公司', 'Yanyi Data Technology Co., Ltd.'),
     slogan: t('让 AI 长期理解人的健康状态', 'Helping AI understand human health over a lifetime'),
-    email: 'contact@yanyi-health.com',
-    phone: t('[电话 待替换]', '[Phone — TBD]'),
-    address: t('[公司地址 待替换]', '[Office address — TBD]'),
-    icp: '[ICP 备案号 待替换]',
+    email: '',
+    wechatId: 'perffie',
+    phone: '18600576849',
+    address: '',
+    icp: '京ICP备2025154917号-1',
     defaultMeta: {
       title: t('研翌数据科技 · 生命全周期健康 AI Agent 平台', 'Yanyi Data Technology · Life-Cycle Health AI Agent Platform'),
       description: t(
