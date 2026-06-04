@@ -25,7 +25,6 @@ export function SiteHeader() {
     { href: `${base}/clinical-research`, label: t('clinical') },
     { href: `${base}/safety`, label: t('safety') },
     { href: `${base}/about`, label: t('about') },
-    { href: `${base}/resources`, label: t('resources') },
   ]
 
   return (
