@@ -66,13 +66,12 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
           ) : null}
         </Reveal>
 
-        <Reveal
-          delay={320}
-          className="mt-16 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground/70"
-        >
-          <span className="h-px w-8 bg-border" />
-          科技，为爱而生
-          <span className="h-px w-8 bg-border" />
+        <Reveal delay={320} className="mt-16 flex items-center justify-center gap-4 sm:gap-5">
+          <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/50 sm:w-16" />
+          <span className="font-display text-gradient-warm text-2xl font-semibold tracking-wide sm:text-3xl lg:text-4xl">
+            科技，为爱而生
+          </span>
+          <span className="h-px w-10 bg-gradient-to-l from-transparent to-accent/50 sm:w-16" />
         </Reveal>
       </div>
     </section>
