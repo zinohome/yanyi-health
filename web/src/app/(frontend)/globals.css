@@ -280,6 +280,27 @@
     opacity: 0.9;
   }
 }
+/* 流动极光漂移 */
+@keyframes drift1 {
+  0%, 100% { transform: translate(-8%, -6%) scale(1); }
+  50% { transform: translate(10%, 8%) scale(1.18); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(10%, -4%) scale(1.12); }
+  50% { transform: translate(-10%, 10%) scale(0.96); }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(0%, 8%) scale(1.05); }
+  50% { transform: translate(-12%, -10%) scale(1.22); }
+}
+.aurora-blob {
+  animation: var(--blob-anim) ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none !important;
+  }
+}
 /* 旋转/轨道动画的统一降级保护 */
 @media (prefers-reduced-motion: reduce) {
   .aurora-core * {
