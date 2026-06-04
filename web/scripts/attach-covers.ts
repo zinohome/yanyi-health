@@ -46,6 +46,46 @@ async function run() {
       console.log('no solution for slug:', it.slug)
     }
   }
+  // 首页「我们解决的问题」配图（contentMedia 区块）
+  const probAlt = '院外连续健康管理'
+  const probExisting = await payload.find({
+    collection: 'media',
+    where: { alt: { equals: probAlt } },
+    limit: 50,
+    locale: 'zh',
+  })
+  for (const m of probExisting.docs) await payload.delete({ collection: 'media', id: m.id })
+  const probMedia = await payload.create({
+    collection: 'media',
+    locale: 'zh',
+    filePath: path.resolve(process.cwd(), 'public/scenes', 'problem-homecare.jpg'),
+    data: { alt: probAlt },
+  })
+  await payload.update({
+    collection: 'media',
+    id: probMedia.id,
+    locale: 'en',
+    data: { alt: 'Continuous out-of-clinic health management' },
+  })
+
+  for (const locale of ['zh', 'en'] as const) {
+    const home = await payload.find({
+      collection: 'pages',
+      where: { slug: { equals: 'home' } },
+      limit: 1,
+      depth: 0,
+      locale,
+    })
+    const page = home.docs[0]
+    if (page && Array.isArray(page.layout)) {
+      const layout = page.layout.map((b: Record<string, unknown>) =>
+        b.blockType === 'contentMedia' ? { ...b, media: probMedia.id } : b,
+      )
+      await payload.update({ collection: 'pages', id: page.id, locale, data: { layout } as never })
+    }
+  }
+  console.log('problem image set on home')
+
   console.log('✅ covers attached')
   process.exit(0)
 }
