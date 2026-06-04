@@ -36,7 +36,7 @@ export function RenderBlocks({
           case 'valueProps':
             return <ValueProps key={key} block={block} />
           case 'techArchitecture':
-            return <TechArchitecture key={key} block={block} />
+            return <TechArchitecture key={key} block={block} locale={locale} />
           case 'capabilityGrid':
             return <CapabilityGrid key={key} block={block} />
           case 'scenarioShowcase':

@@ -8,6 +8,7 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { LocaleSwitcher } from '@/components/locale-switcher'
+import { LogoMark } from '@/components/brand/logo'
 import { cn } from '@/lib/utils'
 
 export function SiteHeader() {
@@ -28,9 +29,9 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/75 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href={base} className="flex items-center gap-2 font-bold tracking-tight">
-          <span className="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground text-sm">研</span>
-          <span className="text-lg">{tb('name')}</span>
+        <Link href={base} className="flex items-center gap-2.5 tracking-tight">
+          <LogoMark className="size-8" />
+          <span className="font-display text-lg font-semibold">{tb('name')}</span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">

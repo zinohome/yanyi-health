@@ -2,9 +2,11 @@ import type { TechArchitectureBlock as T } from '@/payload-types'
 import { Section, SectionHeader } from '@/components/section'
 import { Reveal } from '@/components/reveal'
 import { Icon } from '@/lib/icons'
+import { ArchitectureDiagram } from '@/components/brand/architecture-diagram'
 
-export function TechArchitecture({ block }: { block: T }) {
+export function TechArchitecture({ block, locale }: { block: T; locale: string }) {
   const domains = block.domains ?? []
+  const centerLabel = locale === 'en' ? 'Foundation' : '技术底座'
   return (
     <Section className="overflow-hidden">
       <div
@@ -14,21 +16,20 @@ export function TechArchitecture({ block }: { block: T }) {
       <div className="relative">
         <SectionHeader eyebrow="TECHNOLOGY FOUNDATION" title={block.title} subtitle={block.subtitle} align="center" />
 
-        <div className="mx-auto mt-14 flex justify-center">
-          <Reveal className="inline-flex items-center gap-3 rounded-full border border-primary/40 bg-card/70 px-6 py-3 backdrop-blur glow">
-            <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground">
-              <Icon name="layers" className="size-4" />
-            </span>
-            <span className="font-display font-semibold tracking-tight">EvoMetaX · 自研 AI 技术底座</span>
-          </Reveal>
-        </div>
+        {/* 四域协同架构图 */}
+        <Reveal delay={80} className="mx-auto mt-14 max-w-4xl">
+          <div className="card-glow rounded-3xl border border-border bg-card/40 p-4 backdrop-blur sm:p-8">
+            <ArchitectureDiagram domains={domains} centerLabel={centerLabel} />
+          </div>
+        </Reveal>
 
+        {/* 四域详解卡片 */}
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {domains.map((d, i) => (
             <Reveal
               key={d.id ?? i}
               delay={i * 90}
-              className="card-glow group relative rounded-2xl border border-border bg-card/80 p-6 backdrop-blur"
+              className="card-glow card-tint group relative rounded-2xl border border-border bg-card/80 p-6 backdrop-blur"
             >
               <div className="absolute inset-x-6 -top-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
               <div className="mb-5 grid size-12 place-items-center rounded-xl bg-primary/10 text-primary">

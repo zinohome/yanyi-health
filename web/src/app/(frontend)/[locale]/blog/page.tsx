@@ -5,6 +5,7 @@ import { PageHero } from '@/components/page-hero'
 import { Section } from '@/components/section'
 import { Reveal } from '@/components/reveal'
 import { getPosts } from '@/lib/payload'
+import { AbstractCover } from '@/components/brand/abstract-cover'
 import { localeHref } from '@/lib/utils'
 import type { Locale } from '@/i18n/routing'
 import type { Media } from '@/payload-types'
@@ -46,7 +47,11 @@ export default async function BlogPage({
                           className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (
-                        <div className="tech-grid size-full opacity-60" />
+                        <AbstractCover
+                          seed={p.slug ?? p.title ?? 'post'}
+                          tone="mix"
+                          className="transition-transform duration-500 group-hover:scale-105"
+                        />
                       )}
                     </div>
                     <div className="flex flex-1 flex-col p-6">

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { getLocale, getTranslations } from 'next-intl/server'
+import { LogoMark } from '@/components/brand/logo'
 
 export async function SiteFooter() {
   const t = await getTranslations('footer')
@@ -20,9 +21,9 @@ export async function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <div className="flex items-center gap-2 font-bold">
-              <span className="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground text-sm">研</span>
-              <span className="text-lg">{t('company')}</span>
+            <div className="flex items-center gap-2.5">
+              <LogoMark className="size-8" />
+              <span className="font-display text-base font-semibold">{t('company')}</span>
             </div>
             <p className="mt-3 text-sm text-muted-foreground">{t('slogan')}</p>
           </div>

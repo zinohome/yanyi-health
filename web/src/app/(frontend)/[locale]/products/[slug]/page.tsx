@@ -8,8 +8,17 @@ import { Section } from '@/components/section'
 import { Reveal } from '@/components/reveal'
 import { Button } from '@/components/ui/button'
 import { Icon } from '@/lib/icons'
+import { AbstractCover } from '@/components/brand/abstract-cover'
 import { getProduct } from '@/lib/payload'
 import { localeHref } from '@/lib/utils'
+
+const scenarioTone: Record<string, 'blue' | 'warm' | 'mix'> = {
+  health: 'warm',
+  education: 'warm',
+  insurance: 'blue',
+  industry: 'blue',
+  platform: 'mix',
+}
 import type { Locale } from '@/i18n/routing'
 import type { Media } from '@/payload-types'
 
@@ -42,6 +51,7 @@ export default async function ProductDetail({
   if (!product) notFound()
 
   const cover = (typeof product.cover === 'object' ? product.cover : null) as Media | null
+  const coverTone = (product.scenario && scenarioTone[product.scenario]) || 'mix'
   const features = product.features ?? []
 
   return (
@@ -80,14 +90,16 @@ export default async function ProductDetail({
         </div>
       </section>
 
-      {cover?.url ? (
-        <Section className="py-12">
-          <div className="card-glow overflow-hidden rounded-3xl border border-border">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cover.url} alt={cover.alt ?? product.name} className="w-full object-cover" />
-          </div>
-        </Section>
-      ) : null}
+      <Section className="py-12">
+        <div className="card-glow aspect-[21/9] overflow-hidden rounded-3xl border border-border">
+          {cover?.url ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={cover.url} alt={cover.alt ?? product.name} className="size-full object-cover" />
+          ) : (
+            <AbstractCover seed={product.slug ?? product.name ?? 'p'} tone={coverTone} />
+          )}
+        </div>
+      </Section>
 
       {product.problem ? (
         <Section className="py-12">
