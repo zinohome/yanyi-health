@@ -32,13 +32,38 @@ export const categories = [
 export const buildProducts = (lang: Lang) => {
   const t = L(lang)
   const aud = (...xs: [string, string][]) => xs.map(([zh, en]) => ({ value: t(zh, en) }))
+  const pts = (...xs: [string, string][]) => xs.map(([zh, en]) => ({ value: t(zh, en) }))
   const feat = (...xs: [string, string, string, string][]) =>
     xs.map(([zt, et, zd, ed]) => ({ title: t(zt, et), description: t(zd, ed) }))
+  // 闭环步骤与价值成效同为 {title, description}
+  const flow = feat
+  const hl = feat
 
   return [
     {
       name: t('母婴安全 AI Agent', 'Maternal & Child Safety Agent'),
       slug: 'maternal-care',
+      overview: t(
+        '从孕妇建册开始，把分散在产检、打卡与日常里的健康信号串成一条连续的状态轨迹；让医院的专业照护延伸到家庭，覆盖孕期、分娩、产后恢复到新生儿 0–1 岁成长。',
+        'From hospital registration, we weave scattered signals from checkups, check-ins and daily life into one continuous trajectory — extending professional care into the home across pregnancy, delivery, postpartum recovery and the baby’s first year.',
+      ),
+      painPoints: pts(
+        ['两次产检之间风险难以连续监测', 'Risks go unmonitored between checkups'],
+        ['出院后家庭照护出现断档', 'Care breaks down after discharge'],
+        ['高危孕产妇随访成本高、易遗漏', 'High-risk follow-up is costly and easily missed'],
+      ),
+      workflow: flow(
+        ['建档开通', 'Onboarding', '孕妇建册后手机端 Agent 一键开通', 'One-tap mobile agent after registration'],
+        ['孕期管理', 'Pregnancy', '按孕周科普、产检提醒与多维打卡', 'Week-based education, reminders and check-ins'],
+        ['异常初筛', 'Screening', '结构化交互识别异常、风险分层', 'Structured screening and risk tiering'],
+        ['高危随访', 'Follow-up', '高危分层随访 + 医护看板', 'Tiered high-risk follow-up with a clinician dashboard'],
+        ['产后照护', 'Postpartum', '产后恢复、母乳喂养与新生儿成长', 'Recovery, breastfeeding and newborn growth'],
+      ),
+      highlights: hl(
+        ['院外不断档', 'Continuous', '院内照护延伸到家庭，状态不中断', 'Care extends from clinic to home'],
+        ['风险早识别', 'Early detection', '分层预警，把风险前移', 'Tiered alerts move risk upstream'],
+        ['医护减负', 'Lighter load', '看板化管理，随访更高效', 'Dashboard-driven, efficient follow-up'],
+      ),
       icon: 'heart',
       scenario: 'maternal',
       order: 1,
@@ -69,6 +94,26 @@ export const buildProducts = (lang: Lang) => {
     {
       name: t('围产期心理健康 Agent', 'Perinatal Mental Health Agent'),
       slug: 'perinatal-mental-health',
+      overview: t(
+        '把产科安全与心理安全放进同一个连续系统，持续关注孕期焦虑、产后抑郁风险、睡眠剥夺与家庭支持，并打通妇产科—精神心理科的协同转介。',
+        'Bringing physical and emotional safety into one continuous system — antenatal anxiety, postpartum depression risk, sleep deprivation and family support, with OB/GYN–psychiatry referral.',
+      ),
+      painPoints: pts(
+        ['产后情绪问题常被忽视', 'Postpartum emotions are often overlooked'],
+        ['心理与产科服务相互割裂', 'Mental and obstetric care are siloed'],
+        ['家庭支持与沟通不足', 'Family support and communication fall short'],
+      ),
+      workflow: flow(
+        ['情绪科普', 'Education', '孕期焦虑与产前心理支持', 'Antenatal anxiety & prenatal support'],
+        ['状态打卡', 'Check-in', '产后情绪与睡眠状态打卡', 'Postpartum mood & sleep check-ins'],
+        ['风险识别', 'Screening', '产后抑郁风险分级提示', 'Tiered postpartum-depression alerts'],
+        ['协同转介', 'Referral', '妇产—精神科协同与人工介入', 'OB/GYN–psychiatry referral & human review'],
+      ),
+      highlights: hl(
+        ['身心一体', 'Whole-person', '心理与产科在同一系统', 'Mental & obstetric in one system'],
+        ['风险分级', 'Tiered risk', '分级提示、人工复核', 'Tiered alerts with human review'],
+        ['家庭参与', 'Family in loop', '家属支持与沟通建议', 'Family support and guidance'],
+      ),
       icon: 'heart',
       scenario: 'perinatal',
       order: 2,
@@ -99,6 +144,27 @@ export const buildProducts = (lang: Lang) => {
     {
       name: t('儿童青少年心理健康 Agent', 'Youth Mental Health Agent'),
       slug: 'youth-mental-health',
+      overview: t(
+        '连接医院、学校、家庭与社区，把"感觉孩子不对劲"变成可被理解、可被改善的连续过程；覆盖情绪、学业、亲子与同伴，隐私优先、授权可控。',
+        'Connecting hospital, school, family and community — turning "something feels off" into an understandable, improvable process across emotion, study, parenting and peers, privacy-first with controlled authorization.',
+      ),
+      painPoints: pts(
+        ['早期心理信号难被及时发现', 'Early signals go unnoticed'],
+        ['亲子沟通困难、冲突升级', 'Parent-child communication breaks down'],
+        ['医、校、家信息相互割裂', 'Hospital, school and family stay siloed'],
+      ),
+      workflow: flow(
+        ['记录表达', 'Express', '学生隐私倾诉与情绪记录', 'Private expression & mood logging'],
+        ['理解评估', 'Assess', '情绪状态评估与沟通模式识别', 'State assessment & pattern detection'],
+        ['陪练建议', 'Coach', '亲子沟通陪练与成长建议', 'Parent-child practice & growth advice'],
+        ['干预转介', 'Intervene', '风险分级与转介建议', 'Tiered risk & referral'],
+        ['跟踪复盘', 'Follow-up', '阶段报告与多方协同跟进', 'Stage reports & coordinated follow-up'],
+      ),
+      highlights: hl(
+        ['隐私优先', 'Privacy-first', '默认私密、授权可控', 'Private by default, controlled access'],
+        ['医校家协同', 'Tri-party', '多方视角整合', 'Unified perspectives'],
+        ['风险分级', 'Tiered', '关注/预警/高危分级处置', 'Tiered handling of risk'],
+      ),
       icon: 'graduation-cap',
       scenario: 'youth',
       order: 3,
@@ -129,6 +195,26 @@ export const buildProducts = (lang: Lang) => {
     {
       name: t('成人身心健康 Agent', 'Adult Well-being Agent'),
       slug: 'adult-wellness',
+      overview: t(
+        '面向高压人群，用长期记忆理解情绪、压力、睡眠与身体状态的变化趋势，提供可持续、个性化的身心支持，并在需要时连接专业服务。',
+        'For high-pressure lives — long-term memory to understand trends in emotion, stress, sleep and body state, offering sustainable, personalized support and connecting to professionals when needed.',
+      ),
+      painPoints: pts(
+        ['长期压力缺乏连续关注', 'Chronic stress lacks continuity'],
+        ['睡眠与情绪问题反复出现', 'Sleep and mood issues recur'],
+        ['自助工具难以长期坚持', 'Self-help tools are hard to sustain'],
+      ),
+      workflow: flow(
+        ['状态记录', 'Record', '情绪、压力、睡眠与身体状态记录', 'Logging emotion, stress, sleep and body'],
+        ['趋势洞察', 'Insight', '长期趋势与个体化基线', 'Long-term trends & personalized baselines'],
+        ['自我调适', 'Regulate', '个性化调适与练习', 'Personalized self-regulation'],
+        ['专业连接', 'Connect', '必要时连接心理/睡眠门诊', 'Connect to clinics when needed'],
+      ),
+      highlights: hl(
+        ['长期理解', 'Long-term', '越用越懂你', 'Understands you over time'],
+        ['节律平衡', 'Rhythm', '情绪与生活节律支持', 'Emotion & rhythm support'],
+        ['适时转介', 'Referral', '必要时连接专业服务', 'Professional connection when needed'],
+      ),
       icon: 'activity',
       scenario: 'adult',
       order: 4,
@@ -159,6 +245,26 @@ export const buildProducts = (lang: Lang) => {
     {
       name: t('运动健康与营养代谢 AI 引擎', 'Sports & Nutrition AI Engine'),
       slug: 'sports-nutrition',
+      overview: t(
+        '让运动与营养数据拥有长期记忆，融合多模态数据，沉淀可研究、可干预的长期机能档案，服务运动医学与营养代谢科研平台。',
+        'Giving sports and nutrition data a long-term memory — fusing multimodal data into researchable, actionable performance profiles for sports medicine and metabolic research.',
+      ),
+      painPoints: pts(
+        ['数据零散、缺乏纵向分析', 'Fragmented data, no longitudinal view'],
+        ['营养与训练干预效果难追踪', 'Intervention effects are hard to track'],
+        ['缺乏专业 Agent 协同工作流', 'No professional agent workflow'],
+      ),
+      workflow: flow(
+        ['多模态采集', 'Capture', '训练、营养、睡眠与体征采集', 'Training, nutrition, sleep and vitals'],
+        ['机能建模', 'Model', '长期机能档案与负荷分析', 'Performance profiles & load analysis'],
+        ['个体化建议', 'Advise', '营养与运动个体化建议', 'Personalized nutrition & training'],
+        ['干预追踪', 'Track', '干预效果与损伤风险追踪', 'Effect & injury-risk tracking'],
+      ),
+      highlights: hl(
+        ['长期机能档案', 'Profiles', '可研究的纵向数据', 'Researchable longitudinal data'],
+        ['多模态融合', 'Fusion', '多源数据统一理解', 'Unified multimodal view'],
+        ['专业 Agent', 'Agents', '队医/营养/康复/科研', 'Doctor / nutrition / rehab / research'],
+      ),
       icon: 'gauge',
       scenario: 'sports',
       order: 5,
@@ -189,6 +295,26 @@ export const buildProducts = (lang: Lang) => {
     {
       name: t('老年照护与慢病陪伴 Agent', 'Elderly & Chronic Care Agent'),
       slug: 'elderly-care',
+      overview: t(
+        '面向老年与慢病人群，提供日常状态记录、用药提醒、情绪陪伴与异常提示，连接家庭与社区，让长期独立生活的人被持续看见、被及时支持。',
+        'For older adults and chronic-care — daily check-ins, medication reminders, companionship and anomaly alerts, connecting family and community so independent lives are continuously seen and supported.',
+      ),
+      painPoints: pts(
+        ['独居日常状态无人连续关注', 'Day-to-day state goes unwatched'],
+        ['用药与复诊容易遗漏', 'Medication and follow-ups get missed'],
+        ['情绪孤独、缺乏陪伴', 'Loneliness without companionship'],
+      ),
+      workflow: flow(
+        ['日常打卡', 'Check-in', '日常健康与慢病状态记录', 'Daily health & chronic-care logging'],
+        ['异常识别', 'Detect', '异常状态识别与提示', 'Anomaly detection & alerts'],
+        ['提醒陪伴', 'Care', '用药复诊提醒与情绪陪伴', 'Reminders & emotional companionship'],
+        ['家庭社区协同', 'Coordinate', '家庭成员与社区服务协同', 'Family & community coordination'],
+      ),
+      highlights: hl(
+        ['持续被看见', 'Always seen', '日常状态不被忽视', 'Daily states never ignored'],
+        ['异常早提示', 'Early alert', '风险及时通知家庭', 'Timely alerts to family'],
+        ['家庭协同', 'Family', '多方共同照护', 'Shared, coordinated care'],
+      ),
       icon: 'users',
       scenario: 'elderly',
       order: 6,
@@ -219,6 +345,26 @@ export const buildProducts = (lang: Lang) => {
     {
       name: t('保智通 InsureVertex AI', 'InsureVertex AI'),
       slug: 'insurevertex-ai',
+      overview: t(
+        '把长期记忆、专业知识库与 Agent 工作流的技术底座拓展到保险场景，为代理人提供可追溯的专业问答、数字化培训与场景化对练，落地负责任、可治理的行业 AI。',
+        'Extending our memory, knowledge and agent-workflow foundation to insurance — traceable Q&A, digital training and scenario practice, delivering responsible, governable industry AI.',
+      ),
+      painPoints: pts(
+        ['专业知识更新快、难以掌握', 'Fast-changing professional knowledge'],
+        ['培训与陪练成本高', 'Costly training and coaching'],
+        ['展业口径不统一、难合规', 'Inconsistent, hard-to-govern messaging'],
+      ),
+      workflow: flow(
+        ['专业问答', 'Q&A', '带引用、口径可治理的问答', 'Cited, governed answers'],
+        ['培训生产', 'Training', '课件与题库自动生产', 'Auto courseware & question banks'],
+        ['场景对练', 'Practice', '角色扮演式对练与评分', 'Role-play practice & scoring'],
+        ['复盘提升', 'Improve', '复盘与持续训练', 'Review & continuous training'],
+      ),
+      highlights: hl(
+        ['可追溯', 'Traceable', '答案有据可查', 'Cited and auditable'],
+        ['训练闭环', 'Closed loop', '越练越强', 'Stronger with practice'],
+        ['可治理', 'Governable', '口径与合规前置', 'Governance built in'],
+      ),
       icon: 'shield',
       scenario: 'industry',
       order: 7,
@@ -241,6 +387,26 @@ export const buildProducts = (lang: Lang) => {
     {
       name: t('IndustriaX 工业 AI 应用底座', 'IndustriaX'),
       slug: 'industriax',
+      overview: t(
+        '将同一套 AI 技术底座延伸至工业场景，面向高价值流程与关键资产，沉淀分散的工艺与运维知识，提供可追溯的智能问答与流程辅助，支持私有化部署。',
+        'Extending the same AI foundation to industry — for high-value processes and critical assets, capturing scattered process/O&M knowledge with traceable Q&A and process assistance, deployable on-premise.',
+      ),
+      painPoints: pts(
+        ['工业知识分散、难以沉淀', 'Scattered, hard-to-retain knowledge'],
+        ['老师傅经验难以传承', 'Expert experience is hard to pass on'],
+        ['一线查询效率低', 'Slow frontline lookups'],
+      ),
+      workflow: flow(
+        ['知识沉淀', 'Capture', '工艺/设备/运维知识结构化', 'Structure process/equipment/O&M knowledge'],
+        ['智能问答', 'Q&A', '面向一线的可追溯问答', 'Traceable frontline Q&A'],
+        ['流程辅助', 'Assist', '关键流程的智能辅助', 'Assistance on key processes'],
+        ['私有化部署', 'Deploy', '企业内网部署、安全合规', 'Intranet deployment, compliant'],
+      ),
+      highlights: hl(
+        ['知识资产化', 'Knowledge asset', '经验沉淀为可复用资产', 'Experience becomes a reusable asset'],
+        ['可追溯', 'Traceable', '答案可溯源', 'Traceable answers'],
+        ['安全可控', 'Secure', '私有化与权限隔离', 'Private with access isolation'],
+      ),
       icon: 'factory',
       scenario: 'industry',
       order: 8,

@@ -28,12 +28,28 @@ export const Products: CollectionConfig = {
         { label: '产业/行业拓展', value: 'industry' },
       ],
     },
-    { name: 'summary', type: 'textarea', localized: true, admin: { description: '简介（卡片/列表用）' } },
+    { name: 'summary', type: 'textarea', localized: true, admin: { description: '简介（卡片/列表用，一句话）' } },
+    { name: 'overview', type: 'textarea', localized: true, admin: { description: '概述（详情页开篇，2-3 句）' } },
     {
       name: 'problem',
       type: 'textarea',
       localized: true,
-      admin: { description: '解决什么问题 / 面向场景' },
+      admin: { description: '挑战背景（详情页痛点段落）' },
+    },
+    {
+      name: 'painPoints',
+      type: 'array',
+      label: '痛点',
+      fields: [{ name: 'value', type: 'text', localized: true }],
+    },
+    {
+      name: 'workflow',
+      type: 'array',
+      label: '方案闭环（按顺序）',
+      fields: [
+        { name: 'title', type: 'text', localized: true },
+        { name: 'description', type: 'text', localized: true },
+      ],
     },
     {
       name: 'audience',
@@ -48,6 +64,15 @@ export const Products: CollectionConfig = {
       fields: [
         { name: 'title', type: 'text', localized: true },
         { name: 'description', type: 'textarea', localized: true },
+      ],
+    },
+    {
+      name: 'highlights',
+      type: 'array',
+      label: '价值 / 成效',
+      fields: [
+        { name: 'title', type: 'text', localized: true },
+        { name: 'description', type: 'text', localized: true },
       ],
     },
     { name: 'cover', type: 'upload', relationTo: 'media' },
