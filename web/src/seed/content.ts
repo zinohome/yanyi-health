@@ -5,16 +5,16 @@ export const buildSiteSettings = (lang: Lang) => {
   const t = L(lang)
   return {
     companyName: t('北京研翌数据科技有限公司', 'Yanyi Data Technology Co., Ltd.'),
-    slogan: t('科技为爱而生，让健康与品质同行', 'Technology born for love — for lasting health and quality of life'),
+    slogan: t('让 AI 长期理解人的健康状态', 'Helping AI understand human health over a lifetime'),
     email: 'contact@yanyi-health.com',
     phone: t('[电话 待替换]', '[Phone — TBD]'),
     address: t('[公司地址 待替换]', '[Office address — TBD]'),
     icp: '[ICP 备案号 待替换]',
     defaultMeta: {
-      title: t('研翌数据科技 · AI + HI 健康智能体', 'Yanyi Data Technology · AI + HI for Health'),
+      title: t('研翌数据科技 · 生命全周期健康 AI Agent 平台', 'Yanyi Data Technology · Life-Cycle Health AI Agent Platform'),
       description: t(
-        '研翌数据科技以自研 AI 技术底座，打造懂情感、懂健康的智能伙伴，赋能健康、保险、教育与工业多场景。',
-        'Yanyi Data Technology builds emotion- and health-aware AI companions on a self-developed foundation, powering health, insurance, education and industry.',
+        '研翌数据构建面向生命全周期健康管理的长期状态 AI Agent 平台，覆盖母婴安全、心理健康、运动营养、老年照护等场景。',
+        'A long-term, stateful Health AI Agent platform for maternal & child health, mental wellness, sports nutrition and healthy aging.',
       ),
     },
   }
@@ -27,120 +27,237 @@ export const categories = [
   { slug: 'industry', build: (l: Lang) => ({ title: L(l)('行业洞察', 'Industry') }) },
 ]
 
-/* ============================ 产品矩阵 ============================ */
+/* ============================ 解决方案（生命全周期） ============================ */
 export const buildProducts = (lang: Lang) => {
   const t = L(lang)
+  const aud = (...xs: [string, string][]) => xs.map(([zh, en]) => ({ value: t(zh, en) }))
+  const feat = (...xs: [string, string, string, string][]) =>
+    xs.map(([zt, et, zd, ed]) => ({ title: t(zt, et), description: t(zd, ed) }))
+
   return [
     {
-      name: t('EvoMate', 'EvoMate'),
-      slug: 'evomate',
+      name: t('母婴安全 AI Agent', 'Maternal & Child Safety Agent'),
+      slug: 'maternal-care',
       icon: 'heart',
-      scenario: 'health',
+      scenario: 'maternal',
       order: 1,
       status: 'published',
-      tagline: t('AI 健康智能体 + 具身陪伴', 'AI health agent + embodied companion'),
+      tagline: t('从建档到孩子 1 岁，陪伴每一次关键变化', 'From registration to age one — by your side at every milestone'),
       summary: t(
-        '面向中老年人群的个人健康 AI 伙伴，融合家庭医生、营养师与健康教练的智慧，提供情感陪伴、健康管理与居家辅助。',
-        'A personal health AI companion for older adults, blending the wisdom of a family doctor, nutritionist and health coach for companionship, health management and at-home assistance.',
+        '从孕妇建册/医院建档开始，覆盖孕期、分娩、产后恢复、新生儿照护与 0–1 岁成长发育，提供科普、提醒、打卡、异常初筛、风险提示与医护协同。',
+        'From hospital registration through pregnancy, delivery, postpartum recovery, newborn care and 0–1 development — education, reminders, check-ins, early screening, risk alerts and care-team collaboration.',
       ),
       problem: t(
-        '家庭场景中专业健康支持普遍缺位，老年人孤独感强、慢病管理难，中年人则在照护父母与自身健康之间疲于奔命。EvoMate 让专业、贴身、全天候的健康守护变得人人可及。',
-        'Professional health support is largely absent at home. Older adults face loneliness and chronic-disease management; the sandwich generation struggles between caring for parents and their own health. EvoMate makes professional, always-on health companionship accessible to everyone.',
+        '母婴风险大量发生在两次产检之间与出院之后，单次问诊难以连续跟进。我们用长期记忆与风险分层补上"院外连续状态管理"的空白。',
+        'Maternal and infant risks largely occur between checkups and after discharge, where single visits fall short. We close the gap with long-term memory and risk tiering for continuous out-of-clinic management.',
       ),
-      audience: t('45–70 岁人群及其子女', 'Adults aged 45–70 and their children'),
-      features: [
-        { title: t('情感陪伴', 'Emotional companionship'), description: t('识别情绪、缓解孤独与压力，越用越懂你。', 'Recognizes emotion, eases loneliness and stress — and understands you more over time.') },
-        { title: t('健康管理', 'Health management'), description: t('如家庭医生般监测健康、预警风险、生成健康档案。', 'Monitors health, flags risks and builds a personal health profile like a family doctor.') },
-        { title: t('营养与习惯', 'Nutrition & habits'), description: t('定制饮食方案，像健康教练一样督促健康计划。', 'Personalized nutrition plans and coach-style habit building.') },
-      ],
+      audience: aud(
+        ['医院妇产科', 'Hospital OB/GYN'],
+        ['妇幼保健院', 'Maternal & child health centers'],
+        ['区域卫健委', 'Regional health authorities'],
+        ['社区妇幼网络', 'Community maternal networks'],
+        ['孕产妇和家庭', 'Mothers & families'],
+      ),
+      features: feat(
+        ['按孕周科普与产检提醒', 'Week-by-week education & checkup reminders', '建档后手机端 Agent 开通，按孕周推送科普与产检提醒。', 'Mobile agent activated after registration, with week-based education and checkup reminders.'],
+        ['多维健康打卡', 'Multi-dimensional check-ins', '血压、血糖、体重、胎动、情绪等结构化打卡与异常交互。', 'Structured check-ins for blood pressure, glucose, weight, fetal movement and mood.'],
+        ['高危随访与分层管理', 'High-risk follow-up & tiering', '高危孕产妇随访提醒，医护端分层管理看板。', 'Follow-up reminders for high-risk pregnancies and a tiered management dashboard for clinicians.'],
+        ['产后与新生儿照护', 'Postpartum & newborn care', '分娩准备、产后恢复、母乳喂养、新生儿照护与 0–1 岁发育提醒。', 'Delivery prep, postpartum recovery, breastfeeding, newborn care and 0–1 development guidance.'],
+      ),
     },
     {
-      name: t('SelfCEO 身心陪伴官', 'SelfCEO'),
-      slug: 'self-ceo',
-      icon: 'activity',
-      scenario: 'health',
+      name: t('围产期心理健康 Agent', 'Perinatal Mental Health Agent'),
+      slug: 'perinatal-mental-health',
+      icon: 'heart',
+      scenario: 'perinatal',
       order: 2,
       status: 'published',
-      tagline: t('AI 身心一体陪伴', 'AI mind-body companion'),
+      tagline: t('把产科安全与心理安全放进同一个连续管理系统', 'Physical and emotional safety in one continuous system'),
       summary: t(
-        '以「情绪节律 + 身体节律 + AI 陪伴官」三轴联动的身心健康应用，帮助每个人成为自己身心状态的「CEO」。',
-        'A mind-body wellness app linking emotional rhythm, physical rhythm and an AI companion — helping everyone become the CEO of their own wellbeing.',
+        '面向孕期与产后女性，关注孕期焦虑、产后抑郁风险、睡眠剥夺、育儿压力与家庭支持，支持妇产科—精神心理科协同转介。',
+        'For pregnant and postpartum women — addressing antenatal anxiety, postpartum depression risk, sleep deprivation and family support, with OB/GYN–psychiatry referral.',
       ),
       problem: t(
-        '现代人长期处于压力与情绪波动中，却缺乏可持续、个性化的身心管理工具。SelfCEO 用 AI 把碎片化的情绪与身体信号，沉淀为可理解、可行动的节律洞察。',
-        'People live under chronic stress and mood swings yet lack sustainable, personalized tools. SelfCEO turns fragmented emotional and physical signals into understandable, actionable rhythm insights.',
+        '产后情绪问题常被忽视，且分散在产科与精神心理科之间。我们让心理安全与产科安全在同一连续系统中被持续看见。',
+        'Postpartum emotional issues are often overlooked and split across departments. We keep mental and physical safety visible within one continuous system.',
       ),
-      audience: t('关注身心健康的都市人群', 'Urban users who care about mind-body wellbeing'),
-      features: [
-        { title: t('情绪节律', 'Emotional rhythm'), description: t('情绪记录、日记与冥想，看见自己的情绪曲线。', 'Mood logging, journaling and meditation to visualize your emotional curve.') },
-        { title: t('身体节律', 'Physical rhythm'), description: t('体征、睡眠、运动与用药的连续追踪与提醒。', 'Continuous tracking of vitals, sleep, exercise and medication.') },
-        { title: t('AI 陪伴官', 'AI companion'), description: t('个性化对话陪伴，主动关怀与建议。', 'Personalized conversational companionship with proactive care.') },
-      ],
+      audience: aud(
+        ['医院妇产科', 'Hospital OB/GYN'],
+        ['精神心理专科', 'Psychiatry & psychology'],
+        ['妇幼保健院', 'Maternal & child health centers'],
+        ['产后康复机构', 'Postpartum recovery centers'],
+        ['孕产妇和家庭', 'Mothers & families'],
+      ),
+      features: feat(
+        ['孕期焦虑与产前支持', 'Antenatal anxiety support', '孕期焦虑与压力科普、产前恐惧支持。', 'Education on antenatal anxiety and stress, and prenatal fear support.'],
+        ['产后情绪随访', 'Postpartum mood follow-up', '产后情绪打卡、睡眠剥夺与育儿压力支持、产后抑郁风险提示。', 'Mood check-ins, sleep-deprivation and parenting-stress support, postpartum depression risk alerts.'],
+        ['家庭支持', 'Family support', '家属支持与沟通建议，营造支持性家庭环境。', 'Guidance for family members to build a supportive environment.'],
+        ['协同转介与人工介入', 'Referral & human-in-the-loop', '妇产科—精神心理科协同转介，高风险状态人工介入流程。', 'OB/GYN–psychiatry referral and human intervention for high-risk states.'],
+      ),
+    },
+    {
+      name: t('儿童青少年心理健康 Agent', 'Youth Mental Health Agent'),
+      slug: 'youth-mental-health',
+      icon: 'graduation-cap',
+      scenario: 'youth',
+      order: 3,
+      status: 'published',
+      tagline: t('连接医院、学校、家庭与社区的青少年心理支持系统', 'Connecting hospital, school, family and community for youth mental health'),
+      summary: t(
+        '面向儿童青少年、家长、学校与医院心理门诊，支持情绪压力识别、亲子关系支持、学习压力管理、早期求助引导与医—校—家协同。',
+        'For children, teens, parents, schools and clinics — emotion/stress detection, parent-child support, study-stress management, early help-seeking and hospital-school-family collaboration.',
+      ),
+      problem: t(
+        '青少年情绪问题与亲子、学业压力交织，早期信号难被及时发现与回应。我们构建医—校—家—社协同的连续支持网络。',
+        'Youth emotional issues intertwine with family and academic stress, and early signals go unnoticed. We build a continuous hospital-school-family-community network.',
+      ),
+      audience: aud(
+        ['精神心理专科医院', 'Mental health hospitals'],
+        ['儿童心理卫生中心', 'Child psychology centers'],
+        ['学校心理中心', 'School counseling centers'],
+        ['家庭', 'Families'],
+        ['区域心理健康服务平台', 'Regional mental-health platforms'],
+      ),
+      features: feat(
+        ['情绪与压力管理', 'Emotion & stress management', '情绪压力记录、睡眠与学习压力管理、相关科普。', 'Emotion logging, sleep and study-stress management, and education.'],
+        ['亲子与求助支持', 'Parent-child & help-seeking', '亲子沟通支持、主动求助引导、家长支持 Agent。', 'Parent-child communication support, help-seeking guidance and a parent-support agent.'],
+        ['医—校—家协同', 'Hospital-school-family link', '学校心理老师辅助 Agent，医—校—家协同管理。', 'A counselor-assist agent and coordinated hospital-school-family management.'],
+        ['风险提示与危机干预', 'Risk & crisis flow', '厌学/拒学风险提示，高风险危机干预提示（非诊断）。', 'School-refusal risk alerts and crisis-intervention prompts (non-diagnostic).'],
+      ),
+    },
+    {
+      name: t('成人身心健康 Agent', 'Adult Well-being Agent'),
+      slug: 'adult-wellness',
+      icon: 'activity',
+      scenario: 'adult',
+      order: 4,
+      status: 'published',
+      tagline: t('面向高压人群的长期身心状态支持', 'Long-term mind-body support for high-pressure lives'),
+      summary: t(
+        '面向高压职场人、长期疲劳与睡眠问题人群，提供情绪、压力、睡眠、身体状态与生活节律的长期支持。',
+        'For high-pressure professionals and people with fatigue or sleep issues — long-term support for emotion, stress, sleep, body state and life rhythm.',
+      ),
+      problem: t(
+        '成人长期压力与睡眠问题往往得不到连续关注。我们提供可持续、个性化的身心状态长期支持。',
+        'Chronic stress and sleep problems rarely get continuous attention. We provide sustainable, personalized long-term support.',
+      ),
+      audience: aud(
+        ['高压职场人', 'High-pressure professionals'],
+        ['企业员工健康平台', 'Corporate wellness platforms'],
+        ['心理门诊 / 睡眠门诊', 'Psychology & sleep clinics'],
+        ['心身医学科', 'Psychosomatic medicine'],
+        ['家庭用户', 'Individuals & families'],
+      ),
+      features: feat(
+        ['情绪与压力理解', 'Emotion & stress', '长期理解情绪与压力，提供自我调适训练。', 'Long-term understanding of emotion and stress with self-regulation training.'],
+        ['睡眠与生活节律', 'Sleep & rhythm', '睡眠与生活节律支持、身体状态记录。', 'Sleep and life-rhythm support with body-state tracking.'],
+        ['职场与关系支持', 'Work & relationships', '职场压力、家庭与亲密关系支持。', 'Support for workplace stress and family/intimate relationships.'],
+        ['必要时连接专业', 'Connect to professionals', '必要时连接心理门诊、睡眠门诊等专业服务。', 'Connect to clinics and professional services when needed.'],
+      ),
+    },
+    {
+      name: t('运动健康与营养代谢 AI 引擎', 'Sports & Nutrition AI Engine'),
+      slug: 'sports-nutrition',
+      icon: 'gauge',
+      scenario: 'sports',
+      order: 5,
+      status: 'published',
+      tagline: t('让运动和营养数据拥有长期记忆', 'Give sports and nutrition data a long-term memory'),
+      summary: t(
+        '面向运动医学、营养代谢与科研平台，提供长期机能档案、多模态数据融合、个体化营养运动建议、训练恢复分析与专业 Agent 工作流。',
+        'For sports medicine, metabolic nutrition and research — long-term performance profiles, multimodal fusion, personalized advice, recovery analysis and professional agent workflows.',
+      ),
+      problem: t(
+        '运动与营养数据零散、缺乏长期纵向理解。我们用长期记忆与多模态建模沉淀可研究、可干预的机能档案。',
+        'Sports and nutrition data are fragmented and lack longitudinal understanding. We build researchable, actionable profiles via memory and multimodal modeling.',
+      ),
+      audience: aud(
+        ['运动医学研究团队', 'Sports-medicine research teams'],
+        ['营养代谢实验室', 'Metabolic nutrition labs'],
+        ['专业运动队', 'Professional sports teams'],
+        ['医院运动医学科', 'Hospital sports-medicine depts'],
+        ['健康管理机构', 'Health-management organizations'],
+      ),
+      features: feat(
+        ['长期机能档案', 'Long-term performance profile', '运动员长期机能档案，训练负荷与恢复状态分析。', 'Athlete performance profiles with training-load and recovery analysis.'],
+        ['营养代谢融合', 'Nutrition & metabolism', '营养代谢数据融合、个体化智能配餐。', 'Metabolic-data fusion and personalized meal planning.'],
+        ['干预效果追踪', 'Intervention tracking', '功能营养干预效果追踪、疲劳与损伤风险提示。', 'Functional-nutrition effect tracking and fatigue/injury risk alerts.'],
+        ['专业 Agent 工作流', 'Professional agent workflows', '队医 Agent、营养师 Agent、康复教练 Agent、科研分析 Agent。', 'Team-doctor, dietitian, rehab-coach and research-analysis agents.'],
+      ),
+    },
+    {
+      name: t('老年照护与慢病陪伴 Agent', 'Elderly & Chronic Care Agent'),
+      slug: 'elderly-care',
+      icon: 'users',
+      scenario: 'elderly',
+      order: 6,
+      status: 'published',
+      tagline: t('让长期独立生活的人被持续看见和支持', 'Keep those living independently continuously seen and supported'),
+      summary: t(
+        '面向老年人、慢病人群与家庭照护者，提供日常状态记录、用药提醒、情绪陪伴、异常提示与家庭协同支持。',
+        'For older adults, people with chronic conditions and caregivers — daily check-ins, medication reminders, companionship, anomaly alerts and family collaboration.',
+      ),
+      problem: t(
+        '独居老人与慢病人群的日常状态缺乏连续关注。我们提供长期陪伴、异常提示与家庭—社区协同。',
+        'Daily states of seniors living alone and chronic patients lack continuous attention. We offer long-term companionship, alerts and family-community collaboration.',
+      ),
+      audience: aud(
+        ['老年人', 'Older adults'],
+        ['慢病人群', 'People with chronic conditions'],
+        ['家庭照护者', 'Family caregivers'],
+        ['社区健康服务机构', 'Community health services'],
+        ['养老机构', 'Eldercare institutions'],
+      ),
+      features: feat(
+        ['日常健康打卡', 'Daily check-ins', '日常健康打卡、慢病生活方式支持。', 'Daily health check-ins and chronic-care lifestyle support.'],
+        ['用药与复诊提醒', 'Medication & follow-up', '用药与复诊提醒，异常状态提醒。', 'Medication and follow-up reminders with anomaly alerts.'],
+        ['情绪与孤独陪伴', 'Companionship', '情绪与孤独感支持，温暖陪伴。', 'Emotional and loneliness support with warm companionship.'],
+        ['家庭与社区协同', 'Family & community', '家庭成员协同，必要时连接医生与社区服务。', 'Family collaboration and connection to doctors/community when needed.'],
+      ),
     },
     {
       name: t('保智通 InsureVertex AI', 'InsureVertex AI'),
       slug: 'insurevertex-ai',
       icon: 'shield',
-      scenario: 'insurance',
-      order: 3,
+      scenario: 'industry',
+      order: 7,
       status: 'published',
-      tagline: t('保险代理人智能助手', 'Intelligent assistant for insurance agents'),
+      tagline: t('技术底座的行业拓展：保险代理人智能助手', 'Industry extension: intelligent assistant for insurance agents'),
       summary: t(
-        '面向保险代理人的垂直业务智能体，以「专业知识大脑 + 数字化培训教练 + 场景化对练陪跑」把答疑升级为可交付结果。',
-        'A vertical agent for insurance professionals — a knowledge brain, a digital training coach and scenario-based practice partner that turns Q&A into deliverable results.',
+        '将长期记忆、知识库与 Agent 工作流的技术底座拓展到保险场景，为代理人提供专业问答、数字化培训与场景对练。',
+        'Extending our memory, knowledge and agent-workflow foundation to insurance — professional Q&A, digital training and scenario practice for agents.',
       ),
       problem: t(
-        '强监管下的保险业务需要可落地的负责任 AI：边界清晰、可审计可追溯。代理人的能力提升正从「知识获取」走向「训练闭环与持续进化」。',
-        'Highly regulated insurance needs responsible, auditable AI with clear boundaries. Agent capability is shifting from knowledge access to a closed-loop training and continuous improvement.',
+        '同一套技术底座可在强监管行业落地负责任 AI：可追溯、可治理、人类监督前置。',
+        'The same foundation deploys responsible, auditable, human-supervised AI in regulated industries.',
       ),
-      audience: t('保险代理人与团队负责人', 'Insurance agents and team leaders'),
-      features: [
-        { title: t('专业知识问答', 'Knowledge Q&A'), description: t('带引用、可追溯、口径可治理的专业问答。', 'Cited, traceable, governable professional answers.') },
-        { title: t('数字化培训', 'Digital training'), description: t('课件、题库与讲稿生产，培训内容可发布可治理。', 'Generates courseware, question banks and scripts — governable and publishable.') },
-        { title: t('场景对练陪跑', 'Scenario practice'), description: t('角色扮演式对练与评分，越练越强。', 'Role-play practice with scoring — get stronger with every session.') },
-      ],
-    },
-    {
-      name: t('青禾智护 SproutGuard', 'SproutGuard'),
-      slug: 'sproutguard',
-      icon: 'graduation-cap',
-      scenario: 'education',
-      order: 4,
-      status: 'published',
-      tagline: t('校园青少年心理健康支持体系', 'Youth mental-health support for schools'),
-      summary: t(
-        '以 AI 与专业心理支持能力，连接学生、家长、老师与咨询师，构建「记录—理解—陪练—干预—跟踪」的青少年心理健康协同网络。',
-        'Connecting students, parents, teachers and counselors with AI and professional support to build a collaborative youth mental-health network: record, understand, practice, intervene, follow up.',
+      audience: aud(['保险代理人', 'Insurance agents'], ['团队负责人', 'Team leaders'], ['保险机构', 'Insurers']),
+      features: feat(
+        ['专业知识问答', 'Knowledge Q&A', '带引用、可追溯、口径可治理的专业问答。', 'Cited, traceable, governable professional answers.'],
+        ['数字化培训与对练', 'Training & practice', '课件题库生产与角色扮演式对练评分。', 'Courseware generation and role-play practice with scoring.'],
       ),
-      problem: t(
-        '青少年心理健康问题日益突出，家庭与学校普遍缺乏早期识别与科学沟通的工具，高风险信号难以被及时发现与干预。',
-        'Youth mental-health needs are rising, while families and schools lack tools for early detection and constructive communication, leaving high-risk signals unaddressed.',
-      ),
-      audience: t('初高中学生家庭与学校', 'Junior/senior-high families and schools'),
-      features: [
-        { title: t('情绪树洞与成长教练', 'Safe space & growth coach'), description: t('学生端隐私倾诉、共情陪伴与成长建议。', 'Private expression, empathetic companionship and growth guidance for students.') },
-        { title: t('亲子沟通陪练', 'Parent coaching'), description: t('家长沟通复盘与情境对练，给出更合适的表达。', 'Communication review and scenario practice for parents.') },
-        { title: t('分级风险与转介', 'Tiered risk & referral'), description: t('风险分级识别、人工复核与转介建议（非医疗诊断）。', 'Tiered risk detection, human review and referral (non-diagnostic).') },
-      ],
     },
     {
       name: t('IndustriaX 工业 AI 应用底座', 'IndustriaX'),
       slug: 'industriax',
       icon: 'factory',
       scenario: 'industry',
-      order: 5,
+      order: 8,
       status: 'published',
-      tagline: t('面向高价值工业流程与关键资产的 AI 应用平台', 'AI application platform for high-value industrial processes and critical assets'),
+      tagline: t('技术底座的行业拓展：高价值工业流程 AI 平台', 'Industry extension: AI platform for high-value industrial processes'),
       summary: t(
-        '将同一套 AI 技术底座延伸至工业场景，面向高价值流程与关键资产，提供知识沉淀、智能问答与流程辅助的应用底座。',
-        'Extends the same AI foundation into industry — an application platform for high-value processes and critical assets, with knowledge capture, intelligent Q&A and process assistance.',
+        '将同一套 AI 技术底座延伸至工业场景，面向高价值流程与关键资产，提供知识沉淀、智能问答与流程辅助。',
+        'Extending the foundation to industry — knowledge capture, intelligent Q&A and process assistance for high-value processes and critical assets.',
       ),
-      audience: t('工业企业与关键资产运营方', 'Industrial enterprises and critical-asset operators'),
-      features: [
-        { title: t('工业知识沉淀', 'Industrial knowledge'), description: t('把分散的工艺、设备与运维知识结构化、可检索。', 'Structures and makes searchable scattered process, equipment and O&M knowledge.') },
-        { title: t('智能问答与辅助', 'Intelligent assistance'), description: t('面向一线的可追溯问答与流程辅助。', 'Traceable Q&A and process assistance for frontline teams.') },
-        { title: t('可私有化部署', 'Private deployment'), description: t('适配企业内网与安全合规要求。', 'Fits enterprise intranet and compliance requirements.') },
-      ],
+      problem: t(
+        '工业知识分散、经验难以沉淀。可私有化部署，适配企业内网与安全合规要求。',
+        'Industrial knowledge is scattered and hard to retain. Private deployment fits intranet and compliance needs.',
+      ),
+      audience: aud(['工业企业', 'Industrial enterprises'], ['关键资产运营方', 'Critical-asset operators']),
+      features: feat(
+        ['工业知识沉淀', 'Industrial knowledge', '把分散的工艺、设备与运维知识结构化、可检索。', 'Structure scattered process/equipment/O&M knowledge into a searchable base.'],
+        ['智能问答与私有化', 'Q&A & private deploy', '面向一线的可追溯问答，支持私有化部署。', 'Traceable frontline Q&A with private deployment.'],
+      ),
     },
   ]
 }
@@ -150,35 +267,35 @@ export const buildCases = (lang: Lang) => {
   const t = L(lang)
   return [
     {
-      title: t('港险代理人智能助手试点', 'Pilot: AI assistant for insurance agents'),
-      slug: 'case-insurance-pilot',
-      client: t('某头部港险机构', 'A leading insurance organization'),
-      industry: 'insurance',
+      title: t('区域妇幼健康连续管理试点', 'Pilot: regional maternal & child continuous care'),
+      slug: 'case-maternal-pilot',
+      client: t('某区域妇幼保健机构', 'A regional maternal & child health institution'),
+      industry: 'maternal',
       order: 1,
       status: 'published',
       summary: t(
-        '以专业知识大脑 + 数字化培训为核心，帮助代理团队把「答疑」升级为「可交付结果」，并以可追溯、可治理的方式落地负责任 AI。',
-        'A knowledge brain plus digital training helps agent teams turn Q&A into deliverable results, deploying responsible AI in a traceable, governable way.',
+        '以孕产妇建档后 AI Agent 管理为核心，打通孕期—产后—新生儿连续状态管理与高危随访，验证院外连续管理价值。',
+        'Centered on post-registration AI agent management, connecting pregnancy-postpartum-newborn continuity and high-risk follow-up.',
       ),
       metrics: [
-        { value: t('可追溯', 'Traceable'), label: t('答案带引用与口径治理', 'Cited, governed answers') },
-        { value: t('训练闭环', 'Closed loop'), label: t('对练与评分驱动成长', 'Practice & scoring') },
+        { value: t('连续管理', 'Continuous'), label: t('院外状态不中断', 'No out-of-clinic gap') },
+        { value: t('可追溯', 'Traceable'), label: t('建议有依据可审核', 'Auditable advice') },
       ],
     },
     {
-      title: t('校园心理健康协同试点', 'Pilot: school mental-health network'),
-      slug: 'case-school-pilot',
-      client: t('某重点中学', 'A key secondary school'),
-      industry: 'education',
+      title: t('医—校—家青少年心理协同试点', 'Pilot: hospital-school-family youth mental health'),
+      slug: 'case-youth-pilot',
+      client: t('某精神心理专科与试点学校', 'A psychiatry specialty & pilot schools'),
+      industry: 'youth',
       order: 2,
       status: 'published',
       summary: t(
-        '打通「记录—理解—陪练—干预—跟踪」闭环，帮助家长与老师更早识别与回应学生的心理状态，并以隐私优先的方式保护学生。',
-        'A closed loop from recording to follow-up helps parents and teachers detect and respond to students earlier, with a privacy-first design.',
+        '连接医院心理门诊、学校与家庭，支持情绪压力识别、亲子支持与早期求助引导，隐私优先、可控授权。',
+        'Connecting clinics, schools and families for emotion detection, parent support and early help-seeking — privacy-first with controlled authorization.',
       ),
       metrics: [
-        { value: t('隐私优先', 'Privacy-first'), label: t('默认私密、授权可控', 'Private by default') },
-        { value: t('家校协同', 'Family-school'), label: t('多方视角整合', 'Unified perspectives') },
+        { value: t('医校家', 'Tri-party'), label: t('多方视角整合', 'Unified perspectives') },
+        { value: t('隐私优先', 'Privacy-first'), label: t('默认私密授权可控', 'Private by default') },
       ],
     },
   ]
@@ -188,30 +305,10 @@ export const buildCases = (lang: Lang) => {
 export const buildTeam = (lang: Lang) => {
   const t = L(lang)
   return [
-    {
-      name: t('创始人 & CEO', 'Founder & CEO'),
-      role: t('连续创业者 · 工业互联网与健康', 'Serial entrepreneur · IIoT & health'),
-      bio: t('[能力画像 待替换] 科技与健康领域深耕多年，曾主导大型平台从 0 到 1。', '[Profile — TBD] Years in tech and health, led large platforms from zero to one.'),
-      order: 1,
-    },
-    {
-      name: t('CTO', 'CTO'),
-      role: t('AI 架构 · 大模型与 Agent 系统', 'AI architecture · LLM & agent systems'),
-      bio: t('[能力画像 待替换] 负责自研技术底座与多 Agent 架构设计。', '[Profile — TBD] Leads the in-house AI foundation and multi-agent architecture.'),
-      order: 2,
-    },
-    {
-      name: t('首席科学家', 'Chief Scientist'),
-      role: t('健康 AI · 多模态与记忆系统', 'Health AI · multimodal & memory'),
-      bio: t('[能力画像 待替换] 专注健康垂类模型与长期记忆系统。', '[Profile — TBD] Focuses on health-domain models and long-term memory.'),
-      order: 3,
-    },
-    {
-      name: t('产品负责人', 'Head of Product'),
-      role: t('场景产品 · 从试点到规模化', 'Scenario products · pilot to scale'),
-      bio: t('[能力画像 待替换] 负责行业场景产品的设计与落地。', '[Profile — TBD] Drives scenario product design and delivery.'),
-      order: 4,
-    },
+    { name: t('创始人 & CEO', 'Founder & CEO'), role: t('连续创业者 · 产业数字化与健康', 'Serial entrepreneur · digital industry & health'), bio: t('[能力画像 待替换] 科技与健康领域深耕多年。', '[Profile — TBD] Years across tech and health.'), order: 1 },
+    { name: t('CTO', 'CTO'), role: t('AI 架构 · 长期记忆与 Agent 系统', 'AI architecture · memory & agent systems'), bio: t('[能力画像 待替换] 负责 EvoMetaX 技术底座。', '[Profile — TBD] Leads the EvoMetaX foundation.'), order: 2 },
+    { name: t('首席医学官', 'Chief Medical Officer'), role: t('医疗健康 · 临床转化与治理', 'Health · clinical translation & governance'), bio: t('[能力画像 待替换] 负责医疗合规与专家协同。', '[Profile — TBD] Leads clinical governance and expert collaboration.'), order: 3 },
+    { name: t('产品负责人', 'Head of Product'), role: t('场景产品 · 从试点到规模化', 'Scenario products · pilot to scale'), bio: t('[能力画像 待替换] 负责场景方案落地。', '[Profile — TBD] Drives scenario delivery.'), order: 4 },
   ]
 }
 
@@ -228,12 +325,12 @@ export const buildJobs = (lang: Lang) => {
       order: 1,
       status: 'published',
       description: rt([
-        t('负责公司产品与平台的前后端开发，参与架构设计与工程实践。', 'Build front-end and back-end for our products and platform; contribute to architecture and engineering practice.'),
-        t('要求：扎实的 TypeScript/Node 与现代前端框架经验；对 AI 应用有热情。', 'Requirements: solid TypeScript/Node and modern front-end experience; passion for AI applications.'),
+        t('负责健康 AI 平台的前后端开发，参与架构设计与工程实践。', 'Build front-end and back-end for our health AI platform.'),
+        t('要求：扎实的 TypeScript/Node 与现代前端经验；对医疗健康 AI 有热情。', 'Requirements: solid TypeScript/Node; passion for health AI.'),
       ]),
     },
     {
-      title: t('AI 算法工程师（LLM / Agent）', 'AI Engineer (LLM / Agent)'),
+      title: t('AI 算法工程师（LLM / Agent / 记忆）', 'AI Engineer (LLM / Agent / Memory)'),
       slug: 'ai-engineer',
       department: 'ai',
       location: t('北京', 'Beijing'),
@@ -241,12 +338,12 @@ export const buildJobs = (lang: Lang) => {
       order: 2,
       status: 'published',
       description: rt([
-        t('负责大模型应用、Agent 编排、记忆与知识系统的研发。', 'Develop LLM applications, agent orchestration, memory and knowledge systems.'),
-        t('要求：熟悉 RAG、向量检索、多 Agent 协作与提示工程。', 'Requirements: familiar with RAG, vector search, multi-agent collaboration and prompting.'),
+        t('负责长期记忆、多模态状态建模、Agent 工作流与风险分层研发。', 'Develop long-term memory, multimodal modeling, agent workflows and risk tiering.'),
+        t('要求：熟悉 RAG、向量检索、多 Agent 协作与可解释机制。', 'Requirements: RAG, vector search, multi-agent collaboration and explainability.'),
       ]),
     },
     {
-      title: t('产品经理（AI 健康 / 行业场景）', 'Product Manager (AI Health / Verticals)'),
+      title: t('医疗产品经理（健康 / 心理 / 妇幼）', 'Medical Product Manager'),
       slug: 'product-manager',
       department: 'product',
       location: t('北京', 'Beijing'),
@@ -254,8 +351,8 @@ export const buildJobs = (lang: Lang) => {
       order: 3,
       status: 'published',
       description: rt([
-        t('负责行业场景产品从需求到落地的全流程，连接技术与业务。', 'Own scenario products end to end, bridging technology and business.'),
-        t('要求：优秀的结构化思考与跨团队协作能力；有健康/保险/教育经验优先。', 'Requirements: strong structured thinking and cross-team collaboration; health/insurance/education experience a plus.'),
+        t('负责健康场景方案从需求到落地，连接临床、科研与工程。', 'Own health-scenario solutions end to end, bridging clinical, research and engineering.'),
+        t('要求：医疗/心理/妇幼相关背景优先，优秀的结构化思考能力。', 'Requirements: health/psychology/maternal background preferred; strong structured thinking.'),
       ]),
     },
   ]
@@ -266,39 +363,39 @@ export const buildPosts = (lang: Lang) => {
   const t = L(lang)
   return [
     {
-      slug: 'why-ai-plus-hi',
+      slug: 'understand-health-over-time',
       categoryKey: 'company',
       publishedAt: '2026-05-20',
       author: t('研翌数据', 'Yanyi'),
-      title: t('AI + HI：我们为什么这样定义健康陪伴', 'AI + HI: how we define health companionship'),
-      excerpt: t('真正有价值的健康陪伴，不只是更聪明的模型，而是 AI 与人类智慧的深度融合。', 'Truly valuable health companionship is not just a smarter model, but a deep fusion of AI and human wisdom.'),
+      title: t('让 AI 长期理解人的健康状态', 'Helping AI understand health over a lifetime'),
+      excerpt: t('真正有价值的健康 AI，不止于回答问题，而是在长期关系中理解个体状态。', 'Valuable health AI does not just answer questions — it understands state over a long relationship.'),
       content: rt([
-        t('我们相信，健康陪伴的核心不是技术参数，而是「懂」——懂情感，也懂健康。', 'We believe the core of health companionship is not specs, but understanding — of both emotion and health.'),
-        t('AI 提供规模与持续性，HI（人类智慧）提供温度与专业判断。两者结合，才能让专业的健康守护变得人人可及。', 'AI brings scale and continuity; HI brings warmth and professional judgment. Together they make professional care accessible to all.'),
+        t('医疗系统擅长诊断和治疗明确疾病，但人的真实健康状态大量发生在医院之外。', 'Healthcare excels at diagnosing disease, yet real health states mostly happen outside the clinic.'),
+        t('我们用 AI Agent 与长期记忆系统，补上"院外连续状态管理"的空白。', 'We use AI agents and long-term memory to close the gap of continuous out-of-clinic management.'),
       ]),
     },
     {
-      slug: 'four-domain-architecture',
+      slug: 'evometax-long-term-state-engine',
       categoryKey: 'tech',
       publishedAt: '2026-05-12',
       author: t('技术团队', 'Engineering'),
-      title: t('技术底座解读：四域协同的 AI 架构', 'Inside our four-domain AI architecture'),
-      excerpt: t('思考、执行、语音、记忆——四个边界清晰的域，协同构成可复用的 AI 底座。', 'Thinking, action, voice and memory — four clearly bounded domains forming a reusable AI foundation.'),
+      title: t('EvoMetaX：长期状态智能引擎解读', 'Inside EvoMetaX: a long-term state engine'),
+      excerpt: t('长期记忆、多模态状态建模、Agent 工作流、风险分层与可解释治理。', 'Long-term memory, multimodal modeling, agent workflows, risk tiering and explainable governance.'),
       content: rt([
-        t('我们用「人体」隐喻来组织系统：大脑负责思考与编排，小脑负责工具执行，嘴和耳朵负责实时语音，记忆负责画像与长期记忆。', 'We organize the system with a human-body metaphor: the brain thinks and orchestrates, the cerebellum executes tools, the mouth and ears handle real-time voice, and memory holds profiles and long-term recall.'),
-        t('清晰的职责边界让每个域都能独立演进、独立部署，并被多个上层应用复用。', 'Clear boundaries let each domain evolve and deploy independently, and be reused across applications.'),
+        t('EvoMetaX 由长期记忆、多模态状态建模、Agent 工作流、风险分层和可解释治理组成。', 'EvoMetaX combines memory, multimodal modeling, agent workflows, risk tiering and explainable governance.'),
+        t('它让 AI 从"回答问题"走向"长期理解状态"，并在需要时连接专家与医疗流程。', 'It moves AI from answering to understanding state over time, connecting experts and clinical processes when needed.'),
       ]),
     },
     {
-      slug: 'scenarios-from-insurance-to-campus',
+      slug: 'responsible-health-ai',
       categoryKey: 'industry',
       publishedAt: '2026-04-28',
       author: t('研翌数据', 'Yanyi'),
-      title: t('AI 场景落地：从保险到校园心理健康', 'From insurance to campus: putting AI scenarios to work'),
-      excerpt: t('同一套技术底座，如何在不同高价值场景中落地为可交付的结果。', 'How one foundation becomes deliverable results across high-value scenarios.'),
+      title: t('医疗健康 AI 的前提：安全、克制、可控', 'The premise of health AI: safe, restrained, controllable'),
+      excerpt: t('不替代医生、不自动诊断；可解释、可审核、可追溯。', 'Not replacing doctors or auto-diagnosing; explainable, auditable, traceable.'),
       content: rt([
-        t('在保险场景，我们把「答疑」升级为话术、课件与评分；在校园场景，我们连接家校生，构建心理健康协同网络。', 'In insurance we turn Q&A into scripts, courseware and scoring; on campus we connect families, schools and students into a mental-health network.'),
-        t('场景不同，底座相同——这正是可复用 AI 底座的价值所在。', 'Different scenarios, same foundation — that is the value of a reusable AI base.'),
+        t('医疗与心理场景中的 AI 必须可解释、可审核、可追溯，并设清晰边界。', 'AI in medical and mental-health settings must be explainable, auditable, traceable, with clear boundaries.'),
+        t('做专家的智能助手，做家庭的长期支持系统，做院外连续管理的 AI 基础设施。', "Be the expert's assistant, the family's long-term support, and the infrastructure for out-of-clinic care."),
       ]),
     },
   ]

@@ -1,33 +1,35 @@
 {
   "brand": { "name": "Yanyi", "full": "Yanyi Data Technology Co., Ltd." },
   "nav": {
+    "solutions": "Solutions",
     "technology": "Technology",
-    "products": "Products",
+    "clinical": "Research",
+    "safety": "Safety",
     "about": "About",
-    "blog": "Insights",
+    "resources": "Resources",
     "contact": "Contact",
-    "cta": "Contact Sales"
+    "cta": "Partner with us"
   },
   "footer": {
     "rights": "All rights reserved",
     "company": "Yanyi Data Technology Co., Ltd.",
-    "slogan": "Technology born for love — for lasting health and quality of life",
+    "slogan": "Helping AI understand human health over a lifetime",
     "icp": "[ICP license — to be replaced]"
   },
   "home": {
-    "heroTitle": "AI + HI — intelligent companions that understand emotion and health",
-    "heroSubtitle": "Built on our in-house AI foundation, powering intelligent agents across health, insurance, education and industry.",
-    "ctaPrimary": "Book a Demo",
-    "ctaSecondary": "Explore the Technology"
+    "heroTitle": "Helping AI understand human health over a lifetime",
+    "heroSubtitle": "A long-term, stateful Health AI Agent platform for maternal & child health, youth mental wellness, adult well-being, sports nutrition and healthy aging.",
+    "ctaPrimary": "View Solutions",
+    "ctaSecondary": "Explore Technology"
   },
-  "products": {
-    "title": "Products",
-    "subtitle": "A unified AI foundation, distilled into intelligent agents and solutions for every industry scenario.",
-    "eyebrow": "PRODUCTS",
-    "audience": "Target users",
+  "solutions": {
+    "title": "Life-Cycle Solutions",
+    "subtitle": "Extending professional care beyond the clinic — from a single visit to long-term state management.",
+    "eyebrow": "SOLUTIONS",
+    "audience": "Who it serves",
     "capabilities": "Core capabilities",
     "problem": "Problem solved",
-    "backToProducts": "Back to products"
+    "backToSolutions": "Back to solutions"
   },
   "blog": {
     "title": "Insights",
@@ -39,31 +41,31 @@
   },
   "careers": {
     "title": "Join Us",
-    "subtitle": "Build the future of AI for health and quality of life with us.",
+    "subtitle": "Build trustworthy AI for life-cycle health with us.",
     "eyebrow": "CAREERS",
     "empty": "No open roles right now — feel free to send your CV to the email below.",
     "apply": "Apply"
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Whether it's partnership, a product trial or investment, we'd love to hear from you.",
+    "subtitle": "We welcome hospitals, maternal & child health systems, mental-health specialists, key labs, research institutions and industry partners.",
     "eyebrow": "CONTACT",
-    "formTitle": "Business Inquiry",
+    "formTitle": "Partnership Inquiry",
     "name": "Name",
-    "company": "Company / Organization",
+    "company": "Organization / Company",
     "email": "Email",
     "phone": "Phone",
-    "intent": "Inquiry type",
+    "intent": "Area of interest",
     "message": "Message",
     "submit": "Submit",
     "submitting": "Submitting…",
     "success": "Submitted — we'll be in touch shortly!",
     "error": "Submission failed. Please retry later or email us directly.",
     "intents": {
-      "business": "Business inquiry",
-      "trial": "Product trial",
-      "investment": "Investment",
-      "careers": "Careers",
+      "business": "Clinical & research",
+      "trial": "Maternal & regional health",
+      "investment": "Mental health",
+      "careers": "Enterprise & industry",
       "other": "Other"
     },
     "infoTitle": "Get in touch",

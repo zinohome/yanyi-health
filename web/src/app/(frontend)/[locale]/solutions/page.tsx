@@ -9,14 +9,14 @@ import type { Locale } from '@/i18n/routing'
 
 export const dynamic = 'force-dynamic'
 
-export default async function ProductsPage({
+export default async function SolutionsPage({
   params,
 }: {
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
   setRequestLocale(locale)
-  const t = await getTranslations('products')
+  const t = await getTranslations('solutions')
   const products = await getProducts(locale as Locale)
 
   return (

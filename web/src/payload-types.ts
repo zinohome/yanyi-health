@@ -423,7 +423,7 @@ export interface Product {
    */
   slug: string;
   /**
-   * 一句话定位
+   * 一句话标题
    */
   tagline?: string | null;
   icon?:
@@ -452,7 +452,7 @@ export interface Product {
         | 'workflow'
       )
     | null;
-  scenario?: ('health' | 'insurance' | 'education' | 'industry' | 'platform') | null;
+  scenario?: ('maternal' | 'perinatal' | 'youth' | 'adult' | 'sports' | 'elderly' | 'industry') | null;
   /**
    * 简介（卡片/列表用）
    */
@@ -461,6 +461,12 @@ export interface Product {
    * 解决什么问题 / 面向场景
    */
   problem?: string | null;
+  audience?:
+    | {
+        value?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   features?:
     | {
         title?: string | null;
@@ -468,10 +474,6 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
-  /**
-   * 目标用户
-   */
-  audience?: string | null;
   cover?: (number | null) | Media;
   gallery?: (number | Media)[] | null;
   /**
@@ -557,7 +559,7 @@ export interface Case {
    * 客户（可匿名，如「某头部港险机构」）
    */
   client?: string | null;
-  industry?: ('health' | 'insurance' | 'education' | 'industry') | null;
+  industry?: ('maternal' | 'perinatal' | 'youth' | 'adult' | 'sports' | 'elderly' | 'industry') | null;
   summary?: string | null;
   content?: {
     root: {
@@ -1329,6 +1331,12 @@ export interface ProductsSelect<T extends boolean = true> {
   scenario?: T;
   summary?: T;
   problem?: T;
+  audience?:
+    | T
+    | {
+        value?: T;
+        id?: T;
+      };
   features?:
     | T
     | {
@@ -1336,7 +1344,6 @@ export interface ProductsSelect<T extends boolean = true> {
         description?: T;
         id?: T;
       };
-  audience?: T;
   cover?: T;
   gallery?: T;
   order?: T;

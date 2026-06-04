@@ -1,100 +1,86 @@
 import { L, type Lang } from './helpers'
 
-export const buildHome = (lang: Lang) => {
+type Ids = { health: number[]; industry: number[] }
+
+export const buildHome = (lang: Lang, ids: Ids) => {
   const t = L(lang)
   return {
     title: t('首页', 'Home'),
     slug: 'home',
     status: 'published',
     meta: {
-      title: t('研翌数据科技 · AI + HI 健康智能体', 'Yanyi Data Technology · AI + HI for Health'),
-      description: t('以自研 AI 技术底座，打造懂情感、懂健康的智能伙伴。', 'Emotion- and health-aware AI companions on a self-developed foundation.'),
+      title: t('研翌数据科技 · 生命全周期健康 AI Agent 平台', 'Yanyi · Life-Cycle Health AI Agent Platform'),
+      description: t('让 AI 长期理解人的健康状态。', 'Helping AI understand human health over a lifetime.'),
     },
     layout: [
       {
         blockType: 'hero',
-        eyebrow: t('AI + HI · 自研技术底座', 'AI + HI · In-house foundation'),
-        title: t('用 AI + HI，打造懂情感、懂健康的智能伙伴', 'AI + HI — companions that understand emotion and health'),
+        eyebrow: t('生命全周期健康 AI Agent 平台', 'Life-Cycle Health AI Agent Platform'),
+        title: t('让 AI 长期理解人的健康状态', 'Helping AI understand human health over a lifetime'),
         subtitle: t(
-          '研翌数据科技以自研 AI 技术底座，赋能健康、保险、教育与工业等多场景智能体，让专业的守护人人可及。',
-          'Yanyi Data Technology powers intelligent agents across health, insurance, education and industry — making professional care accessible to all.',
+          '我们基于 AI Agent、长期记忆系统、多模态状态建模、风险分层与专家协同，帮助医疗机构与科研平台把专业服务从院内延伸到院外，从单次问诊延伸到长期状态管理。',
+          'With AI agents, long-term memory, multimodal state modeling, risk tiering and expert collaboration, we extend professional care beyond the clinic — from a single visit to long-term state management.',
         ),
-        primaryCta: { label: t('预约 Demo', 'Book a Demo'), href: '/contact' },
-        secondaryCta: { label: t('了解技术底座', 'Explore the Technology'), href: '/technology' },
+        primaryCta: { label: t('查看解决方案', 'View Solutions'), href: '/solutions' },
+        secondaryCta: { label: t('了解核心技术', 'Explore Technology'), href: '/technology' },
       },
       {
-        blockType: 'valueProps',
-        title: t('为爱而生的科技', 'Technology born for love'),
-        subtitle: t('我们用 AI 与人类智慧的融合，重新定义健康陪伴。', 'We redefine companionship through the fusion of AI and human wisdom.'),
-        items: [
-          { icon: 'heart', title: t('懂情感', 'Emotion-aware'), description: t('识别情绪、给予温度，建立长期信任。', 'Recognizes emotion and builds lasting trust.') },
-          { icon: 'activity', title: t('懂健康', 'Health-aware'), description: t('专业知识与个性化画像驱动的健康洞察。', 'Health insights driven by expertise and personalization.') },
-          { icon: 'layers', title: t('自研底座', 'In-house foundation'), description: t('四域协同、可复用的 AI 技术底座。', 'A reusable four-domain AI foundation.') },
-          { icon: 'lock', title: t('可私有化', 'Private-ready'), description: t('支持私有化部署，满足安全与合规。', 'Private deployment for security and compliance.') },
-        ],
-      },
-      {
-        blockType: 'techArchitecture',
-        title: t('统一 AI 技术底座，四域协同', 'One AI foundation, four domains in concert'),
-        subtitle: t('以「人体」隐喻组织系统：思考、执行、语音、记忆，各司其职、协同进化。', 'Organized like a body — thinking, action, voice and memory, each with a clear role.'),
-        domains: [
-          { icon: 'brain', role: t('大脑', 'Brain'), name: t('思考与编排', 'Thinking & orchestration'), description: t('人格化、意图理解、对话编排与决策路由。', 'Persona, intent, dialog orchestration and routing.') },
-          { icon: 'wrench', role: t('小脑', 'Cerebellum'), name: t('工具执行', 'Tool execution'), description: t('基于 MCP 协议的工具与技能执行。', 'Tool and skill execution via the MCP protocol.') },
-          { icon: 'mic', role: t('嘴和耳朵', 'Mouth & Ears'), name: t('实时语音', 'Real-time voice'), description: t('低延迟流式语音识别、合成与对话。', 'Low-latency streaming STT, TTS and voice dialog.') },
-          { icon: 'database', role: t('记忆', 'Memory'), name: t('记忆与画像', 'Memory & profile'), description: t('用户画像、长期记忆与知识图谱统一出口。', 'Profiles, long-term memory and knowledge graph.') },
-        ],
-        note: t('* 对外仅呈现能力，不涉及内部实现细节。', '* Capabilities shown; implementation details omitted.'),
+        blockType: 'contentMedia',
+        title: t('我们解决的问题', 'The problem we solve'),
+        body: t(
+          '医疗系统擅长诊断和治疗明确疾病，但人的真实健康状态大量发生在医院之外：两次产检之间、出院之后、孩子成长过程中、青少年情绪波动里、成人长期压力与睡眠问题中、运动训练与恢复过程里、老人独居与慢病日常中。\n\n这些状态往往不是一次问诊能解决的，而需要长期理解、持续提醒、风险识别、专业科普与专家协同。研翌数据用 AI Agent 和长期记忆系统，补上医疗健康服务中最重要的"院外连续状态管理"空白。',
+          'Healthcare excels at diagnosing and treating disease, but real health states mostly happen outside the clinic: between checkups, after discharge, through a child’s growth, in teenage mood swings, in adult stress and sleep, in training and recovery, in seniors living alone.\n\nThese states need long-term understanding, continuous reminders, risk detection, education and expert collaboration. We close the gap of continuous out-of-clinic management with AI agents and long-term memory.',
+        ),
+        mediaPosition: 'right',
       },
       {
         blockType: 'capabilityGrid',
-        title: t('核心技术能力', 'Core capabilities'),
-        subtitle: t('从人格化到私有化部署，构成可落地的差异化能力。', 'From persona to private deployment — differentiated, deployable capabilities.'),
+        title: t('我们的核心能力', 'Our core capabilities'),
+        subtitle: t('从长期记忆到可解释治理，构成可信赖的健康 AI 基础设施。', 'From long-term memory to explainable governance — trustworthy health-AI infrastructure.'),
         capabilities: [
-          { icon: 'sparkles', title: t('人格化引擎', 'Persona engine'), description: t('配置驱动的多人格架构，一致、可切换。', 'Config-driven multi-persona architecture.') },
-          { icon: 'database', title: t('长期记忆与画像', 'Memory & profile'), description: t('会话/跨会话记忆与结构化用户画像，越用越懂。', 'Session & long-term memory plus structured profiles.') },
-          { icon: 'mic', title: t('实时语音交互', 'Real-time voice'), description: t('低延迟流式语音，自然对话体验。', 'Low-latency streaming voice for natural dialog.') },
-          { icon: 'workflow', title: t('工具与 MCP 执行', 'Tools & MCP'), description: t('标准 MCP 协议的工具生态，扩展性强。', 'Standard MCP tool ecosystem, highly extensible.') },
-          { icon: 'network', title: t('知识图谱 RAG', 'Knowledge & RAG'), description: t('多策略检索与知识图谱，答案可追溯。', 'Multi-strategy retrieval and knowledge graph.') },
-          { icon: 'lock', title: t('私有化部署', 'Private deployment'), description: t('支持本地化与多租户隔离，合规可控。', 'Localized, multi-tenant, compliant deployment.') },
-        ],
-      },
-      {
-        blockType: 'scenarioShowcase',
-        title: t('AI 场景', 'AI scenarios'),
-        subtitle: t('同一底座，落地于不同高价值行业场景。', 'One foundation, deployed across high-value scenarios.'),
-        scenarios: [
-          { icon: 'heart', name: t('健康康养', 'Health & elder care'), description: t('个人健康管理、情感陪伴与居家辅助。', 'Personal health, companionship and at-home assistance.'), link: { label: t('了解更多', 'Learn more'), href: '/products/evomate' } },
-          { icon: 'shield', name: t('保险', 'Insurance'), description: t('代理人专业问答、培训与场景对练。', 'Agent Q&A, training and scenario practice.'), link: { label: t('了解更多', 'Learn more'), href: '/products/insurevertex-ai' } },
-          { icon: 'graduation-cap', name: t('校园心理', 'Campus mental health'), description: t('家校生协同的青少年心理健康支持。', 'Collaborative youth mental-health support.'), link: { label: t('了解更多', 'Learn more'), href: '/products/sproutguard' } },
-          { icon: 'factory', name: t('工业', 'Industry'), description: t('高价值流程与关键资产的 AI 应用底座。', 'AI platform for high-value processes and assets.'), link: { label: t('了解更多', 'Learn more'), href: '/products/industriax' } },
+          { icon: 'database', title: t('长期记忆系统', 'Long-term memory'), description: t('跨时间、跨场景、跨数据源的个体状态档案。', 'Per-individual state profiles across time, scenarios and sources.') },
+          { icon: 'layers', title: t('多模态状态建模', 'Multimodal modeling'), description: t('融合语言、行为、设备、生理、检查等多源数据。', 'Fusing language, behavior, device, physiological and clinical data.') },
+          { icon: 'workflow', title: t('AI Agent 工作流', 'AI agent workflows'), description: t('面向不同专业场景构建专属 Agent。', 'Purpose-built agents for each professional scenario.') },
+          { icon: 'gauge', title: t('风险分层与异常识别', 'Risk tiering'), description: t('低/中/高/危机 四级风险分层与处置。', 'Low/medium/high/crisis risk tiering and handling.') },
+          { icon: 'shield', title: t('可解释 AI 与专家审核', 'Explainable AI'), description: t('建议有依据、可审核、可追溯，专家规则可配置。', 'Cited, auditable, traceable advice with configurable expert rules.') },
+          { icon: 'lock', title: t('权限隔离与数据安全', 'Security & isolation'), description: t('权限隔离、记忆隔离、数据脱敏与全链路审计。', 'Permission/memory isolation, data masking and full audit.') },
+          { icon: 'network', title: t('医疗/心理/营养知识库', 'Domain knowledge'), description: t('医院审核知识库与受控内容治理。', 'Hospital-reviewed knowledge with controlled governance.') },
+          { icon: 'cpu', title: t('私有化部署与系统对接', 'Private deployment'), description: t('私有化部署，与医院系统对接。', 'Private deployment and hospital-system integration.') },
         ],
       },
       {
         blockType: 'productMatrix',
-        title: t('产品矩阵', 'Product matrix'),
-        subtitle: t('从健康到工业，一套底座支撑多场景智能体。', 'From health to industry — one foundation, many agents.'),
+        title: t('生命全周期解决方案', 'Life-cycle solutions'),
+        subtitle: t('覆盖母婴、心理、身心、运动营养与老年照护等关键阶段。', 'Covering maternal, mental, well-being, sports-nutrition and elderly stages.'),
+        products: ids.health,
+      },
+      {
+        blockType: 'productMatrix',
+        title: t('产业 / 行业拓展', 'Industry extensions'),
+        subtitle: t('同一套技术底座，向保险、工业等高价值行业延伸。', 'The same foundation, extended to insurance, industry and beyond.'),
+        products: ids.industry,
       },
       {
         blockType: 'statsMetrics',
-        title: t('工程化指标', 'Engineering metrics'),
+        title: t('为什么是研翌', 'Why Yanyi'),
         stats: [
-          { value: '<300ms', label: t('对话响应', 'Response time') },
-          { value: '1000+', label: t('并发能力', 'Concurrency') },
-          { value: t('多模型', 'Multi-model'), label: t('不锁定厂商', 'No vendor lock-in') },
-          { value: t('私有化', 'Private'), label: t('可本地部署', 'Self-hostable') },
+          { value: t('生命全周期', 'Life-cycle'), label: t('从孕产到老年', 'Maternity to aging') },
+          { value: t('院外连续', 'Continuous'), label: t('院内延伸到院外', 'Beyond the clinic') },
+          { value: t('可解释', 'Explainable'), label: t('可审核可追溯', 'Auditable & traceable') },
+          { value: t('私有化', 'Private'), label: t('医院系统对接', 'Hospital integration') },
         ],
       },
       {
         blockType: 'caseHighlights',
-        title: t('精选案例', 'Selected cases'),
-        subtitle: t('在真实场景中验证的负责任 AI。', 'Responsible AI proven in real scenarios.'),
+        title: t('合作与试点', 'Pilots & partnerships'),
+        subtitle: t('与医疗机构、妇幼体系与专科共同验证真实价值。', 'Validating real value with hospitals, maternal systems and specialists.'),
       },
       {
         blockType: 'ctaBanner',
-        title: t('让我们聊聊你的 AI 场景', 'Let’s talk about your AI scenario'),
-        subtitle: t('无论是商务合作、产品试用还是投资洽谈，欢迎与我们联系。', 'Partnership, product trial or investment — we’d love to connect.'),
-        primaryCta: { label: t('商务咨询', 'Contact Sales'), href: '/contact' },
-        secondaryCta: { label: t('了解技术', 'Explore Technology'), href: '/technology' },
+        title: t('与我们共同推进 AI 健康转化', 'Advance AI health translation with us'),
+        subtitle: t('欢迎医院、妇幼保健体系、精神心理专科与重点实验室联系合作。', 'Hospitals, maternal systems, mental-health specialists and key labs are welcome.'),
+        primaryCta: { label: t('医疗科研合作', 'Clinical & Research'), href: '/clinical-research' },
+        secondaryCta: { label: t('联系我们', 'Contact Us'), href: '/contact' },
       },
     ],
   }
@@ -103,69 +89,62 @@ export const buildHome = (lang: Lang) => {
 export const buildTechnology = (lang: Lang) => {
   const t = L(lang)
   return {
-    title: t('技术底座', 'Technology'),
+    title: t('核心技术', 'Technology'),
     slug: 'technology',
     status: 'published',
     meta: {
-      title: t('技术底座 · 四域协同的 AI 架构', 'Technology · Four-domain AI architecture'),
-      description: t('思考、执行、语音、记忆四域协同的自研 AI 技术底座。', 'A self-developed AI foundation: thinking, action, voice and memory.'),
+      title: t('EvoMetaX 长期状态智能引擎', 'EvoMetaX — Long-term State Engine'),
+      description: t('长期记忆、多模态状态建模、Agent 工作流、风险分层与可解释治理。', 'Memory, multimodal modeling, agent workflows, risk tiering and governance.'),
     },
     layout: [
       {
         blockType: 'hero',
-        eyebrow: t('TECHNOLOGY', 'TECHNOLOGY'),
-        title: t('自研 AI 技术底座', 'Our self-developed AI foundation'),
-        subtitle: t('以清晰的职责边界与工程化能力，支撑多场景智能体快速、稳定落地。', 'Clear boundaries and engineering rigor for fast, stable agents across scenarios.'),
-        primaryCta: { label: t('预约 Demo', 'Book a Demo'), href: '/contact' },
-        secondaryCta: { label: t('查看产品', 'See Products'), href: '/products' },
+        eyebrow: t('EVOMETAX', 'EVOMETAX'),
+        title: t('EvoMetaX 长期状态智能引擎', 'EvoMetaX — the long-term state engine'),
+        subtitle: t(
+          'EvoMetaX 是研翌面向生命全周期健康场景构建的长期状态 AI Agent 技术底座，由长期记忆、多模态状态建模、Agent 工作流、风险分层和可解释治理组成。',
+          'EvoMetaX is our long-term state AI agent foundation for life-cycle health — memory, multimodal modeling, agent workflows, risk tiering and explainable governance.',
+        ),
+        primaryCta: { label: t('查看解决方案', 'View Solutions'), href: '/solutions' },
+        secondaryCta: { label: t('安全与合规', 'Safety & Governance'), href: '/safety' },
       },
       {
         blockType: 'techArchitecture',
-        title: t('四域协同架构', 'Four-domain architecture'),
-        subtitle: t('思考、执行、语音、记忆——边界清晰，独立演进，统一编排。', 'Thinking, action, voice, memory — bounded, independent, orchestrated.'),
+        title: t('四域协同的技术底座', 'A four-domain foundation'),
+        subtitle: t('思考、执行、语音、记忆——边界清晰、独立演进、统一编排。', 'Thinking, action, voice, memory — bounded, independent, orchestrated.'),
         domains: [
-          { icon: 'brain', role: t('大脑', 'Brain'), name: t('思考与编排', 'Thinking & orchestration'), description: t('人格化、意图理解、对话编排与决策路由。', 'Persona, intent, orchestration and routing.') },
-          { icon: 'wrench', role: t('小脑', 'Cerebellum'), name: t('工具执行', 'Tool execution'), description: t('基于 MCP 协议的工具与技能执行。', 'Tool & skill execution via MCP.') },
-          { icon: 'mic', role: t('嘴和耳朵', 'Mouth & Ears'), name: t('实时语音', 'Real-time voice'), description: t('低延迟流式语音识别、合成与对话。', 'Low-latency streaming voice.') },
-          { icon: 'database', role: t('记忆', 'Memory'), name: t('记忆与画像', 'Memory & profile'), description: t('画像、长期记忆与知识图谱统一出口。', 'Profiles, memory and knowledge graph.') },
+          { icon: 'brain', role: t('大脑', 'Brain'), name: t('思考与编排', 'Thinking'), description: t('人格化、意图理解、对话编排与决策路由。', 'Persona, intent, orchestration and routing.') },
+          { icon: 'wrench', role: t('小脑', 'Cerebellum'), name: t('工具执行', 'Action'), description: t('基于 MCP 协议的工具与技能执行。', 'Tool & skill execution via MCP.') },
+          { icon: 'mic', role: t('嘴和耳朵', 'Voice'), name: t('实时语音', 'Voice'), description: t('低延迟流式语音识别、合成与对话。', 'Low-latency streaming voice.') },
+          { icon: 'database', role: t('记忆', 'Memory'), name: t('记忆与画像', 'Memory'), description: t('长期记忆、画像与知识图谱统一出口。', 'Memory, profiles and knowledge graph.') },
         ],
         note: t('* 对外仅呈现能力，不涉及内部实现细节。', '* Capabilities shown; implementation details omitted.'),
       },
       {
         blockType: 'capabilityGrid',
-        title: t('核心技术能力', 'Core capabilities'),
+        title: t('EvoMetaX 五大技术模块', 'Five EvoMetaX modules'),
         capabilities: [
-          { icon: 'sparkles', title: t('人格化引擎', 'Persona engine'), description: t('配置驱动的多人格，一致、可切换、可治理。', 'Config-driven, consistent, governable personas.') },
-          { icon: 'database', title: t('长期记忆与画像', 'Memory & profile'), description: t('会话/跨会话记忆与结构化画像。', 'Session/long-term memory and profiles.') },
-          { icon: 'mic', title: t('实时语音交互', 'Real-time voice'), description: t('流式 STT/TTS 与端到端语音对话。', 'Streaming STT/TTS and end-to-end voice.') },
-          { icon: 'workflow', title: t('工具与 MCP 执行', 'Tools & MCP'), description: t('标准协议工具生态，热插拔扩展。', 'Standard-protocol, hot-pluggable tools.') },
-          { icon: 'network', title: t('知识图谱 RAG', 'Knowledge & RAG'), description: t('多策略检索、可追溯引用与降级。', 'Multi-strategy retrieval with citations.') },
-          { icon: 'lock', title: t('私有化部署', 'Private deployment'), description: t('本地化、多租户隔离与可观测。', 'Localized, multi-tenant, observable.') },
-        ],
-      },
-      {
-        blockType: 'valueProps',
-        title: t('我们的差异化', 'How we differ'),
-        items: [
-          { icon: 'gauge', title: t('工程化可落地', 'Engineered to ship'), description: t('从原型到生产的工程能力与稳定性。', 'Engineering and stability from prototype to production.') },
-          { icon: 'cpu', title: t('多模型不锁定', 'No lock-in'), description: t('统一接口适配多模型，规避厂商锁定。', 'Unified interface across models.') },
-          { icon: 'shield', title: t('负责任 AI', 'Responsible AI'), description: t('可追溯、可审计、人类监督前置。', 'Traceable, auditable, human-in-the-loop.') },
+          { icon: 'database', title: t('长期记忆', 'Long-term memory'), description: t('理解历史轨迹、当前状态、变化趋势与个体化基线。', 'History, current state, trends and personalized baselines.') },
+          { icon: 'layers', title: t('多模态状态建模', 'Multimodal modeling'), description: t('融合对话、打卡、检查、体征、睡眠、运动、营养、情绪等。', 'Fuses dialogue, check-ins, reports, vitals, sleep, exercise, nutrition and mood.') },
+          { icon: 'workflow', title: t('AI Agent 工作流', 'Agent workflows'), description: t('孕产、随访、产后、新生儿、心理、营养、康复、照护等专属 Agent。', 'Dedicated agents for maternity, follow-up, postpartum, mental health, nutrition, rehab and care.') },
+          { icon: 'gauge', title: t('风险分层与异常识别', 'Risk tiering'), description: t('低风险科普 / 中风险随访 / 高风险就医 / 危机干预。', 'Education / follow-up / referral / crisis intervention.') },
+          { icon: 'shield', title: t('可解释 AI 与医疗治理', 'Explainable governance'), description: t('医院审核知识库、专家规则、建议依据、版本管理、全链路留痕。', 'Reviewed knowledge, expert rules, cited advice, versioning and full audit.') },
         ],
       },
       {
         blockType: 'faq',
         title: t('常见问题', 'FAQ'),
         items: [
-          { question: t('技术底座可以私有化部署吗？', 'Can the foundation be self-hosted?'), answer: t('可以。支持本地化与多租户隔离，满足安全与合规要求。', 'Yes — localized, multi-tenant deployment for security and compliance.') },
-          { question: t('是否绑定特定大模型？', 'Are you tied to a specific LLM?'), answer: t('不绑定。统一接口适配多模型，可按场景与成本灵活选择。', 'No — a unified interface adapts to multiple models.') },
-          { question: t('如何保证回答的可信与可追溯？', 'How do you ensure trustworthy answers?'), answer: t('答案优先引用来源，关键口径走治理与审批流程，关键操作留痕审计。', 'Answers cite sources; key statements go through governance; key actions are audited.') },
+          { question: t('可以私有化部署并对接医院系统吗？', 'Can it be self-hosted and integrate with hospital systems?'), answer: t('可以。支持私有化部署、权限隔离、记忆隔离与数据脱敏。', 'Yes — private deployment with permission/memory isolation and data masking.') },
+          { question: t('如何保证医疗建议可信？', 'How is medical advice kept trustworthy?'), answer: t('医院审核知识库、专家规则、建议依据展示、人工复核与全链路留痕。', 'Hospital-reviewed knowledge, expert rules, cited advice, human review and full audit.') },
+          { question: t('AI 会替代医生吗？', 'Does AI replace doctors?'), answer: t('不会。我们做专家的智能助手与院外连续管理基础设施，不替代诊断与治疗。', 'No — we assist experts and provide out-of-clinic infrastructure, not diagnosis or treatment.') },
         ],
       },
       {
         blockType: 'ctaBanner',
-        title: t('想深入了解我们的技术底座？', 'Want a deeper look at our foundation?'),
-        subtitle: t('我们很乐意为你做一次技术演示。', 'We’d be glad to give you a technical walkthrough.'),
-        primaryCta: { label: t('预约技术演示', 'Book a Technical Demo'), href: '/contact' },
+        title: t('想深入了解 EvoMetaX？', 'Want a deeper look at EvoMetaX?'),
+        subtitle: t('我们很乐意为你做一次技术演示与合作探讨。', 'We’d be glad to give a technical walkthrough.'),
+        primaryCta: { label: t('预约技术交流', 'Book a Technical Talk'), href: '/contact' },
       },
     ],
   }
@@ -179,38 +158,40 @@ export const buildAbout = (lang: Lang) => {
     status: 'published',
     meta: {
       title: t('关于研翌数据科技', 'About Yanyi Data Technology'),
-      description: t('科技为爱而生，让健康与品质同行。', 'Technology born for love — for lasting health and quality of life.'),
+      description: t('我们让 AI 从"回答问题"走向"长期理解状态"。', 'We move AI from answering to understanding state over time.'),
     },
     layout: [
       {
         blockType: 'hero',
         eyebrow: t('ABOUT', 'ABOUT'),
-        title: t('科技为爱而生，让健康与品质同行', 'Technology born for love'),
-        subtitle: t('我们用 AI 与人类智慧的融合，打造懂情感、懂健康的智能伙伴。', 'We build emotion- and health-aware companions through AI and human wisdom.'),
+        title: t('让 AI 从"回答问题"走向"长期理解状态"', 'From answering questions to understanding state over time'),
+        subtitle: t(
+          '研翌数据是一家专注于 AI Agent、长期记忆系统、多模态状态建模、风险分层与智能决策引擎的科技公司。我们相信，真正有价值的健康 AI，应能在长期关系中理解个体状态、识别趋势、支持专业决策。',
+          'Yanyi focuses on AI agents, long-term memory, multimodal modeling, risk tiering and decision engines. We believe valuable health AI understands individual state over a long relationship, spots trends and supports professional decisions.',
+        ),
       },
       {
         blockType: 'valueProps',
-        title: t('使命 · 愿景 · 价值观', 'Mission · Vision · Values'),
+        title: t('使命 · 愿景 · 定位', 'Mission · Vision · Position'),
         items: [
-          { icon: 'heart', title: t('使命', 'Mission'), description: t('让专业的健康守护人人可及。', 'Make professional health care accessible to all.') },
-          { icon: 'rocket', title: t('愿景', 'Vision'), description: t('成为最懂你健康的「老朋友」。', 'Become the trusted companion who knows your health best.') },
-          { icon: 'users', title: t('价值观', 'Values'), description: t('专业、严谨、为爱而生。', 'Professional, rigorous, born for love.') },
+          { icon: 'heart', title: t('使命', 'Mission'), description: t('用可信赖的 AI Agent 和长期记忆系统，帮助人更早理解自己的状态、更好获得专业支持、更持续地管理身心健康。', 'Help people understand their state earlier, get professional support and manage health continuously.') },
+          { icon: 'rocket', title: t('愿景', 'Vision'), description: t('让每个人、每个家庭、每个医疗健康机构，都拥有可持续、可信赖、可解释的长期健康智能系统。', 'A sustainable, trustworthy, explainable long-term health system for everyone, every family and every institution.') },
+          { icon: 'users', title: t('定位', 'Position'), description: t('做专家的智能助手，做家庭的长期支持系统，做院外连续管理的 AI 基础设施。', "The expert's assistant, the family's long-term support, the infrastructure for out-of-clinic care.") },
         ],
       },
       {
         blockType: 'timeline',
         title: t('发展历程', 'Milestones'),
-        subtitle: t('稳步推进的产品与技术路线。', 'A steady product and technology roadmap.'),
         milestones: [
-          { period: '2025', title: t('技术底座成型', 'Foundation built'), description: t('完成自研 AI 技术底座与首批场景验证。', 'Built the in-house AI foundation and first scenario validations.') },
-          { period: '2026', title: t('多场景落地', 'Scenarios deployed'), description: t('健康、保险、校园心理与工业场景陆续试点。', 'Pilots across health, insurance, campus and industry.') },
-          { period: t('未来', 'Next'), title: t('规模化与生态', 'Scale & ecosystem'), description: t('沉淀数据与技术壁垒，构建可持续生态。', 'Build data and tech moats and a sustainable ecosystem.') },
+          { period: '2025', title: t('EvoMetaX 技术底座成型', 'EvoMetaX foundation built'), description: t('完成长期记忆、多模态建模与 Agent 工作流的底座搭建。', 'Built memory, multimodal modeling and agent workflows.') },
+          { period: '2026', title: t('多场景试点落地', 'Scenario pilots'), description: t('母婴、心理、运动营养与老年照护等场景陆续试点。', 'Pilots across maternal, mental, sports-nutrition and elderly care.') },
+          { period: t('未来', 'Next'), title: t('医疗科研协同与规模化', 'Research & scale'), description: t('联合医疗机构与重点实验室推进 AI 健康转化。', 'Advance AI health translation with hospitals and key labs.') },
         ],
       },
       {
         blockType: 'teamPreview',
         title: t('核心团队', 'Core team'),
-        subtitle: t('科技与健康领域的跨界团队。', 'A cross-disciplinary team across tech and health.'),
+        subtitle: t('来自科技、AI、产业数字化、医疗健康与商业化领域。', 'From tech, AI, digital industry, health and commercialization.'),
       },
       {
         blockType: 'ctaBanner',
@@ -218,6 +199,141 @@ export const buildAbout = (lang: Lang) => {
         subtitle: t('无论是合作还是加入我们，都欢迎联系。', 'Whether to partner or to join — get in touch.'),
         primaryCta: { label: t('联系我们', 'Contact Us'), href: '/contact' },
         secondaryCta: { label: t('加入我们', 'Careers'), href: '/careers' },
+      },
+    ],
+  }
+}
+
+export const buildClinical = (lang: Lang) => {
+  const t = L(lang)
+  return {
+    title: t('医疗科研合作', 'Clinical & Research'),
+    slug: 'clinical-research',
+    status: 'published',
+    meta: {
+      title: t('医疗科研合作', 'Clinical & Research Collaboration'),
+      description: t('与医疗机构、妇幼保健体系、精神心理专科与重点实验室共同推进 AI 健康转化。', 'Advancing AI health translation with hospitals, maternal systems, specialists and key labs.'),
+    },
+    layout: [
+      {
+        blockType: 'hero',
+        eyebrow: t('COLLABORATION', 'COLLABORATION'),
+        title: t('共同推进 AI 健康转化', 'Advancing AI health translation together'),
+        subtitle: t('与医疗机构、妇幼保健体系、精神心理专科和重点实验室共建可信赖的健康 AI。', 'Building trustworthy health AI with hospitals, maternal systems, mental-health specialists and key labs.'),
+        primaryCta: { label: t('联系合作', 'Partner with us'), href: '/contact' },
+      },
+      {
+        blockType: 'capabilityGrid',
+        title: t('合作方向', 'Collaboration areas'),
+        capabilities: [
+          { icon: 'heart', title: t('母婴安全与孕产妇连续管理', 'Maternal & child continuity'), description: t('建档后 AI 管理、高危院外随访、产后与新生儿照护、区域妇幼平台。', 'Post-registration management, high-risk follow-up, postpartum & newborn care, regional platforms.') },
+          { icon: 'activity', title: t('围产期心理健康', 'Perinatal mental health'), description: t('孕期焦虑与产后抑郁识别、妇产—精神科协同、情绪随访。', 'Antenatal anxiety & postpartum depression, OB/GYN–psychiatry referral, mood follow-up.') },
+          { icon: 'graduation-cap', title: t('儿童青少年心理健康', 'Youth mental health'), description: t('医—校—家—社协同、情绪压力与睡眠管理、家长与教师辅助。', 'Hospital-school-family-community, emotion/sleep management, parent & teacher assist.') },
+          { icon: 'gauge', title: t('智慧营养与运动机能监测', 'Smart nutrition & performance'), description: t('运动员长期机能档案、营养干预分析、运动健康大模型与 Agent。', 'Performance profiles, nutrition analysis, sports-health models and agents.') },
+          { icon: 'bot', title: t('成人身心健康与睡眠', 'Adult well-being & sleep'), description: t('高压人群与睡眠门诊随访、心身医学长期管理、企业员工心理健康。', 'High-pressure & sleep-clinic follow-up, psychosomatic management, employee mental health.') },
+        ],
+      },
+      {
+        blockType: 'timeline',
+        title: t('合作模式', 'Collaboration models'),
+        milestones: [
+          { period: t('联合 POC', 'Joint POC'), title: t('1–3 个月快速验证', '1–3 month validation'), description: t('形成可演示产品原型与场景价值评估。', 'A demoable prototype and value assessment.') },
+          { period: t('联合课题', 'Joint research'), title: t('共同申报课题', 'Co-apply for grants'), description: t('北京市、国家级、卫健委、科技转化等方向。', 'Municipal, national, health-commission and translation grants.') },
+          { period: t('联合实验室', 'Joint lab'), title: t('长期研发合作', 'Long-term R&D'), description: t('围绕母婴、心理、运动营养与长期状态管理。', 'On maternal, mental, sports-nutrition and long-term state management.') },
+          { period: t('成果转化', 'Translation'), title: t('产业化推广', 'Industrialization'), description: t('软件产品、专利、软著、论文、示范应用与推广。', 'Software, patents, copyrights, papers, demos and rollout.') },
+        ],
+      },
+      {
+        blockType: 'ctaBanner',
+        title: t('探索长期健康状态 AI 的真实价值', 'Explore the real value of long-term health AI'),
+        subtitle: t('欢迎与医院、妇幼体系、专科、重点实验室与科研机构联系。', 'Hospitals, maternal systems, specialists, labs and institutions welcome.'),
+        primaryCta: { label: t('联系合作', 'Partner with us'), href: '/contact' },
+      },
+    ],
+  }
+}
+
+export const buildSafety = (lang: Lang) => {
+  const t = L(lang)
+  return {
+    title: t('安全与合规', 'Safety & Governance'),
+    slug: 'safety',
+    status: 'published',
+    meta: {
+      title: t('安全与合规', 'Safety & Governance'),
+      description: t('医疗健康 AI 的前提是安全、克制、可控。', 'The premise of health AI is to be safe, restrained and controllable.'),
+    },
+    layout: [
+      {
+        blockType: 'hero',
+        eyebrow: t('SAFETY & GOVERNANCE', 'SAFETY & GOVERNANCE'),
+        title: t('医疗健康 AI 的前提是安全、克制、可控', 'Health AI must be safe, restrained, controllable'),
+        subtitle: t('我们设定清晰边界，并以治理机制保障可解释、可审核、可追溯。', 'We set clear boundaries and ensure explainability, auditability and traceability.'),
+      },
+      {
+        blockType: 'valueProps',
+        title: t('我们的边界', 'Our boundaries'),
+        subtitle: t('有所不为，才能可信。', 'Trust comes from restraint.'),
+        items: [
+          { icon: 'shield', title: t('不替代医生与诊断', 'No doctor or diagnosis'), description: t('不替代医生、不自动诊断、不给出处方级医疗建议。', 'We do not replace doctors, auto-diagnose or give prescriptions.') },
+          { icon: 'heart', title: t('不替代心理治疗与急救', 'No therapy or emergency'), description: t('不替代心理治疗师、不替代急救系统。', 'We do not replace therapists or emergency systems.') },
+          { icon: 'lock', title: t('不绕过专业流程', 'No bypassing process'), description: t('不绕过医院与专业服务流程，不把危机当普通问答。', 'We never bypass clinical processes or treat crises as ordinary chat.') },
+        ],
+      },
+      {
+        blockType: 'capabilityGrid',
+        title: t('我们的治理机制', 'Our governance'),
+        capabilities: [
+          { icon: 'network', title: t('审核知识库', 'Reviewed knowledge'), description: t('医院/专家审核知识库与内容版本管理。', 'Hospital/expert-reviewed knowledge with version control.') },
+          { icon: 'gauge', title: t('风险分层与危机识别', 'Risk & crisis'), description: t('风险分层规则、危机风险识别与转介。', 'Risk-tiering rules, crisis detection and referral.') },
+          { icon: 'shield', title: t('人工审核', 'Human review'), description: t('高风险状态人工审核与建议依据展示。', 'Human review for high-risk states and cited advice.') },
+          { icon: 'lock', title: t('隐私与权限', 'Privacy & access'), description: t('用户授权、数据脱敏、权限隔离、记忆隔离。', 'Consent, masking, permission and memory isolation.') },
+          { icon: 'cpu', title: t('私有化部署', 'Private deployment'), description: t('私有化部署与全链路审计。', 'Private deployment and end-to-end audit.') },
+          { icon: 'sparkles', title: t('可解释可追溯', 'Explainable'), description: t('建议有依据、可审核、可追溯。', 'Cited, auditable, traceable advice.') },
+        ],
+      },
+      {
+        blockType: 'ctaBanner',
+        title: t('做专家的智能助手，做家庭的长期支持', "The expert's assistant, the family's support"),
+        subtitle: t('做医疗机构院外连续管理的 AI 基础设施。', 'The AI infrastructure for out-of-clinic continuous care.'),
+        primaryCta: { label: t('联系我们', 'Contact Us'), href: '/contact' },
+      },
+    ],
+  }
+}
+
+export const buildResources = (lang: Lang) => {
+  const t = L(lang)
+  return {
+    title: t('资料下载', 'Resources'),
+    slug: 'resources',
+    status: 'published',
+    meta: {
+      title: t('资料下载', 'Resources'),
+      description: t('公司介绍、解决方案与白皮书资料。', 'Company intro, solutions and white papers.'),
+    },
+    layout: [
+      {
+        blockType: 'hero',
+        eyebrow: t('RESOURCES', 'RESOURCES'),
+        title: t('资料下载', 'Resources'),
+        subtitle: t('公司介绍、解决方案说明与白皮书（即将上线）。', 'Company introduction, solution briefs and white papers (coming soon).'),
+        primaryCta: { label: t('联系获取资料', 'Request materials'), href: '/contact' },
+      },
+      {
+        blockType: 'faq',
+        title: t('资料清单', 'Available materials'),
+        items: [
+          { question: t('公司介绍（PDF）', 'Company Introduction (PDF)'), answer: t('[资料 待上传] 可通过"联系我们"获取最新版本。', '[To be uploaded] Available on request via Contact.') },
+          { question: t('生命全周期解决方案手册', 'Life-cycle Solutions Brochure'), answer: t('[资料 待上传] 涵盖六大场景方案与适用对象。', '[To be uploaded] Covers six scenarios and target users.') },
+          { question: t('EvoMetaX 技术白皮书', 'EvoMetaX Technical White Paper'), answer: t('[资料 待上传] 长期记忆、多模态建模与治理机制。', '[To be uploaded] Memory, multimodal modeling and governance.') },
+        ],
+      },
+      {
+        blockType: 'ctaBanner',
+        title: t('需要更多资料？', 'Need more materials?'),
+        subtitle: t('告诉我们你的合作方向，我们会提供对应资料。', 'Tell us your interest and we’ll share the right materials.'),
+        primaryCta: { label: t('联系我们', 'Contact Us'), href: '/contact' },
       },
     ],
   }

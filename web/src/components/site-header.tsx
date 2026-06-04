@@ -19,11 +19,12 @@ export function SiteHeader() {
   const [open, setOpen] = React.useState(false)
 
   const items = [
+    { href: `${base}/solutions`, label: t('solutions') },
     { href: `${base}/technology`, label: t('technology') },
-    { href: `${base}/products`, label: t('products') },
+    { href: `${base}/clinical-research`, label: t('clinical') },
+    { href: `${base}/safety`, label: t('safety') },
     { href: `${base}/about`, label: t('about') },
-    { href: `${base}/blog`, label: t('blog') },
-    { href: `${base}/contact`, label: t('contact') },
+    { href: `${base}/resources`, label: t('resources') },
   ]
 
   return (

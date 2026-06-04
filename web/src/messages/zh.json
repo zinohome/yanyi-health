@@ -1,33 +1,35 @@
 {
   "brand": { "name": "研翌数据", "full": "北京研翌数据科技有限公司" },
   "nav": {
-    "technology": "技术底座",
-    "products": "产品矩阵",
+    "solutions": "解决方案",
+    "technology": "核心技术",
+    "clinical": "科研合作",
+    "safety": "安全合规",
     "about": "关于我们",
-    "blog": "资讯",
+    "resources": "资料下载",
     "contact": "联系我们",
-    "cta": "商务咨询"
+    "cta": "联系合作"
   },
   "footer": {
     "rights": "保留所有权利",
     "company": "北京研翌数据科技有限公司",
-    "slogan": "科技为爱而生，让健康与品质同行",
+    "slogan": "让 AI 长期理解人的健康状态",
     "icp": "[ICP 备案号 待替换]"
   },
   "home": {
-    "heroTitle": "用 AI + HI，打造懂情感、懂健康的智能伙伴",
-    "heroSubtitle": "科技为爱而生，让健康与品质同行。我们以自研 AI 技术底座，赋能健康、保险、教育与工业等多场景智能体。",
-    "ctaPrimary": "预约 Demo",
-    "ctaSecondary": "了解技术底座"
+    "heroTitle": "让 AI 长期理解人的健康状态",
+    "heroSubtitle": "研翌数据构建面向生命全周期健康管理的长期状态 AI Agent 平台，覆盖母婴安全、儿童青少年心理健康、成人身心健康、运动营养与机能监测、老年照护等场景。",
+    "ctaPrimary": "查看解决方案",
+    "ctaSecondary": "了解核心技术"
   },
-  "products": {
-    "title": "产品矩阵",
-    "subtitle": "以统一的 AI 技术底座，沉淀面向不同行业场景的智能体与解决方案。",
-    "eyebrow": "PRODUCTS",
-    "audience": "目标用户",
-    "capabilities": "核心能力",
+  "solutions": {
+    "title": "生命全周期解决方案",
+    "subtitle": "把专业健康服务从院内延伸到院外，从单次问诊延伸到长期状态管理。",
+    "eyebrow": "SOLUTIONS",
+    "audience": "适用对象",
+    "capabilities": "核心功能",
     "problem": "解决的问题",
-    "backToProducts": "返回产品矩阵"
+    "backToSolutions": "返回解决方案"
   },
   "blog": {
     "title": "资讯",
@@ -39,31 +41,31 @@
   },
   "careers": {
     "title": "加入我们",
-    "subtitle": "与我们一起，用 AI 守护健康与品质生活。",
+    "subtitle": "与我们一起，用可信赖的 AI 守护生命全周期健康。",
     "eyebrow": "CAREERS",
     "empty": "暂无在招岗位，欢迎投递简历至下方邮箱。",
     "apply": "投递简历"
   },
   "contact": {
     "title": "联系我们",
-    "subtitle": "无论是商务合作、产品试用还是投资洽谈，欢迎与我们取得联系。",
+    "subtitle": "欢迎与医院、妇幼保健体系、精神心理专科、重点实验室、科研机构和产业伙伴联系。",
     "eyebrow": "CONTACT",
-    "formTitle": "商务咨询",
+    "formTitle": "合作咨询",
     "name": "姓名",
-    "company": "公司 / 机构",
+    "company": "机构 / 公司",
     "email": "邮箱",
     "phone": "电话",
-    "intent": "咨询类型",
+    "intent": "合作方向",
     "message": "留言",
     "submit": "提交",
     "submitting": "提交中…",
     "success": "提交成功，我们会尽快与您联系！",
     "error": "提交失败，请稍后重试或直接邮件联系我们。",
     "intents": {
-      "business": "商务咨询",
-      "trial": "产品试用",
-      "investment": "投资合作",
-      "careers": "加入我们",
+      "business": "医疗科研合作",
+      "trial": "妇幼与区域卫健",
+      "investment": "精神心理健康合作",
+      "careers": "企业与产业合作",
       "other": "其他"
     },
     "infoTitle": "联系方式",

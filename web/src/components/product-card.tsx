@@ -6,19 +6,23 @@ import { AbstractCover } from '@/components/brand/abstract-cover'
 import { localeHref } from '@/lib/utils'
 
 const scenarioLabel: Record<string, { zh: string; en: string }> = {
-  health: { zh: '健康康养', en: 'Health' },
-  insurance: { zh: '保险', en: 'Insurance' },
-  education: { zh: '校园心理', en: 'Education' },
-  industry: { zh: '工业', en: 'Industry' },
-  platform: { zh: '技术底座', en: 'Platform' },
+  maternal: { zh: '母婴安全', en: 'Maternal & Child' },
+  perinatal: { zh: '围产期心理', en: 'Perinatal Mental Health' },
+  youth: { zh: '儿童青少年心理', en: 'Youth Mental Health' },
+  adult: { zh: '成人身心健康', en: 'Adult Wellness' },
+  sports: { zh: '运动与营养代谢', en: 'Sports & Nutrition' },
+  elderly: { zh: '老年照护与慢病', en: 'Elderly & Chronic Care' },
+  industry: { zh: '产业拓展', en: 'Industry' },
 }
 
 const scenarioTone: Record<string, 'blue' | 'warm' | 'mix'> = {
-  health: 'warm',
-  education: 'warm',
-  insurance: 'blue',
+  maternal: 'warm',
+  perinatal: 'warm',
+  youth: 'warm',
+  adult: 'mix',
+  sports: 'blue',
+  elderly: 'warm',
   industry: 'blue',
-  platform: 'mix',
 }
 
 export function ProductCard({ product, locale }: { product: Product; locale: string }) {
@@ -28,7 +32,7 @@ export function ProductCard({ product, locale }: { product: Product; locale: str
 
   return (
     <Link
-      href={localeHref(locale, `/products/${product.slug}`)}
+      href={localeHref(locale, `/solutions/${product.slug}`)}
       className="card-glow group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card"
     >
       {/* 封面：上传图优先，否则品牌抽象图 */}

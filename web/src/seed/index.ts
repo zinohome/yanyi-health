@@ -11,7 +11,14 @@ import {
   buildJobs,
   buildPosts,
 } from './content'
-import { buildHome, buildTechnology, buildAbout } from './pages'
+import {
+  buildHome,
+  buildTechnology,
+  buildAbout,
+  buildClinical,
+  buildSafety,
+  buildResources,
+} from './pages'
 
 async function main() {
   const payload = await getPayload({ config })
@@ -47,10 +54,25 @@ async function main() {
     catMap[cat.slug] = doc.id as number
   }
 
-  // 产品
+  // 解决方案（捕获 id 用于首页分组）
   const zhProducts = buildProducts('zh')
   const enProducts = buildProducts('en')
-  for (let i = 0; i < zhProducts.length; i++) await create('products', zhProducts[i], enProducts[i])
+  const solutionIds: Record<string, number> = {}
+  for (let i = 0; i < zhProducts.length; i++) {
+    const doc = await create('products', zhProducts[i], enProducts[i])
+    solutionIds[zhProducts[i].slug] = doc.id as number
+  }
+  const ids = {
+    health: [
+      'maternal-care',
+      'perinatal-mental-health',
+      'youth-mental-health',
+      'adult-wellness',
+      'sports-nutrition',
+      'elderly-care',
+    ].map((s) => solutionIds[s]),
+    industry: ['insurevertex-ai', 'industriax'].map((s) => solutionIds[s]),
+  }
 
   // 案例
   const zhCases = buildCases('zh')
@@ -79,9 +101,12 @@ async function main() {
 
   // 页面
   const pages = [
-    [buildHome('zh'), buildHome('en')],
+    [buildHome('zh', ids), buildHome('en', ids)],
     [buildTechnology('zh'), buildTechnology('en')],
     [buildAbout('zh'), buildAbout('en')],
+    [buildClinical('zh'), buildClinical('en')],
+    [buildSafety('zh'), buildSafety('en')],
+    [buildResources('zh'), buildResources('en')],
   ] as const
   for (const [zh, en] of pages) await create('pages', zh, en)
 
