@@ -3,9 +3,11 @@ import { Section, SectionHeader } from '@/components/section'
 import { Reveal } from '@/components/reveal'
 import { Icon } from '@/lib/icons'
 import { PlatformArchitecture } from '@/components/brand/platform-architecture'
+import { FourDomainDiagram } from '@/components/brand/four-domain-diagram'
 
 export function TechArchitecture({ block, locale }: { block: T; locale: string }) {
   const domains = block.domains ?? []
+  const coreLabel = locale === 'en' ? 'Core Engine' : '核心引擎'
   return (
     <Section className="overflow-hidden">
       <div
@@ -19,6 +21,16 @@ export function TechArchitecture({ block, locale }: { block: T; locale: string }
         <Reveal delay={80} className="mx-auto mt-14 max-w-5xl">
           <div className="card-glow rounded-3xl border border-border bg-card/40 p-4 backdrop-blur sm:p-8">
             <PlatformArchitecture locale={locale} />
+          </div>
+        </Reveal>
+
+        {/* 四域协同简图 */}
+        <Reveal delay={60} className="mx-auto mt-20 max-w-4xl">
+          <div className="mb-4 text-center">
+            <span className="eyebrow text-primary">{locale === 'en' ? 'FOUR DOMAINS' : '四域协同'}</span>
+          </div>
+          <div className="card-glow rounded-3xl border border-border bg-card/40 p-4 backdrop-blur sm:p-8">
+            <FourDomainDiagram domains={domains} centerLabel={coreLabel} />
           </div>
         </Reveal>
 

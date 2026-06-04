@@ -111,14 +111,46 @@ export const buildTechnology = (lang: Lang) => {
       {
         blockType: 'techArchitecture',
         title: t('四域协同的技术底座', 'A four-domain foundation'),
-        subtitle: t('思考、执行、语音、记忆——边界清晰、独立演进、统一编排。', 'Thinking, action, voice, memory — bounded, independent, orchestrated.'),
+        subtitle: t('以「人体」隐喻组织系统——大脑思考、小脑执行、嘴耳语音、记忆沉淀，边界清晰、独立演进、统一编排。', 'Organized like a body — brain thinks, cerebellum acts, mouth & ears speak and listen, memory remembers. Bounded, independent, orchestrated.'),
         domains: [
-          { icon: 'brain', role: t('大脑', 'Brain'), name: t('思考与编排', 'Thinking'), description: t('人格化、意图理解、对话编排与决策路由。', 'Persona, intent, orchestration and routing.') },
-          { icon: 'wrench', role: t('小脑', 'Cerebellum'), name: t('工具执行', 'Action'), description: t('基于 MCP 协议的工具与技能执行。', 'Tool & skill execution via MCP.') },
-          { icon: 'mic', role: t('嘴和耳朵', 'Voice'), name: t('实时语音', 'Voice'), description: t('低延迟流式语音识别、合成与对话。', 'Low-latency streaming voice.') },
-          { icon: 'database', role: t('记忆', 'Memory'), name: t('记忆与画像', 'Memory'), description: t('长期记忆、画像与知识图谱统一出口。', 'Memory, profiles and knowledge graph.') },
+          {
+            icon: 'brain',
+            role: t('大脑', 'Brain'),
+            name: t('思考与编排', 'Thinking & Orchestration'),
+            description: t(
+              '系统唯一的会话事实源，统一管理人格、对话历史与上下文。自研编排引擎完成意图识别、知识/画像/记忆的并行召回与组装，并对工具调用做决策路由；支持配置驱动的多人格、热重载与多模型接入，不锁定单一厂商。',
+              'The single source of truth for every conversation — managing persona, history and context. A self-built orchestrator performs intent recognition, parallel recall of knowledge/profile/memory, context assembly and tool routing; config-driven multi-persona, hot-reload and multi-model with no vendor lock-in.',
+            ),
+          },
+          {
+            icon: 'wrench',
+            role: t('小脑', 'Cerebellum'),
+            name: t('工具与技能执行', 'Tools & Skills'),
+            description: t(
+              '基于开放的 MCP（Model Context Protocol）协议的工具执行层：把检索、计算、外部系统对接等能力封装为独立、可热插拔的工具服务，与大脑解耦，专注稳定、可观测的执行，并可按行业场景扩展专业工具集。',
+              'A tool-execution layer on the open MCP (Model Context Protocol): retrieval, computation and system integrations are packaged as independent, hot-pluggable tool services — decoupled from the brain, focused on stable, observable execution, extensible per scenario.',
+            ),
+          },
+          {
+            icon: 'mic',
+            role: t('嘴和耳朵', 'Mouth & Ears'),
+            name: t('实时语音', 'Real-time Voice'),
+            description: t(
+              '可私有化的实时语音平台：流式语音识别 + 流式语音合成（支持音色克隆）+ 端到端实时语音对话。低延迟首包、支持打断（barge-in）、多轮记忆与中途换人格，针对中文优化，单卡即可部署。',
+              'A self-hosted real-time voice platform: streaming ASR + streaming TTS (with voice cloning) + end-to-end voice dialogue. Low first-packet latency, barge-in, multi-turn memory and on-the-fly persona switching — Chinese-optimized, runs on a single GPU.',
+            ),
+          },
+          {
+            icon: 'database',
+            role: t('记忆', 'Memory'),
+            name: t('记忆与画像', 'Memory & Profile'),
+            description: t(
+              '统一的记忆服务：单一 API 整合会话记忆、结构化用户画像与知识图谱三类引擎，沉淀跨时间、跨场景的长期状态档案，并输出可直接拼入模型的记忆上下文；内置多租户隔离、审计与备份。',
+              'A unified memory service: one API over three engines — conversation memory, structured user profiles and a knowledge graph — building long-term, cross-time state profiles and prompt-ready memory context, with multi-tenant isolation, audit and backup.',
+            ),
+          },
         ],
-        note: t('* 对外仅呈现能力，不涉及内部实现细节。', '* Capabilities shown; implementation details omitted.'),
+        note: '',
       },
       {
         blockType: 'capabilityGrid',
