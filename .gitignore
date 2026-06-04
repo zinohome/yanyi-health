@@ -18,5 +18,6 @@ web/.next/
 web/build/
 web/dist/
 web/.env
+web/media/
 *.log
 .DS_Store

@@ -42,12 +42,18 @@ export function ProductCard({ product, locale }: { product: Product; locale: str
           <img
             src={cover.url}
             alt={cover.alt ?? product.name}
-            className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
-          <AbstractCover seed={product.slug ?? product.name ?? 'p'} tone={tone} className="transition-transform duration-500 group-hover:scale-105" />
+          <AbstractCover seed={product.slug ?? product.name ?? 'p'} tone={tone} className="transition-transform duration-700 group-hover:scale-105" />
         )}
-        <div className="absolute left-4 top-4 grid size-11 place-items-center rounded-xl border border-border/60 bg-background/70 text-primary backdrop-blur">
+        {/* 品牌冷暖叠色（统一风格、增温） */}
+        <div
+          className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-60"
+          style={{ background: 'linear-gradient(130deg, var(--primary), transparent 55%, var(--accent))' }}
+        />
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card/55 via-transparent to-transparent" />
+        <div className="absolute left-4 top-4 grid size-11 place-items-center rounded-xl border border-border/60 bg-background/80 text-primary backdrop-blur">
           <Icon name={product.icon} className="size-5" />
         </div>
       </div>
