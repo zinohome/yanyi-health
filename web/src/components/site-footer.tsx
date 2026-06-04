@@ -44,7 +44,14 @@ export async function SiteFooter() {
         </div>
         <div className="mt-10 flex flex-col gap-1 border-t border-border/60 pt-6 text-xs text-muted-foreground">
           <p>© 2026 {t('company')}. {t('rights')}.</p>
-          <p className="opacity-70">{t('icp')}</p>
+          <a
+            href="https://beian.miit.gov.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="opacity-70 transition-opacity hover:opacity-100"
+          >
+            {t('icp')}
+          </a>
         </div>
       </div>
     </footer>
