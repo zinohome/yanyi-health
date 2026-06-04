@@ -42,32 +42,32 @@
 }
 
 .dark {
-  --background: oklch(0.17 0.035 264); /* 深科技蓝墨 */
-  --foreground: oklch(0.96 0.012 250);
+  --background: oklch(0.27 0.038 262); /* 暮蓝雾蓝（更柔和，不黑暗） */
+  --foreground: oklch(0.97 0.01 250);
 
-  --card: oklch(0.215 0.04 264);
-  --card-foreground: oklch(0.96 0.012 250);
-  --popover: oklch(0.215 0.04 264);
-  --popover-foreground: oklch(0.96 0.012 250);
+  --card: oklch(0.315 0.04 262);
+  --card-foreground: oklch(0.97 0.01 250);
+  --popover: oklch(0.315 0.04 262);
+  --popover-foreground: oklch(0.97 0.01 250);
 
-  --primary: oklch(0.72 0.18 256); /* 亮科技蓝 */
-  --primary-foreground: oklch(0.15 0.03 264);
+  --primary: oklch(0.71 0.17 256); /* 亮科技蓝 */
+  --primary-foreground: oklch(0.17 0.03 262);
 
-  --secondary: oklch(0.26 0.04 264);
-  --secondary-foreground: oklch(0.95 0.012 250);
+  --secondary: oklch(0.35 0.04 262);
+  --secondary-foreground: oklch(0.96 0.012 250);
 
-  --muted: oklch(0.26 0.038 264);
-  --muted-foreground: oklch(0.76 0.022 250);
+  --muted: oklch(0.35 0.038 262);
+  --muted-foreground: oklch(0.8 0.022 250);
 
-  --accent: oklch(0.78 0.16 46); /* 暖珊瑚琥珀 */
-  --accent-foreground: oklch(0.2 0.06 46);
+  --accent: oklch(0.79 0.16 48); /* 暖珊瑚琥珀 */
+  --accent-foreground: oklch(0.21 0.06 48);
 
   --destructive: oklch(0.62 0.22 27);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.34 0.04 264);
-  --input: oklch(0.34 0.04 264);
-  --ring: oklch(0.72 0.18 256);
+  --border: oklch(0.44 0.045 262);
+  --input: oklch(0.42 0.045 262);
+  --ring: oklch(0.71 0.17 256);
 }
 
 @theme inline {
