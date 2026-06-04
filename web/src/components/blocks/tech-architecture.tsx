@@ -3,11 +3,20 @@ import { Section, SectionHeader } from '@/components/section'
 import { Reveal } from '@/components/reveal'
 import { Icon } from '@/lib/icons'
 import { PlatformArchitecture } from '@/components/brand/platform-architecture'
-import { FourDomainDiagram } from '@/components/brand/four-domain-diagram'
+import { DomainArchitecture } from '@/components/brand/domain-architecture'
+
+type Kind = 'brain' | 'cerebellum' | 'voice' | 'memory'
+const KIND_BY_ICON: Record<string, Kind> = {
+  brain: 'brain',
+  wrench: 'cerebellum',
+  mic: 'voice',
+  database: 'memory',
+}
+// 小脑、嘴耳用暖色，大脑、记忆用蓝色（冷暖交替）
+const ACCENT: Record<Kind, boolean> = { brain: false, cerebellum: true, voice: true, memory: false }
 
 export function TechArchitecture({ block, locale }: { block: T; locale: string }) {
   const domains = block.domains ?? []
-  const coreLabel = locale === 'en' ? 'Core Engine' : '核心引擎'
   return (
     <Section className="overflow-hidden">
       <div
@@ -24,33 +33,53 @@ export function TechArchitecture({ block, locale }: { block: T; locale: string }
           </div>
         </Reveal>
 
-        {/* 四域协同简图 */}
-        <Reveal delay={60} className="mx-auto mt-20 max-w-4xl">
-          <div className="mb-4 text-center">
-            <span className="eyebrow text-primary">{locale === 'en' ? 'FOUR DOMAINS' : '四域协同'}</span>
-          </div>
-          <div className="card-glow rounded-3xl border border-border bg-card/40 p-4 backdrop-blur sm:p-8">
-            <FourDomainDiagram domains={domains} centerLabel={coreLabel} />
-          </div>
-        </Reveal>
+        {/* 四域详解 —— 每个域配一张架构图 */}
+        <div className="mx-auto mt-20 flex max-w-5xl flex-col gap-8">
+          {domains.map((d, i) => {
+            const kind = (d.icon && KIND_BY_ICON[d.icon]) || 'brain'
+            const accent = ACCENT[kind]
+            return (
+              <Reveal
+                key={d.id ?? i}
+                delay={(i % 2) * 80}
+                className="card-glow card-tint rounded-3xl border border-border bg-card/70 p-6 backdrop-blur sm:p-8"
+              >
+                <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-10">
+                  {/* 左：能力说明 */}
+                  <div className="lg:w-[38%] lg:shrink-0">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="grid size-12 place-items-center rounded-xl"
+                        style={{
+                          backgroundColor: `color-mix(in oklch, ${accent ? 'var(--accent)' : 'var(--primary)'} 12%, transparent)`,
+                          color: accent ? 'var(--accent)' : 'var(--primary)',
+                        }}
+                      >
+                        <Icon name={d.icon} className="size-6" />
+                      </span>
+                      <div>
+                        {d.role ? (
+                          <div
+                            className="eyebrow"
+                            style={{ color: accent ? 'var(--accent)' : 'var(--primary)' }}
+                          >
+                            {d.role}
+                          </div>
+                        ) : null}
+                        <h3 className="font-display text-xl font-semibold">{d.name}</h3>
+                      </div>
+                    </div>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{d.description}</p>
+                  </div>
 
-        {/* 四域详解卡片 */}
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {domains.map((d, i) => (
-            <Reveal
-              key={d.id ?? i}
-              delay={i * 90}
-              className="card-glow card-tint group relative rounded-2xl border border-border bg-card/80 p-6 backdrop-blur"
-            >
-              <div className="absolute inset-x-6 -top-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <div className="mb-5 grid size-12 place-items-center rounded-xl bg-primary/10 text-primary">
-                <Icon name={d.icon} className="size-6" />
-              </div>
-              {d.role ? <div className="eyebrow text-primary/80">{d.role}</div> : null}
-              <h3 className="font-display mt-1 text-lg font-semibold">{d.name}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{d.description}</p>
-            </Reveal>
-          ))}
+                  {/* 右：该域架构图 */}
+                  <div className="min-w-0 flex-1 rounded-2xl border border-border/70 bg-background/40 p-4 sm:p-5">
+                    <DomainArchitecture kind={kind} locale={locale} accent={accent} />
+                  </div>
+                </div>
+              </Reveal>
+            )
+          })}
         </div>
 
         {block.note ? (
