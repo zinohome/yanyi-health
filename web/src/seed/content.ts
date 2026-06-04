@@ -306,10 +306,78 @@ export const buildCases = (lang: Lang) => {
 export const buildTeam = (lang: Lang) => {
   const t = L(lang)
   return [
-    { name: t('创始人 & CEO', 'Founder & CEO'), role: t('连续创业者 · 产业数字化与健康', 'Serial entrepreneur · digital industry & health'), bio: t('[能力画像 待替换] 科技与健康领域深耕多年。', '[Profile — TBD] Years across tech and health.'), order: 1 },
-    { name: t('CTO', 'CTO'), role: t('AI 架构 · 长期记忆与 Agent 系统', 'AI architecture · memory & agent systems'), bio: t('[能力画像 待替换] 负责 EvoMetaX 技术底座。', '[Profile — TBD] Leads the EvoMetaX foundation.'), order: 2 },
-    { name: t('首席医学官', 'Chief Medical Officer'), role: t('医疗健康 · 临床转化与治理', 'Health · clinical translation & governance'), bio: t('[能力画像 待替换] 负责医疗合规与专家协同。', '[Profile — TBD] Leads clinical governance and expert collaboration.'), order: 3 },
-    { name: t('产品负责人', 'Head of Product'), role: t('场景产品 · 从试点到规模化', 'Scenario products · pilot to scale'), bio: t('[能力画像 待替换] 负责场景方案落地。', '[Profile — TBD] Drives scenario delivery.'), order: 4 },
+    {
+      name: t('创始人 & CEO', 'Founder & CEO'),
+      role: t('战略 · AI 商业化 · 连续创业', 'Strategy · AI commercialization'),
+      bio: t(
+        '高新技术领域 25 年（含 IBM 16 年），12 年 AI 与 5 年机器人研发及商业化经验；曾带领 AI 团队在医疗、康养、金融、汽车、工业等多行业落地，并主导大型工业互联网平台快速做大。',
+        '25 years in deep tech (16 at IBM), 12 in AI and 5 in robotics; led AI commercialization across healthcare, eldercare, finance, automotive and industry, and scaled a major industrial-internet platform.',
+      ),
+      order: 1,
+    },
+    {
+      name: t('首席科学家', 'Chief Scientist'),
+      role: t('AI · 语音识别 · 计算机视觉', 'AI · Speech · Computer Vision'),
+      bio: t(
+        '曾任全球头部科技企业顶尖 AI 技术带头人；在 AI、数据挖掘、语音识别与计算机视觉领域发表 60+ 篇论文、获 20+ 项中美专利（NeurIPS/ICML/AAAI 等顶会）；曾任教清华、UIUC、NYU。',
+        'A top AI technology leader; 60+ papers and 20+ US/China patents across AI, speech and vision (NeurIPS/ICML/AAAI); taught at Tsinghua, UIUC and NYU.',
+      ),
+      order: 2,
+    },
+    {
+      name: t('联合创始人 · 智能硬件', 'Co-founder · Hardware'),
+      role: t('智能硬件 · 芯片 EDA · 出海', 'Smart hardware · EDA · Global'),
+      bio: t(
+        '连续创业者；曾创建欧美高端智能灌溉品牌（全球市场前三、客户遍及 50+ 国），并组建国内领先的数字芯片 Signoff EDA 团队，突破关键"卡脖子"环节。',
+        'Serial founder; built a top-3 global smart-irrigation brand (50+ countries) and a leading digital-chip signoff EDA team.',
+      ),
+      order: 3,
+    },
+    {
+      name: t('具身智能技术负责人', 'Head of Embodied AI'),
+      role: t('机器人 · 强化学习 · 具身智能', 'Robotics · RL · Embodied AI'),
+      bio: t(
+        '精于机器人运动学/动力学、深度强化学习与物理仿真；多次从 0 到 1 组建团队，正向开发工业机器人与多轴数控系统（相关公司成功上市）。',
+        'Expert in robot kinematics/dynamics, deep RL and simulation; repeatedly built teams from scratch, delivering industrial robots and CNC systems (a spin-off went public).',
+      ),
+      order: 4,
+    },
+    {
+      name: t('AI 技术总监', 'AI Engineering Director'),
+      role: t('硅谷 · 大模型 · 对话系统', 'Silicon Valley · LLM · Dialogue'),
+      bio: t(
+        '硅谷资深 AI 工程师，Meta GenAI / Speech 与 Amazon Alexa AI 对话机器人开发者。',
+        'Senior Silicon Valley AI engineer; built Meta GenAI/Speech and Amazon Alexa conversational AI.',
+      ),
+      order: 5,
+    },
+    {
+      name: t('数据模型总监', 'Data & Modeling Director'),
+      role: t('硅谷 · 数据治理 · 大模型应用', 'Data governance · LLM apps'),
+      bio: t(
+        '硅谷资深技术专家，曾任谷歌、微软团队 Leader 及两家创业公司 CTO；主导基于大模型的内容生成与总结系统。',
+        'Senior engineer; team lead at Google and Microsoft, CTO at two startups; led LLM-based generation and summarization.',
+      ),
+      order: 6,
+    },
+    {
+      name: t('心理健康首席专家', 'Chief Mental Health Expert'),
+      role: t('临床心理 · EAP · 家校协同', 'Clinical psychology · EAP'),
+      bio: t(
+        '临床心理学博士、美国心理学会会员，国际 EAP 协会中国分会常务理事；深耕心理健康与教育领域多年，曾获"长城友谊奖"。',
+        'Clinical psychology PhD and APA member; EAP China council member with decades in mental health and education.',
+      ),
+      order: 7,
+    },
+    {
+      name: t('健康管理首席专家', 'Chief Health Expert'),
+      role: t('临床医学 · 健康管理', 'Clinical medicine · Health'),
+      bio: t(
+        '复旦大学医学博士，深耕临床与健康管理，连接医疗专业能力与 AI 健康场景。',
+        'Fudan medical PhD; bridges clinical expertise and AI health scenarios.',
+      ),
+      order: 8,
+    },
   ]
 }
 

@@ -24,12 +24,15 @@ export async function TeamPreview({ block, locale }: { block: T; locale: string 
               delay={(i % 4) * 70}
               className="card-glow rounded-2xl border border-border bg-card p-6 text-center"
             >
-              <div className="mx-auto mb-4 size-20 overflow-hidden rounded-full border border-border bg-primary/10">
+              <div className="mx-auto mb-4 grid size-20 place-items-center overflow-hidden rounded-full border border-border bg-gradient-to-br from-primary/15 to-accent/15">
                 {photo?.url ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img src={photo.url} alt={m.name ?? ''} className="size-full object-cover" />
                 ) : (
-                  <div className="tech-grid size-full" />
+                  <svg viewBox="0 0 64 64" className="size-12 text-primary/55" aria-hidden>
+                    <circle cx="32" cy="24" r="12" fill="currentColor" />
+                    <path d="M12 56c0-11 9-19 20-19s20 8 20 19" fill="currentColor" />
+                  </svg>
                 )}
               </div>
               <h3 className="font-display font-semibold">{m.name}</h3>
