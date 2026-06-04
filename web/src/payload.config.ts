@@ -1,4 +1,5 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
+import { nodemailerAdapter } from '@payloadcms/email-nodemailer'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
@@ -47,6 +48,19 @@ export default buildConfig({
   ],
   globals: [SiteSettings, Header, Footer],
   editor: lexicalEditor(),
+  // 邮件：配置 SMTP 后启用（否则仅写控制台，不影响功能）
+  email: process.env.SMTP_HOST
+    ? nodemailerAdapter({
+        defaultFromName: '研翌数据科技官网',
+        defaultFromAddress: process.env.SMTP_FROM || process.env.SMTP_USER || 'noreply@yanyi-health.com',
+        transportOptions: {
+          host: process.env.SMTP_HOST,
+          port: Number(process.env.SMTP_PORT || 465),
+          secure: Number(process.env.SMTP_PORT || 465) === 465,
+          auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+        },
+      })
+    : undefined,
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
