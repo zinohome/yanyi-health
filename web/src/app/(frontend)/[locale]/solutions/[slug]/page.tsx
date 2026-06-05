@@ -63,11 +63,14 @@ export default async function SolutionDetail({
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero —— 与 PageHero 视觉统一：tech-grid + 单个柔光球 + 渐变标题 */}
       <section className="relative overflow-hidden border-b border-border/60">
-        <div className="aurora pointer-events-none absolute inset-0 opacity-60" />
-        <div className="tech-grid pointer-events-none absolute inset-0 opacity-[0.3] [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <div className="tech-grid pointer-events-none absolute inset-0 opacity-50 [mask-image:radial-gradient(ellipse_at_top,black,transparent_75%)]" />
+        <div
+          className="pointer-events-none absolute -top-40 left-1/3 size-[36rem] -translate-x-1/2 rounded-full opacity-30 blur-[110px]"
+          style={{ background: 'radial-gradient(circle, var(--primary), transparent 62%)' }}
+        />
+        <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8">
           <Link
             href={localeHref(locale, '/solutions')}
             className="mb-8 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -78,7 +81,7 @@ export default async function SolutionDetail({
             <span className="mb-5 grid size-14 place-items-center rounded-2xl bg-primary/10 text-primary">
               <Icon name={product.icon} className="size-7" />
             </span>
-            <h1 className="font-display text-4xl font-bold tracking-tight text-balance sm:text-5xl">
+            <h1 className="font-display text-4xl font-bold tracking-tight text-balance text-gradient sm:text-5xl">
               {product.name}
             </h1>
             {product.tagline ? (
