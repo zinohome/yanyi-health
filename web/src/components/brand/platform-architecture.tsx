@@ -120,7 +120,7 @@ function MobileLayer({
 }) {
   return (
     <div
-      className={cn('rounded-2xl border p-4', !highlight && 'border-border bg-card')}
+      className={cn('rounded-2xl border p-4 text-center', !highlight && 'border-border bg-card')}
       style={
         highlight
           ? {
@@ -130,11 +130,11 @@ function MobileLayer({
           : undefined
       }
     >
-      <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-primary">
+      <div className="font-mono text-sm font-semibold uppercase tracking-[0.08em] text-primary">
         {label}
       </div>
-      {title ? <div className="font-display mt-1 text-sm font-semibold">{title}</div> : null}
-      <div className="mt-2.5 flex flex-wrap gap-1.5">
+      {title ? <div className="font-display mt-1.5 text-base font-semibold">{title}</div> : null}
+      <div className="mt-3 flex flex-wrap justify-center gap-1.5">
         {items.map((it, i) => (
           <span
             key={i}
@@ -186,16 +186,16 @@ function PlatformArchitectureMobile({ locale }: { locale: string }) {
       <DownArrow />
       <MobileLayer label={band('多模态数据接入', 'MULTIMODAL DATA')} items={DATA} t={t} />
       <div
-        className="mt-3 rounded-2xl border p-4"
+        className="mt-3 rounded-2xl border p-4 text-center"
         style={{
           borderColor: 'color-mix(in oklch, var(--accent) 40%, transparent)',
           background: 'color-mix(in oklch, var(--accent) 8%, var(--card))',
         }}
       >
-        <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-accent">
+        <div className="font-mono text-sm font-semibold uppercase tracking-[0.08em] text-accent">
           {band('安全与治理 · 贯穿全链路', 'GOVERNANCE · END-TO-END')}
         </div>
-        <div className="mt-2.5 flex flex-wrap gap-1.5">
+        <div className="mt-3 flex flex-wrap justify-center gap-1.5">
           {GOV.map((g, i) => (
             <span
               key={i}

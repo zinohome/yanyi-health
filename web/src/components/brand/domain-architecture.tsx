@@ -55,11 +55,11 @@ function DomainArchitectureMobile({ kind, locale, accent }: { kind: Kind; locale
     <div className="flex flex-col">
       {stages.map((s, i) => (
         <div key={i}>
-          <div className="rounded-xl border border-border bg-card p-3">
-            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em]" style={{ color }}>
+          <div className="rounded-xl border border-border bg-card p-3 text-center">
+            <div className="font-mono text-[13px] font-semibold uppercase tracking-[0.1em]" style={{ color }}>
               {s.label}
             </div>
-            <div className="mt-2 flex flex-wrap gap-1.5">
+            <div className="mt-2.5 flex flex-wrap justify-center gap-1.5">
               {s.items.map((it, j) => (
                 <span
                   key={j}
