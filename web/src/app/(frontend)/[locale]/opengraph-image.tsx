@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
-export const alt = 'Yanyi Data Technology'
+export const alt = 'Yanyi Technology'
 
 export default function OgImage() {
   return new ImageResponse(
@@ -37,7 +37,7 @@ export default function OgImage() {
           >
             Y
           </div>
-          <div style={{ fontSize: 30, fontWeight: 600, letterSpacing: 1 }}>Yanyi Data Technology</div>
+          <div style={{ fontSize: 30, fontWeight: 600, letterSpacing: 1 }}>Yanyi Technology</div>
         </div>
         <div style={{ fontSize: 76, fontWeight: 800, lineHeight: 1.1, maxWidth: 920 }}>
           AI + HI — companions that understand emotion & health

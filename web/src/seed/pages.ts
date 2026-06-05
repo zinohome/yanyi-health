@@ -189,7 +189,7 @@ export const buildAbout = (lang: Lang) => {
     slug: 'about',
     status: 'published',
     meta: {
-      title: t('关于研翌科技', 'About Yanyi Data Technology'),
+      title: t('关于研翌科技', 'About Yanyi Technology'),
       description: t('我们让 AI 从"回答问题"走向"长期理解状态"。', 'We move AI from answering to understanding state over time.'),
     },
     layout: [

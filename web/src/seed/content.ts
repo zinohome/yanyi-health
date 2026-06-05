@@ -12,7 +12,7 @@ export const buildSiteSettings = (lang: Lang) => {
     address: '',
     icp: '京ICP备2025154917号-1',
     defaultMeta: {
-      title: t('研翌科技 · 生命全周期健康 AI Agent 平台', 'Yanyi Data Technology · Life-Cycle Health AI Agent Platform'),
+      title: t('研翌科技 · 生命全周期健康 AI Agent 平台', 'Yanyi Technology · Life-Cycle Health AI Agent Platform'),
       description: t(
         '研翌科技构建面向生命全周期健康管理的长期状态 AI Agent 平台，覆盖母婴安全、心理健康、运动营养、老年照护等场景。',
         'A long-term, stateful Health AI Agent platform for maternal & child health, mental wellness, sports nutrition and healthy aging.',

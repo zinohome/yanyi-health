@@ -15,13 +15,13 @@ import { fontSans, fontDisplay, fontMono } from '@/fonts'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: '研翌科技 · Yanyi Data Technology',
+    default: '研翌科技 · Yanyi Technology',
     template: '%s · 研翌科技',
   },
   description: '科技为爱而生，让健康与品质同行。研翌科技以自研 AI 技术底座赋能多场景智能体。',
   openGraph: {
     type: 'website',
-    siteName: '研翌科技 · Yanyi Data Technology',
+    siteName: '研翌科技 · Yanyi Technology',
     title: '研翌科技 · AI + HI 健康智能体',
     description: '以自研 AI 技术底座，打造懂情感、懂健康的智能伙伴。',
   },
