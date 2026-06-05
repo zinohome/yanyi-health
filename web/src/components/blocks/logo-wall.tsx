@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { LogoWallBlock as T, Partner, Media } from '@/payload-types'
 import { Section } from '@/components/section'
 import { Reveal } from '@/components/reveal'
@@ -25,8 +26,14 @@ export async function LogoWall({ block, locale }: { block: T; locale: string }) 
           return (
             <Reveal key={p.id} delay={i * 50} className="opacity-70 transition-opacity hover:opacity-100">
               {logo?.url ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img loading="lazy" decoding="async" src={logo.url} alt={p.name ?? ''} className="h-8 w-auto object-contain grayscale" />
+                <Image
+                  src={logo.url}
+                  alt={p.name ?? ''}
+                  width={logo.width ?? 160}
+                  height={logo.height ?? 32}
+                  sizes="160px"
+                  className="h-8 w-auto object-contain grayscale"
+                />
               ) : (
                 <span className="font-display text-lg font-semibold text-muted-foreground">{p.name}</span>
               )}

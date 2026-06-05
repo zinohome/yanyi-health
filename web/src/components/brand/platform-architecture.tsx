@@ -4,8 +4,8 @@ type Item = { zh: string; en: string }
 const L = (locale: string) => (i: Item) => (locale === 'en' ? i.en : i.zh)
 
 const APP: Item[] = [
-  { zh: '母婴安全', en: 'Maternal' },
   { zh: '围产期心理', en: 'Perinatal' },
+  { zh: '母婴安全', en: 'Maternal' },
   { zh: '儿童青少年', en: 'Youth' },
   { zh: '成人身心', en: 'Adult' },
   { zh: '运动营养', en: 'Sports' },
@@ -48,6 +48,26 @@ const CX = 40
 const CW = 770 // content width
 const RAILX = 826
 const RAILW = 134
+const ARROW_X = CX + CW / 2
+
+/** 层间向下流动箭头（普通辅助函数，避免在 render 内定义组件类型） */
+function arrow(y1: number, y2: number) {
+  return (
+    <g>
+      <line x1={ARROW_X} y1={y1} x2={ARROW_X} y2={y2 - 7} stroke="var(--primary)" strokeWidth="1.5" className="flow-line" opacity="0.7" />
+      <path d={`M ${ARROW_X - 5} ${y2 - 8} L ${ARROW_X} ${y2 - 1} L ${ARROW_X + 5} ${y2 - 8} Z`} fill="var(--primary)" opacity="0.8" />
+    </g>
+  )
+}
+
+/** 层标签（普通辅助函数） */
+function layerLabel(en: boolean, y: number, zh: string, enL: string, color = 'var(--primary)') {
+  return (
+    <text x={CX + 16} y={y - 8} fontSize="11" fontWeight="600" letterSpacing="1.5" fill={color} fontFamily="var(--font-mono)">
+      {en ? enL : zh}
+    </text>
+  )
+}
 
 function chips(items: Item[], t: (i: Item) => string, y: number, h: number, opts?: { engine?: boolean }) {
   const n = items.length
@@ -97,20 +117,6 @@ export function PlatformArchitecture({ locale, className }: { locale: string; cl
   const b4 = 486
   const H1 = 96
   const HE = 150
-  const arrowX = CX + CW / 2
-
-  const Arrow = ({ y1, y2 }: { y1: number; y2: number }) => (
-    <g>
-      <line x1={arrowX} y1={y1} x2={arrowX} y2={y2 - 7} stroke="var(--primary)" strokeWidth="1.5" className="flow-line" opacity="0.7" />
-      <path d={`M ${arrowX - 5} ${y2 - 8} L ${arrowX} ${y2 - 1} L ${arrowX + 5} ${y2 - 8} Z`} fill="var(--primary)" opacity="0.8" />
-    </g>
-  )
-
-  const LayerLabel = ({ y, zh, enL, color = 'var(--primary)' }: { y: number; zh: string; enL: string; color?: string }) => (
-    <text x={CX + 16} y={y - 8} fontSize="11" fontWeight="600" letterSpacing="1.5" fill={color} fontFamily="var(--font-mono)">
-      {band(zh, enL)}
-    </text>
-  )
 
   return (
     <svg viewBox="0 0 1000 620" className={cn('w-full', className)} role="img" aria-label="EvoMetaX 平台架构">
@@ -142,21 +148,21 @@ export function PlatformArchitecture({ locale, className }: { locale: string; cl
       })}
 
       {/* 应用层 */}
-      <LayerLabel y={b1 + 8} zh="应用层 · 生命全周期解决方案" enL="APPLICATIONS · SOLUTIONS" />
+      {layerLabel(en, b1 + 8, '应用层 · 生命全周期解决方案', 'APPLICATIONS · SOLUTIONS')}
       <rect x={CX} y={b1 + 16} width={CW} height={H1} rx="14" fill="var(--card)" stroke="var(--border)" />
       {chips(APP, t, b1 + 36, 56)}
 
-      <Arrow y1={b1 + 16 + H1} y2={b2 + 16} />
+      {arrow(b1 + 16 + H1, b2 + 16)}
 
       {/* Agent 层 */}
-      <LayerLabel y={b2 + 8} zh="AI Agent 工作流" enL="AI AGENT WORKFLOWS" />
+      {layerLabel(en, b2 + 8, 'AI Agent 工作流', 'AI AGENT WORKFLOWS')}
       <rect x={CX} y={b2 + 16} width={CW} height={H1} rx="14" fill="var(--card)" stroke="var(--border)" />
       {chips(AGENT, t, b2 + 36, 56)}
 
-      <Arrow y1={b2 + 16 + H1} y2={b3 + 16} />
+      {arrow(b2 + 16 + H1, b3 + 16)}
 
       {/* 核心引擎层 */}
-      <LayerLabel y={b3 + 8} zh="EvoMetaX 核心引擎" enL="EVOMETAX CORE ENGINE" />
+      {layerLabel(en, b3 + 8, 'EvoMetaX 核心引擎', 'EVOMETAX CORE ENGINE')}
       <g filter="url(#pa-glow)">
         <rect x={CX} y={b3 + 16} width={CW} height={HE} rx="16" fill="url(#pa-engine)" stroke="color-mix(in oklch, var(--primary) 45%, transparent)" strokeWidth="1.5" />
       </g>
@@ -165,10 +171,10 @@ export function PlatformArchitecture({ locale, className }: { locale: string; cl
       </text>
       {chips(ENGINE, t, b3 + 60, 74, { engine: true })}
 
-      <Arrow y1={b4 + 16} y2={b3 + 16 + HE + 0} />
+      {arrow(b4 + 16, b3 + 16 + HE + 0)}
 
       {/* 数据层 */}
-      <LayerLabel y={b4 + 8} zh="多模态数据接入" enL="MULTIMODAL DATA" />
+      {layerLabel(en, b4 + 8, '多模态数据接入', 'MULTIMODAL DATA')}
       <rect x={CX} y={b4 + 16} width={CW} height={H1} rx="14" fill="var(--card)" stroke="var(--border)" />
       {chips(DATA, t, b4 + 36, 56)}
     </svg>

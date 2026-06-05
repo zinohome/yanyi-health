@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { TeamPreviewBlock as T, Team as TeamMember, Media } from '@/payload-types'
 import { Section, SectionHeader } from '@/components/section'
 import { Reveal } from '@/components/reveal'
@@ -24,10 +25,9 @@ export async function TeamPreview({ block, locale }: { block: T; locale: string 
               delay={(i % 4) * 70}
               className="card-glow rounded-2xl border border-border bg-card p-6 text-center"
             >
-              <div className="mx-auto mb-4 grid size-20 place-items-center overflow-hidden rounded-full border border-border bg-gradient-to-br from-primary/15 to-accent/15">
+              <div className="relative mx-auto mb-4 grid size-20 place-items-center overflow-hidden rounded-full border border-border bg-gradient-to-br from-primary/15 to-accent/15">
                 {photo?.url ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img loading="lazy" decoding="async" src={photo.url} alt={m.name ?? ''} className="size-full object-cover" />
+                  <Image fill src={photo.url} alt={m.name ?? ''} sizes="80px" className="object-cover" />
                 ) : (
                   <svg viewBox="0 0 64 64" className="size-12 text-primary/55" aria-hidden>
                     <circle cx="32" cy="24" r="12" fill="currentColor" />

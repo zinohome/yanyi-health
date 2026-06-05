@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft } from 'lucide-react'
 import { RichText as LexicalRichText } from '@payloadcms/richtext-lexical/react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
@@ -67,8 +68,14 @@ export default async function BlogDetail({
       {cover?.url ? (
         <Section className="py-0">
           <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-border">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img loading="lazy" decoding="async" src={cover.url} alt={cover.alt ?? post.title} className="w-full object-cover" />
+            <Image
+              src={cover.url}
+              alt={cover.alt ?? post.title}
+              width={cover.width ?? 1600}
+              height={cover.height ?? 1000}
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="h-auto w-full object-cover"
+            />
           </div>
         </Section>
       ) : null}

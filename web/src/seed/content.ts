@@ -66,7 +66,7 @@ export const buildProducts = (lang: Lang) => {
       ),
       icon: 'heart',
       scenario: 'maternal',
-      order: 1,
+      order: 2,
       status: 'published',
       tagline: t('从建档到孩子 1 岁，陪伴每一次关键变化', 'From registration to age one — by your side at every milestone'),
       summary: t(
@@ -116,7 +116,7 @@ export const buildProducts = (lang: Lang) => {
       ),
       icon: 'heart',
       scenario: 'perinatal',
-      order: 2,
+      order: 1,
       status: 'published',
       tagline: t('把产科安全与心理安全放进同一个连续管理系统', 'Physical and emotional safety in one continuous system'),
       summary: t(

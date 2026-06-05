@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import type { ContentMediaBlock as T, Media } from '@/payload-types'
 import { Section } from '@/components/section'
 import { Reveal } from '@/components/reveal'
@@ -28,8 +29,13 @@ export function ContentMedia({ block }: { block: T }) {
         >
           <div className="card-glow relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-card">
             {media?.url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img loading="lazy" decoding="async" src={media.url} alt={media.alt ?? ''} className="size-full object-cover" />
+              <Image
+                fill
+                src={media.url}
+                alt={media.alt ?? ''}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
             ) : (
               <AbstractCover seed={block.title ?? 'content'} tone="mix" />
             )}

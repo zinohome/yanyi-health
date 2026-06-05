@@ -1,0 +1,27 @@
+# 依赖与构建产物（镜像内会重新安装/构建）
+node_modules
+.next
+out
+
+# 本地环境与密钥（务必通过 compose env_file / 平台密钥注入，切勿打进镜像）
+.env
+.env.*
+!.env.example
+
+# 运行期上传（生产用挂载卷持久化）
+media
+
+# 版本控制与编辑器
+.git
+.gitignore
+.vscode
+.idea
+*.log
+npm-debug.log*
+
+# 测试与缓存
+coverage
+.DS_Store
+
+# 源图（已处理后的成品在 public/scenes/*.jpg，源 PNG 不入镜像）
+public/scenes/china

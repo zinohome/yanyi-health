@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import type { Product, Media } from '@/payload-types'
 import { Icon } from '@/lib/icons'
@@ -38,11 +39,12 @@ export function ProductCard({ product, locale }: { product: Product; locale: str
       {/* 封面：上传图优先，否则品牌抽象图 */}
       <div className="relative aspect-[16/10] overflow-hidden">
         {cover?.url ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img loading="lazy" decoding="async"
+          <Image
+            fill
             src={cover.url}
             alt={cover.alt ?? product.name}
-            className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
           <AbstractCover seed={product.slug ?? product.name ?? 'p'} tone={tone} className="transition-transform duration-700 group-hover:scale-105" />

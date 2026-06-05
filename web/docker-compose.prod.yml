@@ -1,0 +1,49 @@
+# 研翌科技官网 · 生产编排
+# 用法：
+#   1) 复制 .env.example 为 .env.production 并填入真实值
+#      （DATABASE_URL 的 host 用服务名 postgres，例如：
+#       postgresql://yanyi:强密码@postgres:5432/yanyi_web）
+#   2) docker compose -f docker-compose.prod.yml up -d --build
+#   3) 首次部署后初始化内容：
+#      docker compose -f docker-compose.prod.yml exec web node -e "require('child_process')"  # 见 README
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-yanyi}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请在 .env.production 中设置 POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-yanyi_web}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-yanyi} -d ${POSTGRES_DB:-yanyi_web}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # 默认不对外暴露数据库端口；如需外部访问再放开：
+    # ports:
+    #   - "5432:5432"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      NODE_ENV: production
+      PORT: '3000'
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - '3000:3000'
+    volumes:
+      # Payload 上传持久化（与 Dockerfile 中 /app/media 对应）
+      - media:/app/media
+
+volumes:
+  pgdata:
+  media:

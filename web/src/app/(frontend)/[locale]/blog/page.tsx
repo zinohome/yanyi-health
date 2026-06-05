@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { PageHero } from '@/components/page-hero'
@@ -38,13 +39,14 @@ export default async function BlogPage({
                     href={localeHref(locale, `/blog/${p.slug}`)}
                     className="card-glow group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card"
                   >
-                    <div className="aspect-[16/9] overflow-hidden bg-muted">
+                    <div className="relative aspect-[16/9] overflow-hidden bg-muted">
                       {cover?.url ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img loading="lazy" decoding="async"
+                        <Image
+                          fill
                           src={cover.url}
                           alt={cover.alt ?? p.title}
-                          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                       ) : (
                         <AbstractCover

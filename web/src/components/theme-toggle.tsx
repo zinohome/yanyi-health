@@ -6,10 +6,17 @@ import { useTheme } from 'next-themes'
 
 import { Button } from '@/components/ui/button'
 
+const emptySubscribe = () => () => {}
+
 export function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme()
-  const [mounted, setMounted] = React.useState(false)
-  React.useEffect(() => setMounted(true), [])
+  // 仅在客户端水合后为 true：服务端快照返回 false，客户端返回 true。
+  // 用 useSyncExternalStore 取代 useEffect(setState) 的挂载守卫，避免水合不一致与级联渲染。
+  const mounted = React.useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  )
 
   return (
     <Button

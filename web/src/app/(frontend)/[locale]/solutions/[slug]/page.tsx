@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft } from 'lucide-react'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
@@ -95,8 +96,14 @@ export default async function SolutionDetail({
         <div className="grid items-center gap-10 lg:grid-cols-2">
           <Reveal className="card-glow relative aspect-[16/10] overflow-hidden rounded-3xl border border-border">
             {cover?.url ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img loading="lazy" decoding="async" src={cover.url} alt={cover.alt ?? product.name} className="size-full object-cover" />
+              <Image
+                fill
+                src={cover.url}
+                alt={cover.alt ?? product.name}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+                className="object-cover"
+              />
             ) : (
               <AbstractCover seed={product.slug ?? 'p'} tone={coverTone} />
             )}

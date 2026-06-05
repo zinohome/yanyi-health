@@ -10,6 +10,9 @@ const dirname = path.dirname(__filename)
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
 const nextConfig: NextConfig = {
+  // 生产容器：输出独立运行包（.next/standalone/server.js），镜像更小、无需安装全部依赖
+  output: 'standalone',
+  outputFileTracingRoot: path.resolve(dirname),
   images: {
     localPatterns: [
       {
