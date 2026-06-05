@@ -31,7 +31,7 @@ services:
       retries: 10
 
   web:
-    image: harbor.naivehero.top:8443/web/yyweb:latest
+    image: harbor.naivehero.top:8443/web/yyweb:${IMAGE_TAG:-latest}
     container_name: yyweb_web_prod
     restart: unless-stopped
     env_file:

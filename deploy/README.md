@@ -64,13 +64,29 @@ docker compose logs -f web
 
 > 之后重启不会重复灌入（检测到已有内容即跳过），后台编辑安全保留。
 
-## 四、更新发布
+## 四、更新发布与版本回滚
+
+镜像版本由 `deploy/VERSION` 维护，从 `v0.1.26` 起每次构建自动 `patch +1`。
+`docker-compose.yml` 中 web 镜像为 `:${IMAGE_TAG:-latest}`，由服务器 `.env` 的
+`IMAGE_TAG` 控制（默认 `latest`）。
 
 ```bash
-# 本地重新构建推送
+# 1) 本地构建并推送（自动用 VERSION 当前号，打 v.. 与 latest，然后 +1）
 ./deploy/build-and-push.sh
-# 服务器拉取并滚动
+#    指定版本：./deploy/build-and-push.sh 0.2.0
+
+# 2) 服务器更新到最新
 cd /data/yyweb && docker compose pull web && docker compose up -d web
+```
+
+**按版本部署 / 回滚**：在服务器 `/data/yyweb/.env` 设置 `IMAGE_TAG`，再 `up -d`：
+
+```bash
+# 精确部署某版本
+echo 'IMAGE_TAG=v0.1.26' >> /data/yyweb/.env   # 或编辑该行
+cd /data/yyweb && docker compose pull web && docker compose up -d web
+
+# 回滚到上一个版本，同理把 IMAGE_TAG 改回旧版本号即可
 ```
 
 ## 数据与持久化
