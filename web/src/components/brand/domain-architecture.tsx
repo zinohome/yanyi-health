@@ -47,6 +47,43 @@ const BOX_H = 46
 const GAP_Y = 14
 const TOP = 30
 
+/* ============== 移动端：纵向步骤流 ============== */
+function DomainArchitectureMobile({ kind, locale, accent }: { kind: Kind; locale: string; accent: boolean }) {
+  const stages = config(kind, locale)
+  const color = accent ? 'var(--accent)' : 'var(--primary)'
+  return (
+    <div className="flex flex-col">
+      {stages.map((s, i) => (
+        <div key={i}>
+          <div className="rounded-xl border border-border bg-card p-3">
+            <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em]" style={{ color }}>
+              {s.label}
+            </div>
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {s.items.map((it, j) => (
+                <span
+                  key={j}
+                  className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1 text-xs text-foreground/90"
+                >
+                  <span className="h-3 w-[3px] shrink-0 rounded-sm" style={{ background: color }} />
+                  {it}
+                </span>
+              ))}
+            </div>
+          </div>
+          {i < stages.length - 1 ? (
+            <div className="flex justify-center py-1" style={{ color }} aria-hidden>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" opacity="0.6">
+                <path d="M12 5v14M5 12l7 7 7-7" />
+              </svg>
+            </div>
+          ) : null}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export function DomainArchitecture({
   kind,
   locale,
@@ -67,7 +104,13 @@ export function DomainArchitecture({
   const height = TOP + maxTotal + 12
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className={cn('w-full', className)} role="img">
+    <>
+      {/* 移动端：纵向步骤流 */}
+      <div className="lg:hidden">
+        <DomainArchitectureMobile kind={kind} locale={locale} accent={accent} />
+      </div>
+      {/* 桌面端：横向 SVG */}
+      <svg viewBox={`0 0 ${width} ${height}`} className={cn('hidden w-full lg:block', className)} role="img">
       <defs>
         <marker id={`dm-${kind}`} markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
           <path d="M0,0 L6,3 L0,6 Z" fill={color} opacity="0.85" />
@@ -118,6 +161,7 @@ export function DomainArchitecture({
           </g>
         )
       })}
-    </svg>
+      </svg>
+    </>
   )
 }

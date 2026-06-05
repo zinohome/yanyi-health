@@ -104,6 +104,116 @@ function chips(items: Item[], t: (i: Item) => string, y: number, h: number, opts
   })
 }
 
+/* ============== 移动端：纵向堆叠卡片版 ============== */
+function MobileLayer({
+  label,
+  items,
+  t,
+  highlight = false,
+  title,
+}: {
+  label: string
+  items: Item[]
+  t: (i: Item) => string
+  highlight?: boolean
+  title?: string
+}) {
+  return (
+    <div
+      className={cn('rounded-2xl border p-4', !highlight && 'border-border bg-card')}
+      style={
+        highlight
+          ? {
+              borderColor: 'color-mix(in oklch, var(--primary) 45%, transparent)',
+              background: 'color-mix(in oklch, var(--primary) 8%, var(--card))',
+            }
+          : undefined
+      }
+    >
+      <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-primary">
+        {label}
+      </div>
+      {title ? <div className="font-display mt-1 text-sm font-semibold">{title}</div> : null}
+      <div className="mt-2.5 flex flex-wrap gap-1.5">
+        {items.map((it, i) => (
+          <span
+            key={i}
+            className="rounded-lg border border-border bg-background px-2.5 py-1 text-xs text-foreground/90"
+            style={
+              highlight
+                ? {
+                    borderColor: 'color-mix(in oklch, var(--primary) 35%, transparent)',
+                    background: 'color-mix(in oklch, var(--primary) 12%, var(--card))',
+                  }
+                : undefined
+            }
+          >
+            {t(it)}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function DownArrow() {
+  return (
+    <div className="flex justify-center py-1.5 text-primary/55" aria-hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 5v14M5 12l7 7 7-7" />
+      </svg>
+    </div>
+  )
+}
+
+function PlatformArchitectureMobile({ locale }: { locale: string }) {
+  const t = L(locale)
+  const en = locale === 'en'
+  const band = (zh: string, enL: string) => (en ? enL : zh)
+  return (
+    <div className="flex flex-col">
+      <MobileLayer label={band('应用层 · 生命全周期解决方案', 'APPLICATIONS · SOLUTIONS')} items={APP} t={t} />
+      <DownArrow />
+      <MobileLayer label={band('AI Agent 工作流', 'AI AGENT WORKFLOWS')} items={AGENT} t={t} />
+      <DownArrow />
+      <MobileLayer
+        label={band('EvoMetaX 核心引擎', 'EVOMETAX CORE ENGINE')}
+        title={band('EvoMetaX 长期状态智能引擎', 'EvoMetaX — Long-term State Engine')}
+        items={ENGINE}
+        t={t}
+        highlight
+      />
+      <DownArrow />
+      <MobileLayer label={band('多模态数据接入', 'MULTIMODAL DATA')} items={DATA} t={t} />
+      <div
+        className="mt-3 rounded-2xl border p-4"
+        style={{
+          borderColor: 'color-mix(in oklch, var(--accent) 40%, transparent)',
+          background: 'color-mix(in oklch, var(--accent) 8%, var(--card))',
+        }}
+      >
+        <div className="font-mono text-[10px] font-semibold uppercase tracking-[0.15em] text-accent">
+          {band('安全与治理 · 贯穿全链路', 'GOVERNANCE · END-TO-END')}
+        </div>
+        <div className="mt-2.5 flex flex-wrap gap-1.5">
+          {GOV.map((g, i) => (
+            <span
+              key={i}
+              className="rounded-lg border px-2.5 py-1 text-xs text-foreground/90"
+              style={{
+                borderColor: 'color-mix(in oklch, var(--accent) 35%, transparent)',
+                background: 'color-mix(in oklch, var(--accent) 10%, var(--card))',
+              }}
+            >
+              {t(g)}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 /** 专业分层平台架构图：应用 → Agent → 引擎 → 数据 ＋ 治理纵贯栏 */
 export function PlatformArchitecture({ locale, className }: { locale: string; className?: string }) {
   const t = L(locale)
@@ -119,7 +229,14 @@ export function PlatformArchitecture({ locale, className }: { locale: string; cl
   const HE = 150
 
   return (
-    <svg viewBox="0 0 1000 620" className={cn('w-full', className)} role="img" aria-label="EvoMetaX 平台架构">
+    <>
+      {/* 移动端：纵向堆叠卡片 */}
+      <div className="lg:hidden">
+        <PlatformArchitectureMobile locale={locale} />
+      </div>
+
+      {/* 桌面端：分层 SVG */}
+      <svg viewBox="0 0 1000 620" className={cn('hidden w-full lg:block', className)} role="img" aria-label="EvoMetaX 平台架构">
       <defs>
         <linearGradient id="pa-engine" x1={CX} y1={b3} x2={CX + CW} y2={b3 + HE} gradientUnits="userSpaceOnUse">
           <stop offset="0" stopColor="color-mix(in oklch, var(--primary) 22%, var(--card))" />
@@ -177,6 +294,7 @@ export function PlatformArchitecture({ locale, className }: { locale: string; cl
       {layerLabel(en, b4 + 8, '多模态数据接入', 'MULTIMODAL DATA')}
       <rect x={CX} y={b4 + 16} width={CW} height={H1} rx="14" fill="var(--card)" stroke="var(--border)" />
       {chips(DATA, t, b4 + 36, 56)}
-    </svg>
+      </svg>
+    </>
   )
 }

@@ -29,14 +29,7 @@ export function TechArchitecture({ block, locale }: { block: T; locale: string }
         {/* 分层平台架构图（移动端保持最小宽度，横向滑动查看） */}
         <Reveal delay={80} className="mx-auto mt-14 max-w-5xl">
           <div className="card-glow rounded-3xl border border-border bg-card/40 p-4 backdrop-blur sm:p-8">
-            <div className="-mx-2 overflow-x-auto px-2 lg:mx-0 lg:overflow-visible lg:px-0 [scrollbar-width:thin]">
-              <div className="min-w-[820px] lg:min-w-0">
-                <PlatformArchitecture locale={locale} />
-              </div>
-            </div>
-            <p className="mt-3 text-center font-mono text-[10px] tracking-wide text-muted-foreground lg:hidden">
-              {locale === 'en' ? 'Swipe to view the full diagram →' : '← 左右滑动查看完整架构图 →'}
-            </p>
+            <PlatformArchitecture locale={locale} />
           </div>
         </Reveal>
 
@@ -79,16 +72,9 @@ export function TechArchitecture({ block, locale }: { block: T; locale: string }
                     <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{d.description}</p>
                   </div>
 
-                  {/* 右：该域架构图（移动端保持最小宽度，横向滑动查看） */}
+                  {/* 右：该域架构图（移动端纵向步骤流，桌面横向 SVG） */}
                   <div className="min-w-0 flex-1 rounded-2xl border border-border/70 bg-background/40 p-4 sm:p-5">
-                    <div className="-mx-1 overflow-x-auto px-1 lg:mx-0 lg:overflow-visible lg:px-0 [scrollbar-width:thin]">
-                      <div className="min-w-[640px] lg:min-w-0">
-                        <DomainArchitecture kind={kind} locale={locale} accent={accent} />
-                      </div>
-                    </div>
-                    <p className="mt-2 text-center font-mono text-[10px] tracking-wide text-muted-foreground lg:hidden">
-                      {locale === 'en' ? 'Swipe horizontally →' : '← 左右滑动查看 →'}
-                    </p>
+                    <DomainArchitecture kind={kind} locale={locale} accent={accent} />
                   </div>
                 </div>
               </Reveal>
