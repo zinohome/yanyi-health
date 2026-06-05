@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 /** 品牌标记：蓝→暖渐变圆角方块 + 抽象「节点·心核」（科技·为爱而生） */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 40 40" className={cn('size-8', className)} role="img" aria-label="研翌数据">
+    <svg viewBox="0 0 40 40" className={cn('size-8', className)} role="img" aria-label="研翌科技">
       <defs>
         <linearGradient id="yy-mark" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
           <stop offset="0" stopColor="var(--primary)" />
@@ -33,7 +33,7 @@ export function Logo({
     <span className={cn('inline-flex items-center gap-2.5', className)}>
       <LogoMark className="size-8" />
       {wordmark ? (
-        <span className="font-display text-lg font-semibold tracking-tight">研翌数据</span>
+        <span className="font-display text-lg font-semibold tracking-tight">研翌科技</span>
       ) : null}
     </span>
   )

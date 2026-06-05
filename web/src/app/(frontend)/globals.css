@@ -6,7 +6,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * 研翌数据科技 — 人文暖科技设计系统 (Humanist Deep-Tech)
+ * 研翌科技 — 人文暖科技设计系统 (Humanist Deep-Tech)
  * 冷暖双色：科技蓝(primary) × 暖琥珀(accent) —— 呼应「科技，为爱而生」
  * Light = 暖纸白；Dark = 暖墨炭
  */
@@ -99,7 +99,7 @@
 
   --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'PingFang SC', 'Microsoft YaHei',
     'Hiragino Sans GB', sans-serif;
-  --font-display: 'Fraunces', 'Noto Serif SC', Georgia, 'Songti SC', 'STSong', serif;
+  --font-display: 'Fraunces', 'Songti SC', 'STSong', 'SimSun', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', monospace;
 }
 
@@ -121,7 +121,6 @@
         color-mix(in oklch, var(--accent) 15%, transparent),
         transparent 60%
       );
-    background-attachment: fixed;
     background-repeat: no-repeat;
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
@@ -206,14 +205,22 @@
       transition: none;
     }
   }
+  /* 移动端：内容始终可见，不依赖 JS 渐显（避免慢网空白） */
+  @media (max-width: 768px) {
+    .js [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
 }
 
 /* 精密网格背景 */
 @utility tech-grid {
   background-image:
-    linear-gradient(to right, color-mix(in oklch, var(--border) 55%, transparent) 1px, transparent 1px),
-    linear-gradient(to bottom, color-mix(in oklch, var(--border) 55%, transparent) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to right, color-mix(in oklch, var(--foreground) 13%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 13%, transparent) 1px, transparent 1px);
+  background-size: 46px 46px;
 }
 
 @utility glow {
@@ -280,18 +287,21 @@
     opacity: 0.9;
   }
 }
-/* 流动极光漂移 */
+/* 流动极光漂移（大幅位移，肉眼可见的流动） */
 @keyframes drift1 {
-  0%, 100% { transform: translate(-8%, -6%) scale(1); }
-  50% { transform: translate(10%, 8%) scale(1.18); }
+  0% { transform: translate(-22%, -16%) scale(0.95); }
+  50% { transform: translate(26%, 18%) scale(1.35); }
+  100% { transform: translate(-22%, -16%) scale(0.95); }
 }
 @keyframes drift2 {
-  0%, 100% { transform: translate(10%, -4%) scale(1.12); }
-  50% { transform: translate(-10%, 10%) scale(0.96); }
+  0% { transform: translate(24%, -12%) scale(1.3); }
+  50% { transform: translate(-26%, 20%) scale(0.92); }
+  100% { transform: translate(24%, -12%) scale(1.3); }
 }
 @keyframes drift3 {
-  0%, 100% { transform: translate(0%, 8%) scale(1.05); }
-  50% { transform: translate(-12%, -10%) scale(1.22); }
+  0% { transform: translate(4%, 22%) scale(1.05); }
+  50% { transform: translate(-24%, -20%) scale(1.42); }
+  100% { transform: translate(4%, 22%) scale(1.05); }
 }
 .aurora-blob {
   animation: var(--blob-anim) ease-in-out infinite;
@@ -399,4 +409,17 @@
   background: var(--muted);
   padding: 0.15em 0.4em;
   border-radius: 4px;
+}
+
+/* ===== 移动端性能优化 ===== */
+@media (max-width: 768px) {
+  /* 颗粒层在移动端关闭（mix-blend + fixed 开销大） */
+  .grain-overlay {
+    display: none;
+  }
+  /* 极光：降低模糊、停止漂浮动画，减少移动端 GPU 负担 */
+  .aurora-blob {
+    filter: blur(48px);
+    animation: none !important;
+  }
 }

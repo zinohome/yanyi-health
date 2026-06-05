@@ -9,7 +9,7 @@ export const buildHome = (lang: Lang, ids: Ids) => {
     slug: 'home',
     status: 'published',
     meta: {
-      title: t('研翌数据科技 · 生命全周期健康 AI Agent 平台', 'Yanyi · Life-Cycle Health AI Agent Platform'),
+      title: t('研翌科技 · 生命全周期健康 AI Agent 平台', 'Yanyi · Life-Cycle Health AI Agent Platform'),
       description: t('让 AI 长期理解人的健康状态。', 'Helping AI understand human health over a lifetime.'),
     },
     layout: [
@@ -28,7 +28,7 @@ export const buildHome = (lang: Lang, ids: Ids) => {
         blockType: 'contentMedia',
         title: t('我们解决的问题', 'The problem we solve'),
         body: t(
-          '医疗系统擅长诊断和治疗明确疾病，但人的真实健康状态大量发生在医院之外：两次产检之间、出院之后、孩子成长过程中、青少年情绪波动里、成人长期压力与睡眠问题中、运动训练与恢复过程里、老人独居与慢病日常中。\n\n这些状态往往不是一次问诊能解决的，而需要长期理解、持续提醒、风险识别、专业科普与专家协同。研翌数据用 AI Agent 和长期记忆系统，补上医疗健康服务中最重要的"院外连续状态管理"空白。',
+          '医疗系统擅长诊断和治疗明确疾病，但人的真实健康状态大量发生在医院之外：两次产检之间、出院之后、孩子成长过程中、青少年情绪波动里、成人长期压力与睡眠问题中、运动训练与恢复过程里、老人独居与慢病日常中。\n\n这些状态往往不是一次问诊能解决的，而需要长期理解、持续提醒、风险识别、专业科普与专家协同。研翌科技用 AI Agent 和长期记忆系统，补上医疗健康服务中最重要的"院外连续状态管理"空白。',
           'Healthcare excels at diagnosing and treating disease, but real health states mostly happen outside the clinic: between checkups, after discharge, through a child’s growth, in teenage mood swings, in adult stress and sleep, in training and recovery, in seniors living alone.\n\nThese states need long-term understanding, continuous reminders, risk detection, education and expert collaboration. We close the gap of continuous out-of-clinic management with AI agents and long-term memory.',
         ),
         mediaPosition: 'right',
@@ -189,7 +189,7 @@ export const buildAbout = (lang: Lang) => {
     slug: 'about',
     status: 'published',
     meta: {
-      title: t('关于研翌数据科技', 'About Yanyi Data Technology'),
+      title: t('关于研翌科技', 'About Yanyi Data Technology'),
       description: t('我们让 AI 从"回答问题"走向"长期理解状态"。', 'We move AI from answering to understanding state over time.'),
     },
     layout: [
@@ -198,7 +198,7 @@ export const buildAbout = (lang: Lang) => {
         eyebrow: t('ABOUT', 'ABOUT'),
         title: t('让 AI 从"回答问题"走向"长期理解状态"', 'From answering questions to understanding state over time'),
         subtitle: t(
-          '研翌数据是一家专注于 AI Agent、长期记忆系统、多模态状态建模、风险分层与智能决策引擎的科技公司。我们相信，真正有价值的健康 AI，应能在长期关系中理解个体状态、识别趋势、支持专业决策。',
+          '研翌科技是一家专注于 AI Agent、长期记忆系统、多模态状态建模、风险分层与智能决策引擎的科技公司。我们相信，真正有价值的健康 AI，应能在长期关系中理解个体状态、识别趋势、支持专业决策。',
           'Yanyi focuses on AI agents, long-term memory, multimodal modeling, risk tiering and decision engines. We believe valuable health AI understands individual state over a long relationship, spots trends and supports professional decisions.',
         ),
       },

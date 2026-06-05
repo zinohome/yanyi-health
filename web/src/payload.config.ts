@@ -30,7 +30,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: '· 研翌数据科技',
+      titleSuffix: '· 研翌科技',
     },
   },
   collections: [
@@ -51,7 +51,7 @@ export default buildConfig({
   // 邮件：配置 SMTP 后启用（否则仅写控制台，不影响功能）
   email: process.env.SMTP_HOST
     ? nodemailerAdapter({
-        defaultFromName: '研翌数据科技官网',
+        defaultFromName: '研翌科技官网',
         defaultFromAddress: process.env.SMTP_FROM || process.env.SMTP_USER || 'noreply@yanyi-health.com',
         transportOptions: {
           host: process.env.SMTP_HOST,

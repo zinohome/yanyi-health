@@ -10,7 +10,7 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
   return (
     <section className="relative overflow-hidden">
       {/* 氛围层：流动极光 + 精密栅格 + 顶部柔光 */}
-      <AuroraField className="opacity-90 [mask-image:radial-gradient(ellipse_at_50%_30%,black,transparent_78%)]" />
+      <AuroraField className="[mask-image:radial-gradient(ellipse_at_50%_40%,black_60%,transparent_92%)]" />
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-[0.3] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_75%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 

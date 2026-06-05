@@ -10,20 +10,20 @@ type Blob = {
 }
 
 const BLOBS: Blob[] = [
-  { color: 'var(--primary)', size: '42rem', top: '-12%', left: '-8%', anim: 'drift1 24s', opacity: 0.5 },
-  { color: 'var(--accent)', size: '34rem', top: '-6%', left: '58%', anim: 'drift2 28s', opacity: 0.42 },
-  { color: 'color-mix(in oklch, var(--primary) 70%, var(--accent))', size: '40rem', top: '34%', left: '22%', anim: 'drift3 32s', opacity: 0.4 },
-  { color: 'var(--accent)', size: '26rem', top: '50%', left: '70%', anim: 'drift1 26s', opacity: 0.34 },
+  { color: 'var(--primary)', size: '38rem', top: '-14%', left: '-6%', anim: 'drift1 15s', opacity: 0.72 },
+  { color: 'var(--accent)', size: '30rem', top: '-8%', left: '60%', anim: 'drift2 17s', opacity: 0.6 },
+  { color: 'color-mix(in oklch, var(--primary) 65%, var(--accent))', size: '34rem', top: '30%', left: '24%', anim: 'drift3 19s', opacity: 0.6 },
+  { color: 'var(--accent)', size: '24rem', top: '44%', left: '72%', anim: 'drift1 14s', opacity: 0.5 },
 ]
 
-/** 流动极光渐变背景（Stripe / Linear 风）：柔和色块缓缓漂浮 */
+/** 流动极光渐变背景（Stripe / Linear 风）：柔和色块明显地漂浮流动 */
 export function AuroraField({ className }: { className?: string }) {
   return (
     <div className={cn('pointer-events-none absolute inset-0 overflow-hidden', className)} aria-hidden>
       {BLOBS.map((b, i) => (
         <div
           key={i}
-          className="aurora-blob absolute rounded-full blur-[110px]"
+          className="aurora-blob absolute rounded-full blur-[70px]"
           style={
             {
               width: b.size,
@@ -31,9 +31,10 @@ export function AuroraField({ className }: { className?: string }) {
               top: b.top,
               left: b.left,
               opacity: b.opacity,
-              background: `radial-gradient(circle, ${b.color}, transparent 62%)`,
+              background: `radial-gradient(circle, ${b.color}, transparent 60%)`,
               '--blob-anim': b.anim,
-              animationDelay: `${i * -4}s`,
+              animationDelay: `${i * -3}s`,
+              willChange: 'transform',
             } as React.CSSProperties
           }
         />

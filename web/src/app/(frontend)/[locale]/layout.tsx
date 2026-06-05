@@ -14,14 +14,14 @@ import { SITE_URL } from '@/lib/site'
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: '研翌数据科技 · Yanyi Data Technology',
-    template: '%s · 研翌数据科技',
+    default: '研翌科技 · Yanyi Data Technology',
+    template: '%s · 研翌科技',
   },
-  description: '科技为爱而生，让健康与品质同行。研翌数据科技以自研 AI 技术底座赋能多场景智能体。',
+  description: '科技为爱而生，让健康与品质同行。研翌科技以自研 AI 技术底座赋能多场景智能体。',
   openGraph: {
     type: 'website',
-    siteName: '研翌数据科技 · Yanyi Data Technology',
-    title: '研翌数据科技 · AI + HI 健康智能体',
+    siteName: '研翌科技 · Yanyi Data Technology',
+    title: '研翌科技 · AI + HI 健康智能体',
     description: '以自研 AI 技术底座，打造懂情感、懂健康的智能伙伴。',
   },
   twitter: { card: 'summary_large_image' },
@@ -51,7 +51,7 @@ export default async function LocaleLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "document.documentElement.classList.add('js');(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Manrope:wght@400;500;600;700&family=Noto+Serif+SC:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap';document.head.appendChild(l);})();",
+              "document.documentElement.classList.add('js');(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap';document.head.appendChild(l);})();",
           }}
         />
       </head>

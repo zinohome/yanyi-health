@@ -12,9 +12,9 @@ export const buildSiteSettings = (lang: Lang) => {
     address: '',
     icp: '京ICP备2025154917号-1',
     defaultMeta: {
-      title: t('研翌数据科技 · 生命全周期健康 AI Agent 平台', 'Yanyi Data Technology · Life-Cycle Health AI Agent Platform'),
+      title: t('研翌科技 · 生命全周期健康 AI Agent 平台', 'Yanyi Data Technology · Life-Cycle Health AI Agent Platform'),
       description: t(
-        '研翌数据构建面向生命全周期健康管理的长期状态 AI Agent 平台，覆盖母婴安全、心理健康、运动营养、老年照护等场景。',
+        '研翌科技构建面向生命全周期健康管理的长期状态 AI Agent 平台，覆盖母婴安全、心理健康、运动营养、老年照护等场景。',
         'A long-term, stateful Health AI Agent platform for maternal & child health, mental wellness, sports nutrition and healthy aging.',
       ),
     },
@@ -601,7 +601,7 @@ export const buildPosts = (lang: Lang) => {
       slug: 'understand-health-over-time',
       categoryKey: 'company',
       publishedAt: '2026-05-20',
-      author: t('研翌数据', 'Yanyi'),
+      author: t('研翌科技', 'Yanyi'),
       title: t('让 AI 长期理解人的健康状态', 'Helping AI understand health over a lifetime'),
       excerpt: t('真正有价值的健康 AI，不止于回答问题，而是在长期关系中理解个体状态。', 'Valuable health AI does not just answer questions — it understands state over a long relationship.'),
       content: rt([
@@ -625,7 +625,7 @@ export const buildPosts = (lang: Lang) => {
       slug: 'responsible-health-ai',
       categoryKey: 'industry',
       publishedAt: '2026-04-28',
-      author: t('研翌数据', 'Yanyi'),
+      author: t('研翌科技', 'Yanyi'),
       title: t('医疗健康 AI 的前提：安全、克制、可控', 'The premise of health AI: safe, restrained, controllable'),
       excerpt: t('不替代医生、不自动诊断；可解释、可审核、可追溯。', 'Not replacing doctors or auto-diagnosing; explainable, auditable, traceable.'),
       content: rt([
