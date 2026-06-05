@@ -74,6 +74,14 @@ export default buildConfig({
     fallback: true,
   },
   db: postgresAdapter({
+    // 生产容器首次启动时自动建表：PAYLOAD_DB_PUSH=1 强制开启 schema push；
+    // =0 关闭（改用迁移）；未设置则用 Payload 默认（仅开发态 push）。
+    push:
+      process.env.PAYLOAD_DB_PUSH === '1'
+        ? true
+        : process.env.PAYLOAD_DB_PUSH === '0'
+          ? false
+          : undefined,
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },

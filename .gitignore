@@ -22,3 +22,6 @@ web/media/
 *.log
 .DS_Store
 web/public/scenes/china/
+
+# 生产部署密钥
+deploy/.env

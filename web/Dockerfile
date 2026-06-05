@@ -12,15 +12,17 @@ FROM base AS deps
 WORKDIR /app
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
 RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
+  if [ -f package-lock.json ]; then npm ci || npm install; \
+  elif [ -f yarn.lock ]; then yarn --frozen-lockfile || yarn; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && (pnpm i --frozen-lockfile || pnpm i); \
+  else npm install; \
   fi
 
 # ---------- 构建层 ----------
 FROM base AS builder
 WORKDIR /app
+# 开启 standalone 输出（next.config 依据该变量决定）
+ENV NEXT_STANDALONE=1
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # 构建期不连接数据库（页面均为 force-dynamic；PAYLOAD_SECRET/DATABASE_URL 缺省为空字符串）

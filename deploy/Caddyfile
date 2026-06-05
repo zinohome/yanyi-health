@@ -1,0 +1,19 @@
+# 研翌科技官网 · Caddy 反代配置
+# 放置到宿主机 /data/yyweb/Caddyfile
+# Caddy 会为下列域名自动签发并续期 HTTPS 证书（需 80/443 可达且域名已解析到本机）。
+
+# 自动证书申请邮箱（可选，建议填写）
+{
+	email admin@yanyi-health.com
+}
+
+www.yanyi-health.com, yanyi-health.com {
+	encode zstd gzip
+	# web 为 compose 服务名，同处 1panel-network 内网
+	reverse_proxy web:3000
+}
+
+# 如暂无域名，仅用 IP/HTTP 测试，可改用下面这段（注释上面的域名块）：
+# :80 {
+# 	reverse_proxy web:3000
+# }

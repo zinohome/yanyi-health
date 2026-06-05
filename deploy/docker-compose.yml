@@ -1,0 +1,77 @@
+# 研翌科技官网 · 1panel 风格生产编排
+# 约定：
+#   - 外部网络：1panel-network（1panel 默认网络）
+#   - 持久化数据：/data/yyweb/
+#   - 同目录放置 .env（参考 .env.example）与 Caddyfile（参考 Caddyfile）
+# 部署：
+#   docker compose -f docker-compose.yml up -d
+# 首次启动 web 容器会自动建表 + 灌入内容 + 创建管理员（幂等，不会覆盖后台编辑）。
+
+networks:
+  1panel-network:
+    external: true
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: yyweb_postgres_prod
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - /data/yyweb/data/postgres:/var/lib/postgresql/data
+    networks:
+      - 1panel-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  web:
+    image: harbor.naivehero.top:8443/web/yyweb:latest
+    container_name: yyweb_web_prod
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: '3000'
+      HOSTNAME: 0.0.0.0
+      # 容器内自动建表（首启必需）
+      PAYLOAD_DB_PUSH: '1'
+      # 上传目录（与下方挂载卷一致）
+      MEDIA_DIR: /app/media
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - /data/yyweb/data/media:/app/media
+    networks:
+      - 1panel-network
+    # 不直接对宿主暴露端口，由 caddy 在内网反代
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -qO- http://127.0.0.1:3000/zh >/dev/null 2>&1 || exit 1']
+      interval: 30s
+      timeout: 5s
+      start_period: 120s
+      retries: 5
+
+  caddy:
+    image: caddy:2
+    container_name: yxai_caddy_prod
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - /data/yyweb/Caddyfile:/etc/caddy/Caddyfile
+      - /data/yyweb/data/caddy/data:/data
+      - /data/yyweb/data/caddy/config:/config
+    networks:
+      - 1panel-network
+    depends_on:
+      - web
+    restart: unless-stopped
