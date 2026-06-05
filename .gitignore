@@ -25,3 +25,6 @@ web/public/scenes/china/
 
 # 生产部署密钥
 deploy/.env
+
+# 本地预览配置
+web/.claude/launch.json

@@ -14,7 +14,7 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
       <div className="tech-grid pointer-events-none absolute inset-0 opacity-[0.3] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_75%)]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center px-4 pb-24 pt-28 text-center sm:px-6 sm:pb-32 sm:pt-36 lg:pt-40">
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center px-5 pb-20 pt-24 text-center sm:px-6 sm:pb-32 sm:pt-36 lg:pt-40">
         {block.eyebrow ? (
           <Reveal
             as="div"
@@ -31,7 +31,7 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
         <Reveal
           as="h1"
           delay={80}
-          className="font-display max-w-4xl text-[2.6rem] font-semibold leading-[1.08] tracking-[-0.02em] text-balance text-gradient-warm sm:text-6xl lg:text-[4.5rem]"
+          className="font-display max-w-4xl text-[2.05rem] font-semibold leading-[1.12] tracking-[-0.02em] text-balance text-gradient-warm sm:text-6xl sm:leading-[1.08] lg:text-[4.5rem]"
         >
           {block.title}
         </Reveal>
@@ -64,12 +64,12 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
           ) : null}
         </Reveal>
 
-        <Reveal delay={320} className="mt-16 flex items-center justify-center gap-4 sm:gap-5">
-          <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/50 sm:w-16" />
+        <Reveal delay={320} className="mt-12 flex items-center justify-center gap-4 sm:mt-16 sm:gap-5">
+          <span className="hidden h-px w-10 bg-gradient-to-r from-transparent to-primary/50 sm:inline-block sm:w-16" />
           <span className="font-display text-gradient-warm text-2xl font-semibold tracking-wide sm:text-3xl lg:text-4xl">
             {locale === 'en' ? 'Technology, made for love' : '科技，为爱而生'}
           </span>
-          <span className="h-px w-10 bg-gradient-to-l from-transparent to-accent/50 sm:w-16" />
+          <span className="hidden h-px w-10 bg-gradient-to-l from-transparent to-accent/50 sm:inline-block sm:w-16" />
         </Reveal>
       </div>
     </section>

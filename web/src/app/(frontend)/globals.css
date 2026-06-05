@@ -418,9 +418,11 @@
   .grain-overlay {
     display: none;
   }
-  /* 极光：降低模糊、停止漂浮动画，减少移动端 GPU 负担 */
+  /* 极光：停动画省电，但加大模糊、降低透明度，避免静态色块发死、发花，
+     让四个色块融为一层柔和的渐变光晕（opacity 为内联样式，需 !important 覆盖） */
   .aurora-blob {
-    filter: blur(48px);
+    filter: blur(72px) !important;
     animation: none !important;
+    opacity: 0.34 !important;
   }
 }
