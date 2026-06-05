@@ -10,7 +10,7 @@ export const buildSiteSettings = (lang: Lang) => {
     wechatId: 'perffie',
     phone: '18600576849',
     address: '',
-    icp: '京ICP备2025154917号-1',
+    icp: '京ICP备2025154917号',
     defaultMeta: {
       title: t('研翌科技 · 生命全周期健康 AI Agent 平台', 'Yanyi Technology · Life-Cycle Health AI Agent Platform'),
       description: t(
