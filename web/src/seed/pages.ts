@@ -46,6 +46,7 @@ export const buildHome = (lang: Lang, ids: Ids) => {
           { icon: 'lock', title: t('权限隔离与数据安全', 'Security & isolation'), description: t('权限隔离、记忆隔离、数据脱敏与全链路审计。', 'Permission/memory isolation, data masking and full audit.') },
           { icon: 'network', title: t('医疗/心理/营养知识库', 'Domain knowledge'), description: t('医院审核知识库与受控内容治理。', 'Hospital-reviewed knowledge with controlled governance.') },
           { icon: 'cpu', title: t('私有化部署与系统对接', 'Private deployment'), description: t('私有化部署，与医院系统对接。', 'Private deployment and hospital-system integration.') },
+          { icon: 'mic', title: t('实时语音交互', 'Real-time voice'), description: t('流式语音识别与合成，支持自然语音陪伴、随访问诊与多端接入。', 'Streaming ASR & TTS for natural voice companionship, follow-up and multi-channel access.') },
         ],
       },
       {
@@ -263,6 +264,7 @@ export const buildClinical = (lang: Lang) => {
           { icon: 'graduation-cap', title: t('儿童青少年心理健康', 'Youth mental health'), description: t('医—校—家—社协同、情绪压力与睡眠管理、家长与教师辅助。', 'Hospital-school-family-community, emotion/sleep management, parent & teacher assist.') },
           { icon: 'gauge', title: t('智慧营养与运动机能监测', 'Smart nutrition & performance'), description: t('运动员长期机能档案、营养干预分析、运动健康大模型与 Agent。', 'Performance profiles, nutrition analysis, sports-health models and agents.') },
           { icon: 'bot', title: t('成人身心健康与睡眠', 'Adult well-being & sleep'), description: t('高压人群与睡眠门诊随访、心身医学长期管理、企业员工心理健康。', 'High-pressure & sleep-clinic follow-up, psychosomatic management, employee mental health.') },
+          { icon: 'users', title: t('老年照护与慢病管理', 'Elderly & chronic care'), description: t('独居老人日常状态记录、用药复诊提醒、情绪陪伴与家庭—社区协同。', 'Daily check-ins, medication & follow-up reminders, companionship and family-community coordination.') },
         ],
       },
       {

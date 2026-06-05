@@ -7,7 +7,12 @@ export function StatsMetrics({ block }: { block: T }) {
   return (
     <Section className="py-16">
       {block.title ? (
-        <Reveal className="eyebrow mb-10 block text-center text-muted-foreground">{block.title}</Reveal>
+        <Reveal
+          as="h2"
+          className="font-display mb-10 text-center text-3xl font-bold tracking-tight text-balance sm:text-4xl"
+        >
+          {block.title}
+        </Reveal>
       ) : null}
       <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
         {stats.map((s, i) => (
