@@ -39,7 +39,7 @@ export function ProductCard({ product, locale }: { product: Product; locale: str
       <div className="relative aspect-[16/10] overflow-hidden">
         {cover?.url ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <img loading="lazy" decoding="async"
             src={cover.url}
             alt={cover.alt ?? product.name}
             className="size-full object-cover transition-transform duration-700 group-hover:scale-105"

@@ -68,7 +68,7 @@ export default async function BlogDetail({
         <Section className="py-0">
           <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-border">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={cover.url} alt={cover.alt ?? post.title} className="w-full object-cover" />
+            <img loading="lazy" decoding="async" src={cover.url} alt={cover.alt ?? post.title} className="w-full object-cover" />
           </div>
         </Section>
       ) : null}

@@ -26,7 +26,7 @@ export async function LogoWall({ block, locale }: { block: T; locale: string }) 
             <Reveal key={p.id} delay={i * 50} className="opacity-70 transition-opacity hover:opacity-100">
               {logo?.url ? (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img src={logo.url} alt={p.name ?? ''} className="h-8 w-auto object-contain grayscale" />
+                <img loading="lazy" decoding="async" src={logo.url} alt={p.name ?? ''} className="h-8 w-auto object-contain grayscale" />
               ) : (
                 <span className="font-display text-lg font-semibold text-muted-foreground">{p.name}</span>
               )}

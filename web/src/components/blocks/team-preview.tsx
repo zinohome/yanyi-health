@@ -27,7 +27,7 @@ export async function TeamPreview({ block, locale }: { block: T; locale: string 
               <div className="mx-auto mb-4 grid size-20 place-items-center overflow-hidden rounded-full border border-border bg-gradient-to-br from-primary/15 to-accent/15">
                 {photo?.url ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={photo.url} alt={m.name ?? ''} className="size-full object-cover" />
+                  <img loading="lazy" decoding="async" src={photo.url} alt={m.name ?? ''} className="size-full object-cover" />
                 ) : (
                   <svg viewBox="0 0 64 64" className="size-12 text-primary/55" aria-hidden>
                     <circle cx="32" cy="24" r="12" fill="currentColor" />

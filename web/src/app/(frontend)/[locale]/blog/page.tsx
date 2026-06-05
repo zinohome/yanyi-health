@@ -41,7 +41,7 @@ export default async function BlogPage({
                     <div className="aspect-[16/9] overflow-hidden bg-muted">
                       {cover?.url ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <img loading="lazy" decoding="async"
                           src={cover.url}
                           alt={cover.alt ?? p.title}
                           className="size-full object-cover transition-transform duration-500 group-hover:scale-105"

@@ -96,7 +96,7 @@ export default async function SolutionDetail({
           <Reveal className="card-glow relative aspect-[16/10] overflow-hidden rounded-3xl border border-border">
             {cover?.url ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={cover.url} alt={cover.alt ?? product.name} className="size-full object-cover" />
+              <img loading="lazy" decoding="async" src={cover.url} alt={cover.alt ?? product.name} className="size-full object-cover" />
             ) : (
               <AbstractCover seed={product.slug ?? 'p'} tone={coverTone} />
             )}

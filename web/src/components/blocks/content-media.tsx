@@ -29,7 +29,7 @@ export function ContentMedia({ block }: { block: T }) {
           <div className="card-glow relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-card">
             {media?.url ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={media.url} alt={media.alt ?? ''} className="size-full object-cover" />
+              <img loading="lazy" decoding="async" src={media.url} alt={media.alt ?? ''} className="size-full object-cover" />
             ) : (
               <AbstractCover seed={block.title ?? 'content'} tone="mix" />
             )}
