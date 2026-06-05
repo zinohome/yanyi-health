@@ -11,13 +11,17 @@ ENV NEXT_TELEMETRY_DISABLED=1
 FROM base AS deps
 WORKDIR /app
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
-RUN \
-  if [ -f package-lock.json ]; then \
-    npm ci --no-audit --no-fund || (rm -rf node_modules && npm ci --no-audit --no-fund); \
-  elif [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else npm install --no-audit --no-fund; \
-  fi
+RUN if [ -f package-lock.json ]; then \
+      for i in 1 2 3; do \
+        echo "npm ci attempt $i ..."; \
+        npm ci --no-audit --no-fund && exit 0; \
+        rm -rf node_modules; sleep 3; \
+      done; \
+      echo "npm ci failed after 3 attempts" >&2; exit 1; \
+    elif [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+    elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+    else npm install --no-audit --no-fund; \
+    fi
 
 # ---------- 构建层 ----------
 FROM base AS builder

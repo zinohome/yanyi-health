@@ -13,15 +13,20 @@ WORKDIR /app
 # ---------- 依赖（含 devDependencies：tsx 用于自动初始化）----------
 FROM base AS deps
 COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ./
-# 单次干净安装（锁文件已与 node:22/npm10 对齐）。失败时清空后重试同一条 npm ci，
-# 避免「ci 失败 → install 叠加在残留 node_modules 上」触发 esbuild 的 ETXTBSY 竞态。
-RUN \
-  if [ -f package-lock.json ]; then \
-    npm ci --no-audit --no-fund || (rm -rf node_modules && npm ci --no-audit --no-fund); \
-  elif [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
-  else npm install --no-audit --no-fund; \
-  fi
+# 干净安装（锁文件已与 node:22/npm10 对齐，单次 npm ci 即可）。
+# 针对部分宿主文件系统上 esbuild postinstall 的 ETXTBSY 竞态：最多重试 3 次，
+# 每次失败先清空 node_modules 再 sleep，让文件句柄/页缓存释放后重来。
+RUN if [ -f package-lock.json ]; then \
+      for i in 1 2 3; do \
+        echo "npm ci attempt $i ..."; \
+        npm ci --no-audit --no-fund && exit 0; \
+        rm -rf node_modules; sleep 3; \
+      done; \
+      echo "npm ci failed after 3 attempts" >&2; exit 1; \
+    elif [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+    elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+    else npm install --no-audit --no-fund; \
+    fi
 
 # ---------- 构建 ----------
 FROM base AS builder
