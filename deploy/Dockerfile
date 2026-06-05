@@ -13,12 +13,14 @@ WORKDIR /app
 # ---------- 依赖（含 devDependencies：tsx 用于自动初始化）----------
 FROM base AS deps
 COPY package.json package-lock.json* yarn.lock* pnpm-lock.yaml* ./
-# 优先用锁文件做可复现安装；锁文件与运行环境 npm 版本漂移时回退到 npm install
+# 单次干净安装（锁文件已与 node:22/npm10 对齐）。失败时清空后重试同一条 npm ci，
+# 避免「ci 失败 → install 叠加在残留 node_modules 上」触发 esbuild 的 ETXTBSY 竞态。
 RUN \
-  if [ -f package-lock.json ]; then npm ci || npm install; \
-  elif [ -f yarn.lock ]; then yarn --frozen-lockfile || yarn; \
-  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && (pnpm i --frozen-lockfile || pnpm i); \
-  else npm install; \
+  if [ -f package-lock.json ]; then \
+    npm ci --no-audit --no-fund || (rm -rf node_modules && npm ci --no-audit --no-fund); \
+  elif [ -f yarn.lock ]; then yarn --frozen-lockfile; \
+  elif [ -f pnpm-lock.yaml ]; then corepack enable pnpm && pnpm i --frozen-lockfile; \
+  else npm install --no-audit --no-fund; \
   fi
 
 # ---------- 构建 ----------
