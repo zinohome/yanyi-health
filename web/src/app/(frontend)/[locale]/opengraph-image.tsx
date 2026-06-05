@@ -43,7 +43,7 @@ export default function OgImage() {
           AI + HI — companions that understand emotion & health
         </div>
         <div style={{ fontSize: 30, marginTop: 36, color: 'rgba(255,255,255,0.7)', letterSpacing: 6 }}>
-          Technology, born for love
+          Technology, made for love
         </div>
       </div>
     ),

@@ -67,7 +67,7 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
         <Reveal delay={320} className="mt-16 flex items-center justify-center gap-4 sm:gap-5">
           <span className="h-px w-10 bg-gradient-to-r from-transparent to-primary/50 sm:w-16" />
           <span className="font-display text-gradient-warm text-2xl font-semibold tracking-wide sm:text-3xl lg:text-4xl">
-            {locale === 'en' ? 'Technology, born for love' : '科技，为爱而生'}
+            {locale === 'en' ? 'Technology, made for love' : '科技，为爱而生'}
           </span>
           <span className="h-px w-10 bg-gradient-to-l from-transparent to-accent/50 sm:w-16" />
         </Reveal>
