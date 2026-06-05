@@ -44,29 +44,34 @@ export async function SiteFooter() {
         </div>
         <div className="mt-10 flex flex-col gap-2 border-t border-border/60 pt-6 text-xs text-muted-foreground">
           <p>© 2026 {t('company')}. {t('rights')}.</p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
-            <a
-              href="https://beian.miit.gov.cn/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-70 transition-opacity hover:opacity-100"
-            >
-              {t('icp')}
-            </a>
+          {/* 公安备案（带官方警徽）在左，ICP 备案在右，中间四个空格分隔 */}
+          <p className="leading-relaxed">
             <a
               href="https://beian.mps.gov.cn/#/query/webSearch?code=11010802047148"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 opacity-70 transition-opacity hover:opacity-100"
+              className="inline-flex items-center gap-1.5 align-middle opacity-70 transition-opacity hover:opacity-100"
             >
-              {/* 公安备案警徽（内置 SVG，后续可替换为官方 PNG） */}
-              <svg viewBox="0 0 24 24" className="size-3.5 shrink-0 text-primary" fill="currentColor" aria-hidden>
-                <path d="M12 2 4 5v6c0 4.6 3.2 8.5 8 9.3 4.8-.8 8-4.7 8-9.3V5l-8-3z" opacity="0.85" />
-                <path d="M12 6.5l1.3 2.7 3 .4-2.2 2.1.5 3-2.6-1.4-2.6 1.4.5-3-2.2-2.1 3-.4L12 6.5z" fill="var(--background)" />
-              </svg>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/beian-gongan.png"
+                alt="公安备案"
+                loading="lazy"
+                decoding="async"
+                className="h-[18px] w-auto shrink-0"
+              />
               {t('police')}
             </a>
-          </div>
+            {'    '}
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="align-middle opacity-70 transition-opacity hover:opacity-100"
+            >
+              {t('icp')}
+            </a>
+          </p>
         </div>
       </div>
     </footer>
