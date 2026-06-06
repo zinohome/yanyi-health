@@ -1,26 +1,25 @@
 import { cn } from '@/lib/utils'
 
-/** 品牌标记（A3）：字母 Y（尖端收成芒）+ 顶部小星芒 —— 研翌 × AI 星芒，蓝→紫→珊瑚 */
+/** 品牌标记（E2）：圆角渐变球 + 白色字母 Y + 顶部火花点 —— 蓝→紫→珊瑚 */
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 80 80" className={cn('size-8', className)} role="img" aria-label="研翌科技">
       <defs>
-        <linearGradient id="yy-mark" x1="8" y1="8" x2="72" y2="72" gradientUnits="userSpaceOnUse">
+        <linearGradient id="yy-mark" x1="6" y1="6" x2="74" y2="74" gradientUnits="userSpaceOnUse">
           <stop offset="0" stopColor="#2f6bff" />
           <stop offset="0.5" stopColor="#7c5cff" />
           <stop offset="1" stopColor="#ff7a5b" />
         </linearGradient>
       </defs>
-      {/* 背后大星芒（淡）：增强「AI 星芒」气质 */}
-      <path d="M40 8 Q43 20 55 23 Q43 26 40 38 Q37 26 25 23 Q37 20 40 8 Z" fill="url(#yy-mark)" opacity="0.22" />
+      <rect width="80" height="80" rx="22" fill="url(#yy-mark)" />
       {/* 字母 Y */}
-      <g stroke="url(#yy-mark)" strokeWidth="7" strokeLinecap="round" fill="none">
-        <path d="M24 26 L40 44" />
-        <path d="M56 26 L40 44" />
-        <path d="M40 44 L40 66" />
+      <g stroke="#fff" strokeWidth="6.5" strokeLinecap="round" fill="none">
+        <path d="M28 30 L40 45" />
+        <path d="M52 30 L40 45" />
+        <path d="M40 45 L40 60" />
       </g>
-      {/* 右上小星芒 */}
-      <path d="M58 10 Q60 15 65 17 Q60 19 58 24 Q56 19 51 17 Q56 15 58 10 Z" fill="url(#yy-mark)" />
+      {/* 顶部火花点 */}
+      <circle cx="40" cy="22" r="3.2" fill="#fff" />
     </svg>
   )
 }
