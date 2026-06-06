@@ -24,18 +24,30 @@ export default function OgImage() {
         <div style={{ display: 'flex', alignItems: 'center', gap: 22, marginBottom: 40 }}>
           <div
             style={{
-              width: 64,
-              height: 64,
-              borderRadius: 18,
-              background: 'linear-gradient(135deg, #2D7FF9, #F2884B)',
+              width: 72,
+              height: 72,
+              borderRadius: 20,
+              background: 'linear-gradient(135deg, #2f6bff, #7c5cff, #ff7a5b)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: 30,
-              fontWeight: 700,
+              position: 'relative',
+              fontSize: 40,
+              fontWeight: 800,
+              color: '#fff',
             }}
           >
-            Y
+            <div
+              style={{
+                position: 'absolute',
+                top: 13,
+                width: 8,
+                height: 8,
+                borderRadius: 99,
+                background: '#fff',
+              }}
+            />
+            <div style={{ marginTop: 8 }}>Y</div>
           </div>
           <div style={{ fontSize: 30, fontWeight: 600, letterSpacing: 1 }}>Yanyi Technology</div>
         </div>

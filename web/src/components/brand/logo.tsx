@@ -1,23 +1,26 @@
 import { cn } from '@/lib/utils'
 
-/** 品牌标记：蓝→暖渐变圆角方块 + 抽象「节点·心核」（科技·为爱而生） */
+/** 品牌标记（A3）：字母 Y（尖端收成芒）+ 顶部小星芒 —— 研翌 × AI 星芒，蓝→紫→珊瑚 */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 40 40" className={cn('size-8', className)} role="img" aria-label="研翌科技">
+    <svg viewBox="0 0 80 80" className={cn('size-8', className)} role="img" aria-label="研翌科技">
       <defs>
-        <linearGradient id="yy-mark" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-          <stop offset="0" stopColor="var(--primary)" />
-          <stop offset="1" stopColor="var(--accent)" />
+        <linearGradient id="yy-mark" x1="8" y1="8" x2="72" y2="72" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="#2f6bff" />
+          <stop offset="0.5" stopColor="#7c5cff" />
+          <stop offset="1" stopColor="#ff7a5b" />
         </linearGradient>
       </defs>
-      <rect x="0" y="0" width="40" height="40" rx="11" fill="url(#yy-mark)" />
-      {/* 轨道环（科技） */}
-      <circle cx="20" cy="20" r="11" fill="none" stroke="white" strokeOpacity="0.85" strokeWidth="1.6" />
-      {/* 轨道节点 */}
-      <circle cx="20" cy="9" r="2.1" fill="white" />
-      <circle cx="31" cy="20" r="1.7" fill="white" fillOpacity="0.9" />
-      {/* 心核（爱） */}
-      <circle cx="20" cy="20" r="3.6" fill="white" />
+      {/* 背后大星芒（淡）：增强「AI 星芒」气质 */}
+      <path d="M40 8 Q43 20 55 23 Q43 26 40 38 Q37 26 25 23 Q37 20 40 8 Z" fill="url(#yy-mark)" opacity="0.22" />
+      {/* 字母 Y */}
+      <g stroke="url(#yy-mark)" strokeWidth="7" strokeLinecap="round" fill="none">
+        <path d="M24 26 L40 44" />
+        <path d="M56 26 L40 44" />
+        <path d="M40 44 L40 66" />
+      </g>
+      {/* 右上小星芒 */}
+      <path d="M58 10 Q60 15 65 17 Q60 19 58 24 Q56 19 51 17 Q56 15 58 10 Z" fill="url(#yy-mark)" />
     </svg>
   )
 }
