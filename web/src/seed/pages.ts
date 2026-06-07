@@ -176,7 +176,7 @@ export const buildTechnology = (lang: Lang) => {
       {
         blockType: 'ctaBanner',
         title: t('想深入了解 EvoMetaX？', 'Want a deeper look at EvoMetaX?'),
-        subtitle: t('我们很乐意为你做一次技术演示与合作探讨。', 'We'd be glad to give a technical walkthrough.'),
+        subtitle: t('我们很乐意为你做一次技术演示与合作探讨。', "We'd be glad to give a technical walkthrough."),
         primaryCta: { label: t('预约技术交流', 'Book a Technical Talk'), href: '/contact' },
       },
     ],
@@ -366,7 +366,7 @@ export const buildResources = (lang: Lang) => {
       {
         blockType: 'ctaBanner',
         title: t('需要更多资料？', 'Need more materials?'),
-        subtitle: t('告诉我们你的合作方向，我们会提供对应资料。', 'Tell us your interest and we'll share the right materials.'),
+        subtitle: t('告诉我们你的合作方向，我们会提供对应资料。', "Tell us your interest and we'll share the right materials."),
         primaryCta: { label: t('联系我们', 'Contact Us'), href: '/contact' },
       },
     ],
