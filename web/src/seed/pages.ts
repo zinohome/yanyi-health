@@ -28,8 +28,8 @@ export const buildHome = (lang: Lang, ids: Ids) => {
         blockType: 'contentMedia',
         title: t('我们解决的问题', 'The problem we solve'),
         body: t(
-          ‘医疗机构专注于疾病诊断与临床治疗，大众大量健康状态管理需求，仍普遍存在于院外场景：产检间隙、术后康复、儿童成长、青少年情绪疏导、成人压力与睡眠调理、运动康复、老年独居及慢病日常照护等。\n\n此类健康诉求无法依靠单次问诊解决，需要长期追踪、持续干预、风险分层识别、专业健康科普与专家协同支撑。研翌科技以AI智能体、长效记忆系统为核心，填补院外连续健康状态管理的服务空白。’,
-          ‘Healthcare institutions focus on diagnosis and clinical treatment, while broad health management needs remain in out-of-clinic settings: between prenatal checkups, post-surgery recovery, child development, adolescent emotional support, adult stress and sleep, rehabilitation, and daily care for seniors and chronic patients.\n\nThese needs cannot be resolved through single visits — they require long-term tracking, continuous intervention, risk stratification, health education and expert collaboration. Yanyi Technology uses AI agents and persistent memory systems to fill the gap in continuous out-of-clinic health management.’,
+          '医疗机构专注于疾病诊断与临床治疗，大众大量健康状态管理需求，仍普遍存在于院外场景：产检间隙、术后康复、儿童成长、青少年情绪疏导、成人压力与睡眠调理、运动康复、老年独居及慢病日常照护等。\n\n此类健康诉求无法依靠单次问诊解决，需要长期追踪、持续干预、风险分层识别、专业健康科普与专家协同支撑。研翌科技以AI智能体、长效记忆系统为核心，填补院外连续健康状态管理的服务空白。',
+          'Healthcare institutions focus on diagnosis and clinical treatment, while broad health management needs remain in out-of-clinic settings: between prenatal checkups, post-surgery recovery, child development, adolescent emotional support, adult stress and sleep, rehabilitation, and daily care for seniors and chronic patients.\n\nThese needs cannot be resolved through single visits — they require long-term tracking, continuous intervention, risk stratification, health education and expert collaboration. Yanyi Technology uses AI agents and persistent memory systems to fill the gap in continuous out-of-clinic health management.',
         ),
         mediaPosition: 'right',
       },
@@ -176,7 +176,7 @@ export const buildTechnology = (lang: Lang) => {
       {
         blockType: 'ctaBanner',
         title: t('想深入了解 EvoMetaX？', 'Want a deeper look at EvoMetaX?'),
-        subtitle: t('我们很乐意为你做一次技术演示与合作探讨。', 'We’d be glad to give a technical walkthrough.'),
+        subtitle: t('我们很乐意为你做一次技术演示与合作探讨。', 'We'd be glad to give a technical walkthrough.'),
         primaryCta: { label: t('预约技术交流', 'Book a Technical Talk'), href: '/contact' },
       },
     ],
@@ -366,7 +366,7 @@ export const buildResources = (lang: Lang) => {
       {
         blockType: 'ctaBanner',
         title: t('需要更多资料？', 'Need more materials?'),
-        subtitle: t('告诉我们你的合作方向，我们会提供对应资料。', 'Tell us your interest and we’ll share the right materials.'),
+        subtitle: t('告诉我们你的合作方向，我们会提供对应资料。', 'Tell us your interest and we'll share the right materials.'),
         primaryCta: { label: t('联系我们', 'Contact Us'), href: '/contact' },
       },
     ],
