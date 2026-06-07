@@ -59,6 +59,8 @@ async function main() {
   // 幂等内容同步（每次启动都跑）：让旧库也能自动补齐代码新增的页面内容
   // —— 新库由 seed 直接带出，脚本检测到已存在即跳过；旧库增量补齐。
   run('scripts/add-capabilities.ts')
+  // 幂等文案同步（每次启动都跑）：首页 hero / 我们解决的问题 与代码保持一致
+  run('scripts/update-homepage-text.ts')
 
   // 管理员幂等确保（脚本内部已判断是否已存在）
   run('scripts/create-admin.ts')

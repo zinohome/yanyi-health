@@ -5,7 +5,7 @@ export const buildSiteSettings = (lang: Lang) => {
   const t = L(lang)
   return {
     companyName: t('北京研翌数据科技有限公司', 'Yanyi Data Technology Co., Ltd.'),
-    slogan: t('让 AI 长期理解人的健康状态', 'Helping AI understand human health over a lifetime'),
+    slogan: t('专注医疗健康AI智能体，以专业医学护航全周期身心健康', 'Focused healthcare AI agents, delivering professional medical guidance for whole-life wellbeing'),
     email: 'contact@yanyi-ai.com',
     wechatId: 'perffie',
     phone: '18600576849',

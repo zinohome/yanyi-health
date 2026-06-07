@@ -10,16 +10,16 @@ export const buildHome = (lang: Lang, ids: Ids) => {
     status: 'published',
     meta: {
       title: t('研翌科技 · 生命全周期健康 AI Agent 平台', 'Yanyi · Life-Cycle Health AI Agent Platform'),
-      description: t('让 AI 长期理解人的健康状态。', 'Helping AI understand human health over a lifetime.'),
+      description: t('专注医疗健康AI智能体，以专业医学护航全周期身心健康。', 'Focused healthcare AI agents, delivering professional medical guidance for whole-life wellbeing.'),
     },
     layout: [
       {
         blockType: 'hero',
         eyebrow: t('生命全周期健康 AI Agent 平台', 'Life-Cycle Health AI Agent Platform'),
-        title: t('让 AI 长期理解人的健康状态', 'Helping AI understand human health over a lifetime'),
+        title: t('专注医疗健康AI智能体，以专业医学护航全周期身心健康', 'Focused healthcare AI agents, delivering professional medical guidance for whole-life wellbeing'),
         subtitle: t(
-          '我们基于 AI Agent、长期记忆系统、多模态状态建模、风险分层与专家协同，帮助医疗机构与科研平台把专业服务从院内延伸到院外，从单次问诊延伸到长期状态管理。',
-          'With AI agents, long-term memory, multimodal state modeling, risk tiering and expert collaboration, we extend professional care beyond the clinic — from a single visit to long-term state management.',
+          '依托AI智能体、长效记忆系统、多模态状态建模、风险分层及专家协同体系，助力医疗机构与科研平台，推动专业医疗服务能力走出院内、覆盖院外，实现从单次问诊到长周期健康管理的升级。',
+          'Built on AI agents, persistent memory, multimodal modeling, risk tiering and expert collaboration, we help healthcare institutions and research platforms extend professional medical capabilities beyond the clinic — from a single visit to long-term health management.',
         ),
         primaryCta: { label: t('查看解决方案', 'View Solutions'), href: '/solutions' },
         secondaryCta: { label: t('了解核心技术', 'Explore Technology'), href: '/technology' },
@@ -28,8 +28,8 @@ export const buildHome = (lang: Lang, ids: Ids) => {
         blockType: 'contentMedia',
         title: t('我们解决的问题', 'The problem we solve'),
         body: t(
-          '医疗系统擅长诊断和治疗明确疾病，但人的真实健康状态大量发生在医院之外：两次产检之间、出院之后、孩子成长过程中、青少年情绪波动里、成人长期压力与睡眠问题中、运动训练与恢复过程里、老人独居与慢病日常中。\n\n这些状态往往不是一次问诊能解决的，而需要长期理解、持续提醒、风险识别、专业科普与专家协同。研翌科技用 AI Agent 和长期记忆系统，补上医疗健康服务中最重要的"院外连续状态管理"空白。',
-          'Healthcare excels at diagnosing and treating disease, but real health states mostly happen outside the clinic: between checkups, after discharge, through a child’s growth, in teenage mood swings, in adult stress and sleep, in training and recovery, in seniors living alone.\n\nThese states need long-term understanding, continuous reminders, risk detection, education and expert collaboration. We close the gap of continuous out-of-clinic management with AI agents and long-term memory.',
+          ‘医疗机构专注于疾病诊断与临床治疗，大众大量健康状态管理需求，仍普遍存在于院外场景：产检间隙、术后康复、儿童成长、青少年情绪疏导、成人压力与睡眠调理、运动康复、老年独居及慢病日常照护等。\n\n此类健康诉求无法依靠单次问诊解决，需要长期追踪、持续干预、风险分层识别、专业健康科普与专家协同支撑。研翌科技以AI智能体、长效记忆系统为核心，填补院外连续健康状态管理的服务空白。’,
+          ‘Healthcare institutions focus on diagnosis and clinical treatment, while broad health management needs remain in out-of-clinic settings: between prenatal checkups, post-surgery recovery, child development, adolescent emotional support, adult stress and sleep, rehabilitation, and daily care for seniors and chronic patients.\n\nThese needs cannot be resolved through single visits — they require long-term tracking, continuous intervention, risk stratification, health education and expert collaboration. Yanyi Technology uses AI agents and persistent memory systems to fill the gap in continuous out-of-clinic health management.’,
         ),
         mediaPosition: 'right',
       },
