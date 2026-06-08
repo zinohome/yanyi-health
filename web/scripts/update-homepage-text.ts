@@ -12,7 +12,7 @@ import config from '../src/payload.config'
  *  - 写入后「回读」并断言，日志直接打印实际落库值，杜绝"假成功"
  */
 
-const ZH_HERO_TITLE = '专注医疗健康AI智能体，以专业医学护航全周期身心健康'
+const ZH_HERO_TITLE = '专注医疗健康AI智能体\n以专业医学护航全周期身心健康'
 const EN_HERO_TITLE = 'Focused healthcare AI agents, delivering professional medical guidance for whole-life wellbeing'
 
 const ZH_HERO_SUBTITLE =

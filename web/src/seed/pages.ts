@@ -16,7 +16,7 @@ export const buildHome = (lang: Lang, ids: Ids) => {
       {
         blockType: 'hero',
         eyebrow: t('生命全周期健康 AI Agent 平台', 'Life-Cycle Health AI Agent Platform'),
-        title: t('专注医疗健康AI智能体，以专业医学护航全周期身心健康', 'Focused healthcare AI agents, delivering professional medical guidance for whole-life wellbeing'),
+        title: t('专注医疗健康AI智能体\n以专业医学护航全周期身心健康', 'Focused healthcare AI agents, delivering professional medical guidance for whole-life wellbeing'),
         subtitle: t(
           '依托AI智能体、长效记忆系统、多模态状态建模、风险分层及专家协同体系，助力医疗机构与科研平台，推动专业医疗服务能力走出院内、覆盖院外，实现从单次问诊到长周期健康管理的升级。',
           'Built on AI agents, persistent memory, multimodal modeling, risk tiering and expert collaboration, we help healthcare institutions and research platforms extend professional medical capabilities beyond the clinic — from a single visit to long-term health management.',

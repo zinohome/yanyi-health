@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { Fragment } from 'react'
 import { ArrowRight } from 'lucide-react'
 import type { HeroBlock as HeroBlockType } from '@/payload-types'
 import { Button } from '@/components/ui/button'
@@ -31,9 +32,14 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
         <Reveal
           as="h1"
           delay={80}
-          className="font-display max-w-4xl text-[1.7rem] font-semibold leading-[1.2] tracking-[-0.01em] text-balance text-gradient-warm sm:text-4xl sm:leading-[1.18] lg:text-[3.25rem] lg:leading-[1.15]"
+          className="font-display max-w-4xl text-[1.7rem] font-semibold leading-[1.25] tracking-[-0.01em] text-gradient-warm sm:text-4xl sm:leading-[1.2] lg:text-[3.25rem] lg:leading-[1.18]"
         >
-          {block.title}
+          {block.title.split('\n').map((line, i, arr) => (
+            <Fragment key={i}>
+              {line}
+              {i < arr.length - 1 && <br />}
+            </Fragment>
+          ))}
         </Reveal>
 
         {block.subtitle ? (
