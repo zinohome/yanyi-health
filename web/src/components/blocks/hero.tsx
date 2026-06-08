@@ -31,7 +31,7 @@ export function Hero({ block, locale }: { block: HeroBlockType; locale: string }
         <Reveal
           as="h1"
           delay={80}
-          className="font-display max-w-4xl text-[2.05rem] font-semibold leading-[1.12] tracking-[-0.02em] text-balance text-gradient-warm sm:text-6xl sm:leading-[1.08] lg:text-[4.5rem]"
+          className="font-display max-w-4xl text-[1.7rem] font-semibold leading-[1.2] tracking-[-0.01em] text-balance text-gradient-warm sm:text-4xl sm:leading-[1.18] lg:text-[3.25rem] lg:leading-[1.15]"
         >
           {block.title}
         </Reveal>
