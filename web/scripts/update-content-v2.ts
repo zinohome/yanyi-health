@@ -128,20 +128,38 @@ async function addSixthModule(payload: Awaited<ReturnType<typeof getPayload>>) {
   const gridBlock = zhLayout.find((b) => b.blockType === 'capabilityGrid' && (b.title ?? '').includes('EvoMetaX'))
   if (!gridBlock) { console.warn(`${tag} ⚠ EvoMetaX capabilityGrid 未找到`); return }
 
-  // zh：整体覆写为 6 项
+  // 1) zh：整体覆写为 6 项（capabilities 数组非 localized，此处会删除旧行、重建新行）
   const newZhLayout = zhLayout.map((b) =>
     b.id !== gridBlock.id ? b : { ...b, title: 'EvoMetaX 六大技术模块', capabilities: EVOMETAX_ZH_CAPS },
   )
   await payload.update({ collection: 'pages', id: zhPage.id, locale: 'zh', data: { layout: newZhLayout } as never })
 
-  // en：独立读取后整体覆写为 6 项（不依赖 zh 更新后的回读，避免 fallback 污染）
+  // 2) 回读 zh，拿到刚生成的 capabilities 行 id —— en 更新必须带上这些 id，
+  //    否则 Payload 找不到匹配行会「删除重建」，连带级联删除 zh 的 title/description（中文表格变空）。
+  const zhAfter = await payload.findByID({ collection: 'pages', id: zhPage.id, locale: 'zh', depth: 0 })
+  const zhGrid = ((zhAfter.layout ?? []) as Block[]).find((b) => b.id === gridBlock.id)
+  const capIds = (zhGrid?.capabilities ?? []).map((c) => c.id)
+  if (capIds.length !== EVOMETAX_EN_CAPS.length) {
+    throw new Error(`${tag} ❌ EvoMetaX 行 id 数量(${capIds.length}) 与 en 模块数(${EVOMETAX_EN_CAPS.length}) 不一致`)
+  }
+
+  // 3) en：带上同一批行 id「就地更新」，只补 en 的 title/description，保留 zh 文本
+  const enCapsWithIds = EVOMETAX_EN_CAPS.map((c, i) => ({ id: capIds[i], ...c }))
   const enPage = await payload.findByID({ collection: 'pages', id: zhPage.id, locale: 'en', depth: 0 })
   const newEnLayout = ((enPage.layout ?? []) as Block[]).map((b) =>
-    b.id !== gridBlock.id ? b : { ...b, title: 'Six EvoMetaX modules', capabilities: EVOMETAX_EN_CAPS },
+    b.id !== gridBlock.id ? b : { ...b, title: 'Six EvoMetaX modules', capabilities: enCapsWithIds },
   )
   await payload.update({ collection: 'pages', id: zhPage.id, locale: 'en', data: { layout: newEnLayout } as never })
 
-  console.log(`${tag} ✅ EvoMetaX 六大模块覆写完成`)
+  // 4) 回读断言：zh 第 6 项必须有中文 title（防止再次空表）
+  const verify = await payload.findByID({ collection: 'pages', id: zhPage.id, locale: 'zh', depth: 0 })
+  const vGrid = ((verify.layout ?? []) as Block[]).find((b) => b.id === gridBlock.id)
+  const vCaps = vGrid?.capabilities ?? []
+  console.log(`${tag} EvoMetaX zh 回读：${vCaps.length} 项，标题=${JSON.stringify(vCaps.map((c) => c.title))}`)
+  if (vCaps.length !== 6 || vCaps.some((c) => !c.title)) {
+    throw new Error(`${tag} ❌ EvoMetaX zh 写入异常：期望 6 项且均有中文标题`)
+  }
+  console.log(`${tag} ✅ EvoMetaX 六大模块覆写完成（zh 文本已校验）`)
 }
 
 // ─── 2 & 3. Safety 页 ─────────────────────────────────────────────────────────
