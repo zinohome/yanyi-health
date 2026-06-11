@@ -248,6 +248,26 @@ async function updateSolutionOrder(payload: Awaited<ReturnType<typeof getPayload
   console.log(`${tag} ✅ solutions 排序更新完成（运动健康置顶）`)
 }
 
+// ─── 前六个解决方案名称统一为「… AI Agent」(name 为 localized，zh+en 各自覆写) ───
+const SOLUTION_NAMES: Record<string, { zh: string; en: string }> = {
+  'sports-nutrition': { zh: '运动健康与营养代谢 AI Agent', en: 'Sports & Nutrition AI Agent' },
+  'perinatal-mental-health': { zh: '围产期心理健康 AI Agent', en: 'Perinatal Mental Health AI Agent' },
+  'maternal-care': { zh: '母婴安全 AI Agent', en: 'Maternal & Child Safety AI Agent' },
+  'youth-mental-health': { zh: '儿童青少年心理健康 AI Agent', en: 'Youth Mental Health AI Agent' },
+  'adult-wellness': { zh: '成人身心健康 AI Agent', en: 'Adult Well-being AI Agent' },
+  'elderly-care': { zh: '老年照护与慢病陪伴 AI Agent', en: 'Elderly & Chronic Care AI Agent' },
+}
+
+async function updateSolutionNames(payload: Awaited<ReturnType<typeof getPayload>>) {
+  for (const [slug, { zh, en }] of Object.entries(SOLUTION_NAMES)) {
+    const doc = await findProduct(payload, slug, 'zh')
+    if (!doc) { console.warn(`${tag} ⚠ 改名：product slug=${slug} 未找到`); continue }
+    await payload.update({ collection: 'products', id: doc.id, locale: 'zh', data: { name: zh } as never })
+    await payload.update({ collection: 'products', id: doc.id, locale: 'en', data: { name: en } as never })
+  }
+  console.log(`${tag} ✅ 前六个解决方案名称已统一为「… AI Agent」`)
+}
+
 // ─── main ─────────────────────────────────────────────────────────────────────
 
 async function run() {
@@ -282,6 +302,8 @@ async function run() {
 
   // solutions 排序
   await updateSolutionOrder(payload)
+  // 前六个解决方案名称统一为 … AI Agent
+  await updateSolutionNames(payload)
 
   console.log(`${tag} ✅ all done`)
   process.exit(0)

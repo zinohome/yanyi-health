@@ -41,7 +41,7 @@ export const buildProducts = (lang: Lang) => {
 
   return [
     {
-      name: t('母婴安全 AI Agent', 'Maternal & Child Safety Agent'),
+      name: t('母婴安全 AI Agent', 'Maternal & Child Safety AI Agent'),
       slug: 'maternal-care',
       overview: t(
         '从孕妇建册开始，把分散在产检、打卡与日常里的健康信号串成一条连续的状态轨迹；让医院的专业照护延伸到家庭，覆盖孕期、分娩、产后恢复到新生儿 0–1 岁成长。',
@@ -95,7 +95,7 @@ export const buildProducts = (lang: Lang) => {
       ),
     },
     {
-      name: t('围产期心理健康 Agent', 'Perinatal Mental Health Agent'),
+      name: t('围产期心理健康 AI Agent', 'Perinatal Mental Health AI Agent'),
       slug: 'perinatal-mental-health',
       overview: t(
         '把产科安全与心理安全放进同一个连续系统，持续关注孕期焦虑、产后抑郁风险、睡眠剥夺与家庭支持，并打通妇产科—精神心理科的协同转介。',
@@ -145,7 +145,7 @@ export const buildProducts = (lang: Lang) => {
       ),
     },
     {
-      name: t('儿童青少年心理健康 Agent', 'Youth Mental Health Agent'),
+      name: t('儿童青少年心理健康 AI Agent', 'Youth Mental Health AI Agent'),
       slug: 'youth-mental-health',
       overview: t(
         '连接医院、学校、家庭与社区，把"感觉孩子不对劲"变成可被理解、可被改善的连续过程；覆盖情绪、学业、亲子与同伴，隐私优先、授权可控。',
@@ -196,7 +196,7 @@ export const buildProducts = (lang: Lang) => {
       ),
     },
     {
-      name: t('成人身心健康 Agent', 'Adult Well-being Agent'),
+      name: t('成人身心健康 AI Agent', 'Adult Well-being AI Agent'),
       slug: 'adult-wellness',
       overview: t(
         '面向高压人群，用长期记忆理解情绪、压力、睡眠与身体状态的变化趋势，提供可持续、个性化的身心支持，并在需要时连接专业服务。',
@@ -296,7 +296,7 @@ export const buildProducts = (lang: Lang) => {
       ),
     },
     {
-      name: t('老年照护与慢病陪伴 Agent', 'Elderly & Chronic Care Agent'),
+      name: t('老年照护与慢病陪伴 AI Agent', 'Elderly & Chronic Care AI Agent'),
       slug: 'elderly-care',
       overview: t(
         '面向老年与慢病人群，提供日常状态记录、用药提醒、情绪陪伴与异常提示，连接家庭与社区，让长期独立生活的人被持续看见、被及时支持。',
