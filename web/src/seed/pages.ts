@@ -155,13 +155,14 @@ export const buildTechnology = (lang: Lang) => {
       },
       {
         blockType: 'capabilityGrid',
-        title: t('EvoMetaX 五大技术模块', 'Five EvoMetaX modules'),
+        title: t('EvoMetaX 六大技术模块', 'Six EvoMetaX modules'),
         capabilities: [
           { icon: 'database', title: t('长期记忆', 'Long-term memory'), description: t('理解历史轨迹、当前状态、变化趋势与个体化基线。', 'History, current state, trends and personalized baselines.') },
           { icon: 'layers', title: t('多模态状态建模', 'Multimodal modeling'), description: t('融合对话、打卡、检查、体征、睡眠、运动、营养、情绪等。', 'Fuses dialogue, check-ins, reports, vitals, sleep, exercise, nutrition and mood.') },
           { icon: 'workflow', title: t('AI Agent 工作流', 'Agent workflows'), description: t('孕产、随访、产后、新生儿、心理、营养、康复、照护等专属 Agent。', 'Dedicated agents for maternity, follow-up, postpartum, mental health, nutrition, rehab and care.') },
           { icon: 'gauge', title: t('风险分层与异常识别', 'Risk tiering'), description: t('低风险科普 / 中风险随访 / 高风险就医 / 危机干预。', 'Education / follow-up / referral / crisis intervention.') },
           { icon: 'shield', title: t('可解释 AI 与医疗治理', 'Explainable governance'), description: t('医院审核知识库、专家规则、建议依据、版本管理、全链路留痕。', 'Reviewed knowledge, expert rules, cited advice, versioning and full audit.') },
+          { icon: 'lock', title: t('隐私安全与合规架构', 'Privacy, security & compliance'), description: t('权限隔离、记忆隔离、数据脱敏、私有化部署与全链路审计，满足医疗数据合规要求。', 'Permission & memory isolation, data masking, private deployment and full-chain audit to meet healthcare data compliance.') },
         ],
       },
       {
@@ -209,7 +210,7 @@ export const buildAbout = (lang: Lang) => {
         items: [
           { icon: 'heart', title: t('使命', 'Mission'), description: t('用可信赖的 AI Agent 和长期记忆系统，帮助人更早理解自己的状态、更好获得专业支持、更持续地管理身心健康。', 'Help people understand their state earlier, get professional support and manage health continuously.') },
           { icon: 'rocket', title: t('愿景', 'Vision'), description: t('让每个人、每个家庭、每个医疗健康机构，都拥有可持续、可信赖、可解释的长期健康智能系统。', 'A sustainable, trustworthy, explainable long-term health system for everyone, every family and every institution.') },
-          { icon: 'users', title: t('定位', 'Position'), description: t('做专家的智能助手，做家庭的长期支持系统，做院外连续管理的 AI 基础设施。', "The expert's assistant, the family's long-term support, the infrastructure for out-of-clinic care.") },
+          { icon: 'users', title: t('定位', 'Position'), description: t('做专家的智能助手，做个人健康的长期支持系统，做院外连续管理的 AI 基础设施。', "The expert's assistant, the long-term support for personal health, the infrastructure for out-of-clinic care.") },
         ],
       },
       {
@@ -328,7 +329,7 @@ export const buildSafety = (lang: Lang) => {
       },
       {
         blockType: 'ctaBanner',
-        title: t('做专家的智能助手，做家庭的长期支持', "The expert's assistant, the family's support"),
+        title: t('做专家的智能助手，做个人健康的长期支持', "The expert's assistant, the long-term support for personal health"),
         subtitle: t('做医疗机构院外连续管理的 AI 基础设施。', 'The AI infrastructure for out-of-clinic continuous care.'),
         primaryCta: { label: t('联系我们', 'Contact Us'), href: '/contact' },
       },

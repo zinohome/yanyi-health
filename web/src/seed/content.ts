@@ -70,8 +70,8 @@ export const buildProducts = (lang: Lang) => {
       status: 'published',
       tagline: t('从建档到孩子 1 岁，陪伴每一次关键变化', 'From registration to age one — by your side at every milestone'),
       summary: t(
-        '从孕妇建册/医院建档开始，覆盖孕期、分娩、产后恢复、新生儿照护与 0–1 岁成长发育，提供科普、提醒、打卡、异常初筛、风险提示与医护协同。',
-        'From hospital registration through pregnancy, delivery, postpartum recovery, newborn care and 0–1 development — education, reminders, check-ins, early screening, risk alerts and care-team collaboration.',
+        '从孕妇建册/医院建档开始，覆盖孕期、分娩、产后恢复、新生儿照护与 0–1 岁成长发育，提供孕周科普 · 产检提醒与准备 · 报告解释辅助 · 血压/血糖/体重/胎动记录 · 饮食运动睡眠提醒 · 异常症状主动追问 · 分层就医引导等全程支持。',
+        'From hospital registration through pregnancy, delivery, postpartum recovery, newborn care and 0–1 development — weekly education, checkup reminders & prep, report interpretation, BP/glucose/weight/fetal-movement logging, diet/exercise/sleep reminders, proactive symptom follow-up, and tiered referral guidance.',
       ),
       problem: t(
         '母婴风险大量发生在两次产检之间与出院之后，单次问诊难以连续跟进。我们用长期记忆与风险分层补上"院外连续状态管理"的空白。',
@@ -85,8 +85,11 @@ export const buildProducts = (lang: Lang) => {
         ['孕产妇和家庭', 'Mothers & families'],
       ),
       features: feat(
-        ['按孕周科普与产检提醒', 'Week-by-week education & checkup reminders', '建档后手机端 Agent 开通，按孕周推送科普与产检提醒。', 'Mobile agent activated after registration, with week-based education and checkup reminders.'],
-        ['多维健康打卡', 'Multi-dimensional check-ins', '血压、血糖、体重、胎动、情绪等结构化打卡与异常交互。', 'Structured check-ins for blood pressure, glucose, weight, fetal movement and mood.'],
+        ['孕周科普与产检提醒准备', 'Weekly education & checkup prep', '建档后按孕周推送科普内容，并提前提醒产检时间与注意事项。', 'Week-based education and advance checkup reminders with preparation tips after registration.'],
+        ['报告解释辅助', 'Report interpretation', '产检报告关键指标解读与异常提示，帮助孕妇理解检查结果。', 'Key indicator explanation and anomaly flagging on prenatal reports to help mothers understand results.'],
+        ['多维健康记录', 'Multi-dimensional health logging', '血压、血糖、体重、胎动、饮食、运动、睡眠等结构化打卡与趋势追踪。', 'Structured logging of BP, glucose, weight, fetal movement, diet, exercise and sleep with trend tracking.'],
+        ['异常症状主动追问', 'Proactive symptom follow-up', '对录入的异常症状主动追问细节，辅助早期风险识别。', 'Proactively follows up on reported symptoms to capture details and support early risk detection.'],
+        ['分层就医引导', 'Tiered referral guidance', '根据风险分级给出居家观察、门诊复查或急诊就医的分层建议。', 'Tiered guidance — home observation, outpatient review or emergency visit — based on risk level.'],
         ['高危随访与分层管理', 'High-risk follow-up & tiering', '高危孕产妇随访提醒，医护端分层管理看板。', 'Follow-up reminders for high-risk pregnancies and a tiered management dashboard for clinicians.'],
         ['产后与新生儿照护', 'Postpartum & newborn care', '分娩准备、产后恢复、母乳喂养、新生儿照护与 0–1 岁发育提醒。', 'Delivery prep, postpartum recovery, breastfeeding, newborn care and 0–1 development guidance.'],
       ),
@@ -243,11 +246,11 @@ export const buildProducts = (lang: Lang) => {
       ),
     },
     {
-      name: t('运动健康与营养代谢 AI 引擎', 'Sports & Nutrition AI Engine'),
+      name: t('运动健康与营养代谢 AI Agent', 'Sports & Nutrition AI Agent'),
       slug: 'sports-nutrition',
       overview: t(
-        '让运动与营养数据拥有长期记忆，融合多模态数据，沉淀可研究、可干预的长期机能档案，服务运动医学与营养代谢科研平台。',
-        'Giving sports and nutrition data a long-term memory — fusing multimodal data into researchable, actionable performance profiles for sports medicine and metabolic research.',
+        '面向运动健康、主动健康与智慧营养场景，我们打造"运动健康与营养代谢 AI Agent"，围绕运动机能监测、营养代谢评估、个性化运动营养干预、健康长期状态跟踪、运动性疾病与损伤预警、智能配餐与营养品适配六大能力，帮助用户建立连续、动态、个性化的健康管理闭环。',
+        'For active health and smart nutrition, our Sports & Nutrition AI Agent delivers six capabilities: fitness monitoring, metabolic assessment, personalized intervention, long-term health tracking, injury and sports-disease alerts, and intelligent meal & supplement planning — building a continuous, dynamic, personalized health management loop.',
       ),
       painPoints: pts(
         ['数据零散、缺乏纵向分析', 'Fragmented data, no longitudinal view'],
@@ -271,12 +274,12 @@ export const buildProducts = (lang: Lang) => {
       status: 'published',
       tagline: t('让运动和营养数据拥有长期记忆', 'Give sports and nutrition data a long-term memory'),
       summary: t(
-        '面向运动医学、营养代谢与科研平台，提供长期机能档案、多模态数据融合、个体化营养运动建议、训练恢复分析与专业 Agent 工作流。',
-        'For sports medicine, metabolic nutrition and research — long-term performance profiles, multimodal fusion, personalized advice, recovery analysis and professional agent workflows.',
+        '面向运动医学、营养代谢与科研转化场景，融合多模态健康数据与长期机能档案，提供个性化运动营养建议、训练恢复分析、风险预警和专业个人运动健康&营养代谢 AI 助手。',
+        'For sports medicine, metabolic nutrition and research translation — fusing multimodal health data with long-term performance profiles to deliver personalized sports-nutrition advice, training-recovery analysis, risk alerts and a professional personal sports-health & metabolic AI assistant.',
       ),
       problem: t(
-        '运动与营养数据零散、缺乏长期纵向理解。我们用长期记忆与多模态建模沉淀可研究、可干预的机能档案。',
-        'Sports and nutrition data are fragmented and lack longitudinal understanding. We build researchable, actionable profiles via memory and multimodal modeling.',
+        '运动与营养数据零散、缺乏长期纵向理解。我们用长期记忆与多模态建模沉淀可研究、可干预的机能档案，建立连续、动态、个性化的健康管理闭环。',
+        'Sports and nutrition data are fragmented and lack longitudinal understanding. We use memory and multimodal modeling to build researchable profiles and a continuous, dynamic, personalized health management loop.',
       ),
       audience: aud(
         ['运动医学研究团队', 'Sports-medicine research teams'],
@@ -343,11 +346,11 @@ export const buildProducts = (lang: Lang) => {
       ),
     },
     {
-      name: t('保智通 InsureVertex AI', 'InsureVertex AI'),
+      name: t('保智通 InsureVertex AI Agent', 'InsureVertex AI Agent'),
       slug: 'insurevertex-ai',
       overview: t(
-        '把长期记忆、专业知识库与 Agent 工作流的技术底座拓展到保险场景，为代理人提供可追溯的专业问答、数字化培训与场景化对练，落地负责任、可治理的行业 AI。',
-        'Extending our memory, knowledge and agent-workflow foundation to insurance — traceable Q&A, digital training and scenario practice, delivering responsible, governable industry AI.',
+        '面向保险、财富管理等专业金融服务场景，我们打造金融服务 AI Agent，围绕专业知识问答、AI 销售训练、客户洞察分析与个性化方案生成，帮助金融从业人员提升专业服务能力和客户经营效率。该方案基于专业知识库、长期记忆与 Agent 工作流，能够为代理人、理财顾问、客户经理等角色提供产品知识解读、销售话术训练、客户需求分析、场景化沟通建议和定制化方案辅助。通过"学习—训练—沟通—方案—复盘"的闭环，金融服务 AI Agent 可持续提升团队的专业表达、客户转化、方案匹配和长期经营能力。',
+        'For insurance, wealth management and professional financial services, our Financial Services AI Agent covers professional Q&A, AI sales training, customer insight analysis and personalized proposal generation — helping financial professionals improve service quality and client management efficiency. Built on a professional knowledge base, long-term memory and agent workflows, it supports agents, advisors and relationship managers with product knowledge, sales coaching, client-needs analysis, contextual communication guidance and proposal assistance. The "learn–train–communicate–propose–review" loop continuously raises team capability in professional expression, conversion, proposal matching and long-term client development.',
       ),
       painPoints: pts(
         ['专业知识更新快、难以掌握', 'Fast-changing professional knowledge'],
@@ -369,14 +372,14 @@ export const buildProducts = (lang: Lang) => {
       scenario: 'industry',
       order: 7,
       status: 'published',
-      tagline: t('技术底座的行业拓展：保险代理人智能助手', 'Industry extension: intelligent assistant for insurance agents'),
+      tagline: t('技术底座的行业拓展：保险与财富管理专业金融服务 AI Agent', 'Industry extension: AI Agent for insurance and wealth management'),
       summary: t(
-        '将长期记忆、知识库与 Agent 工作流的技术底座拓展到保险场景，为代理人提供专业问答、数字化培训与场景对练。',
-        'Extending our memory, knowledge and agent-workflow foundation to insurance — professional Q&A, digital training and scenario practice for agents.',
+        '面向保险、财富管理等专业金融服务场景，构建"知识问答—销售训练—客户洞察—方案生成"的 Agent 工作流，帮助金融从业人员提升专业表达、客户经营与方案转化能力。',
+        'For insurance, wealth management and professional financial services — an Agent workflow spanning knowledge Q&A, sales training, customer insight and proposal generation, helping financial professionals improve professional expression, client management and conversion.',
       ),
       problem: t(
-        '同一套技术底座可在强监管行业落地负责任 AI：可追溯、可治理、人类监督前置。',
-        'The same foundation deploys responsible, auditable, human-supervised AI in regulated industries.',
+        '金融从业人员面临专业知识快速更新、培训成本高、展业口径不一致等挑战。同一套技术底座在强监管行业落地负责任 AI：可追溯、可治理、人类监督前置。',
+        'Financial professionals face rapidly evolving knowledge, high training costs and inconsistent client messaging. The same foundation deploys responsible, auditable, human-supervised AI in regulated industries.',
       ),
       audience: aud(['保险代理人', 'Insurance agents'], ['团队负责人', 'Team leaders'], ['保险机构', 'Insurers']),
       features: feat(
@@ -385,11 +388,11 @@ export const buildProducts = (lang: Lang) => {
       ),
     },
     {
-      name: t('IndustriaX 工业 AI 应用底座', 'IndustriaX'),
+      name: t('IndustriaX 产业智能应用场景', 'IndustriaX'),
       slug: 'industriax',
       overview: t(
-        '将同一套 AI 技术底座延伸至工业场景，面向高价值流程与关键资产，沉淀分散的工艺与运维知识，提供可追溯的智能问答与流程辅助，支持私有化部署。',
-        'Extending the same AI foundation to industry — for high-value processes and critical assets, capturing scattered process/O&M knowledge with traceable Q&A and process assistance, deployable on-premise.',
+        '用 AI 重构市场感知、工程研发与业务决策效率，提升中国先进制造业的市场快速精准反应力，解决中国制造业从「制造效率」走向研发效率 · 业务决策效率 · 市场快速反应力的问题。',
+        'Rebuilding market sensing, R&D and business-decision efficiency with AI — improving rapid, precise market response for advanced Chinese manufacturing, moving the industry beyond production efficiency toward R&D efficiency, decision efficiency and market agility.',
       ),
       painPoints: pts(
         ['工业知识分散、难以沉淀', 'Scattered, hard-to-retain knowledge'],
@@ -411,14 +414,14 @@ export const buildProducts = (lang: Lang) => {
       scenario: 'industry',
       order: 8,
       status: 'published',
-      tagline: t('技术底座的行业拓展：高价值工业流程 AI 平台', 'Industry extension: AI platform for high-value industrial processes'),
+      tagline: t('AI 技术底座的跨行业拓展：面向先进制造业的产业智能 AI 应用场景', 'Cross-industry AI extension: intelligent AI applications for advanced manufacturing'),
       summary: t(
-        '将同一套 AI 技术底座延伸至工业场景，面向高价值流程与关键资产，提供知识沉淀、智能问答与流程辅助。',
-        'Extending the foundation to industry — knowledge capture, intelligent Q&A and process assistance for high-value processes and critical assets.',
+        'AI 技术底座的跨行业拓展：面向先进制造业的产业智能 AI 应用场景。用 AI 重构市场感知、工程研发与业务决策效率，提升中国先进制造业的市场快速精准反应力。',
+        'Cross-industry extension of the AI foundation: intelligent AI applications for advanced manufacturing. Rebuilding market sensing, R&D and business-decision efficiency to improve rapid, precise market response.',
       ),
       problem: t(
-        '工业知识分散、经验难以沉淀。可私有化部署，适配企业内网与安全合规要求。',
-        'Industrial knowledge is scattered and hard to retain. Private deployment fits intranet and compliance needs.',
+        '中国制造业亟需从「制造效率」走向研发效率 · 业务决策效率 · 市场快速反应力。工业知识分散，经验难以沉淀。我们用 AI 把分散知识变为可复用资产，支持私有化部署与安全合规。',
+        "Chinese manufacturing needs to move beyond production efficiency toward R&D efficiency, decision efficiency and market agility. Industrial knowledge is scattered; we turn it into reusable assets with private, compliant deployment.",
       ),
       audience: aud(['工业企业', 'Industrial enterprises'], ['关键资产运营方', 'Critical-asset operators']),
       features: feat(
@@ -630,7 +633,7 @@ export const buildPosts = (lang: Lang) => {
       excerpt: t('不替代医生、不自动诊断；可解释、可审核、可追溯。', 'Not replacing doctors or auto-diagnosing; explainable, auditable, traceable.'),
       content: rt([
         t('医疗与心理场景中的 AI 必须可解释、可审核、可追溯，并设清晰边界。', 'AI in medical and mental-health settings must be explainable, auditable, traceable, with clear boundaries.'),
-        t('做专家的智能助手，做家庭的长期支持系统，做院外连续管理的 AI 基础设施。', "Be the expert's assistant, the family's long-term support, and the infrastructure for out-of-clinic care."),
+        t('做专家的智能助手，做个人健康的长期支持系统，做院外连续管理的 AI 基础设施。', "Be the expert's assistant, the long-term support for personal health, and the infrastructure for out-of-clinic care."),
       ]),
     },
   ]

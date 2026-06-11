@@ -61,6 +61,8 @@ async function main() {
   run('scripts/add-capabilities.ts')
   // 幂等文案同步（每次启动都跑）：首页 hero / 我们解决的问题 与代码保持一致
   run('scripts/update-homepage-text.ts')
+  // 幂等产品/页面文案同步（每次启动都跑）：产品改名、新增模块等与代码保持一致
+  run('scripts/update-content-v2.ts')
 
   // 管理员幂等确保（脚本内部已判断是否已存在）
   run('scripts/create-admin.ts')
