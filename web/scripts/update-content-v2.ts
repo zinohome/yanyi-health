@@ -226,6 +226,28 @@ async function updateProduct(
   console.log(`${tag} ✅ product[${slug}] 更新完成`)
 }
 
+// ─── solutions 排序：运动健康置顶，其余顺延 ──────────────────────────────────────
+// order 字段非 localized，按 slug 直接覆写即可
+const SOLUTION_ORDER: Record<string, number> = {
+  'sports-nutrition': 1,
+  'perinatal-mental-health': 2,
+  'maternal-care': 3,
+  'youth-mental-health': 4,
+  'adult-wellness': 5,
+  'elderly-care': 6,
+  'insurevertex-ai': 7,
+  'industriax': 8,
+}
+
+async function updateSolutionOrder(payload: Awaited<ReturnType<typeof getPayload>>) {
+  for (const [slug, order] of Object.entries(SOLUTION_ORDER)) {
+    const doc = await findProduct(payload, slug, 'zh')
+    if (!doc) { console.warn(`${tag} ⚠ 排序：product slug=${slug} 未找到`); continue }
+    await payload.update({ collection: 'products', id: doc.id, data: { order } as never })
+  }
+  console.log(`${tag} ✅ solutions 排序更新完成（运动健康置顶）`)
+}
+
 // ─── main ─────────────────────────────────────────────────────────────────────
 
 async function run() {
@@ -257,6 +279,9 @@ async function run() {
     { name: INDUSTRIA.zhName, overview: INDUSTRIA.zhOverview, tagline: INDUSTRIA.zhTagline, summary: INDUSTRIA.zhSummary, problem: INDUSTRIA.zhProblem },
     { name: INDUSTRIA.enName, overview: INDUSTRIA.enOverview, tagline: INDUSTRIA.enTagline, summary: INDUSTRIA.enSummary, problem: INDUSTRIA.enProblem },
   )
+
+  // solutions 排序
+  await updateSolutionOrder(payload)
 
   console.log(`${tag} ✅ all done`)
   process.exit(0)

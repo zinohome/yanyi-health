@@ -66,7 +66,7 @@ export const buildProducts = (lang: Lang) => {
       ),
       icon: 'heart',
       scenario: 'maternal',
-      order: 2,
+      order: 3,
       status: 'published',
       tagline: t('从建档到孩子 1 岁，陪伴每一次关键变化', 'From registration to age one — by your side at every milestone'),
       summary: t(
@@ -119,7 +119,7 @@ export const buildProducts = (lang: Lang) => {
       ),
       icon: 'heart',
       scenario: 'perinatal',
-      order: 1,
+      order: 2,
       status: 'published',
       tagline: t('把产科安全与心理安全放进同一个连续管理系统', 'Physical and emotional safety in one continuous system'),
       summary: t(
@@ -170,7 +170,7 @@ export const buildProducts = (lang: Lang) => {
       ),
       icon: 'graduation-cap',
       scenario: 'youth',
-      order: 3,
+      order: 4,
       status: 'published',
       tagline: t('连接医院、学校、家庭与社区的青少年心理支持系统', 'Connecting hospital, school, family and community for youth mental health'),
       summary: t(
@@ -220,7 +220,7 @@ export const buildProducts = (lang: Lang) => {
       ),
       icon: 'activity',
       scenario: 'adult',
-      order: 4,
+      order: 5,
       status: 'published',
       tagline: t('面向高压人群的长期身心状态支持', 'Long-term mind-body support for high-pressure lives'),
       summary: t(
@@ -270,7 +270,7 @@ export const buildProducts = (lang: Lang) => {
       ),
       icon: 'gauge',
       scenario: 'sports',
-      order: 5,
+      order: 1,
       status: 'published',
       tagline: t('让运动和营养数据拥有长期记忆', 'Give sports and nutrition data a long-term memory'),
       summary: t(
