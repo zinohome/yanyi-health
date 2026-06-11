@@ -22,13 +22,23 @@ type Feat = { id?: string; title?: string; detail?: string; description?: string
 
 // ─── 常量 ─────────────────────────────────────────────────────────────────────
 
-const NEW_CAP = {
-  icon: 'lock',
-  zhT: '隐私安全与合规架构',
-  enT: 'Privacy, security & compliance',
-  zhD: '权限隔离、记忆隔离、数据脱敏、私有化部署与全链路审计，满足医疗数据合规要求。',
-  enD: 'Permission & memory isolation, data masking, private deployment and full-chain audit to meet healthcare data compliance.',
-}
+// EvoMetaX 六大模块完整列表（覆写模式，不做 append，避免 locale fallback 导致重复）
+const EVOMETAX_ZH_CAPS = [
+  { icon: 'database', title: '长期记忆', description: '理解历史轨迹、当前状态、变化趋势与个体化基线。' },
+  { icon: 'layers', title: '多模态状态建模', description: '融合对话、打卡、检查、体征、睡眠、运动、营养、情绪等。' },
+  { icon: 'workflow', title: 'AI Agent 工作流', description: '孕产、随访、产后、新生儿、心理、营养、康复、照护等专属 Agent。' },
+  { icon: 'gauge', title: '风险分层与异常识别', description: '低风险科普 / 中风险随访 / 高风险就医 / 危机干预。' },
+  { icon: 'shield', title: '可解释 AI 与医疗治理', description: '医院审核知识库、专家规则、建议依据、版本管理、全链路留痕。' },
+  { icon: 'lock', title: '隐私安全与合规架构', description: '权限隔离、记忆隔离、数据脱敏、私有化部署与全链路审计，满足医疗数据合规要求。' },
+]
+const EVOMETAX_EN_CAPS = [
+  { icon: 'database', title: 'Long-term memory', description: 'History, current state, trends and personalized baselines.' },
+  { icon: 'layers', title: 'Multimodal modeling', description: 'Fuses dialogue, check-ins, reports, vitals, sleep, exercise, nutrition and mood.' },
+  { icon: 'workflow', title: 'Agent workflows', description: 'Dedicated agents for maternity, follow-up, postpartum, mental health, nutrition, rehab and care.' },
+  { icon: 'gauge', title: 'Risk tiering', description: 'Education / follow-up / referral / crisis intervention.' },
+  { icon: 'shield', title: 'Explainable governance', description: 'Reviewed knowledge, expert rules, cited advice, versioning and full audit.' },
+  { icon: 'lock', title: 'Privacy, security & compliance', description: 'Permission & memory isolation, data masking, private deployment and full-chain audit to meet healthcare data compliance.' },
+]
 
 const SAFETY_TITLE_ZH = '做专家的智能助手，做个人健康的长期支持'
 const SAFETY_TITLE_EN = "The expert's assistant, the long-term support for personal health"
@@ -108,6 +118,7 @@ async function findProduct(payload: Awaited<ReturnType<typeof getPayload>>, slug
 }
 
 // ─── 1. EvoMetaX 六大技术模块 ──────────────────────────────────────────────────
+// 覆写模式：始终将 capabilities 重置为完整的 6 项，避免 locale fallback 导致重复追加
 
 async function addSixthModule(payload: Awaited<ReturnType<typeof getPayload>>) {
   const zhPage = await findPage(payload, 'technology', 'zh')
@@ -117,33 +128,20 @@ async function addSixthModule(payload: Awaited<ReturnType<typeof getPayload>>) {
   const gridBlock = zhLayout.find((b) => b.blockType === 'capabilityGrid' && (b.title ?? '').includes('EvoMetaX'))
   if (!gridBlock) { console.warn(`${tag} ⚠ EvoMetaX capabilityGrid 未找到`); return }
 
-  // 检查是否已有第六项
-  if ((gridBlock.capabilities ?? []).length >= 6) {
-    console.log(`${tag} EvoMetaX 已有 ≥6 项，跳过追加`)
-  } else {
-    const newZhLayout = zhLayout.map((b) => {
-      if (b.id !== gridBlock.id) return b
-      return {
-        ...b,
-        title: 'EvoMetaX 六大技术模块',
-        capabilities: [...(b.capabilities ?? []), { icon: NEW_CAP.icon, title: NEW_CAP.zhT, description: NEW_CAP.zhD }],
-      }
-    })
-    await payload.update({ collection: 'pages', id: zhPage.id, locale: 'zh', data: { layout: newZhLayout } as never })
+  // zh：整体覆写为 6 项
+  const newZhLayout = zhLayout.map((b) =>
+    b.id !== gridBlock.id ? b : { ...b, title: 'EvoMetaX 六大技术模块', capabilities: EVOMETAX_ZH_CAPS },
+  )
+  await payload.update({ collection: 'pages', id: zhPage.id, locale: 'zh', data: { layout: newZhLayout } as never })
 
-    // en：找到同一块按 id，追加英文项
-    const enPage = await payload.findByID({ collection: 'pages', id: zhPage.id, locale: 'en', depth: 0 })
-    const enLayout = ((enPage.layout ?? []) as Block[]).map((b) => {
-      if (b.id !== gridBlock.id) return b
-      return {
-        ...b,
-        title: 'Six EvoMetaX modules',
-        capabilities: [...(b.capabilities ?? []), { icon: NEW_CAP.icon, title: NEW_CAP.enT, description: NEW_CAP.enD }],
-      }
-    })
-    await payload.update({ collection: 'pages', id: zhPage.id, locale: 'en', data: { layout: enLayout } as never })
-    console.log(`${tag} ✅ EvoMetaX 第六模块追加完成`)
-  }
+  // en：独立读取后整体覆写为 6 项（不依赖 zh 更新后的回读，避免 fallback 污染）
+  const enPage = await payload.findByID({ collection: 'pages', id: zhPage.id, locale: 'en', depth: 0 })
+  const newEnLayout = ((enPage.layout ?? []) as Block[]).map((b) =>
+    b.id !== gridBlock.id ? b : { ...b, title: 'Six EvoMetaX modules', capabilities: EVOMETAX_EN_CAPS },
+  )
+  await payload.update({ collection: 'pages', id: zhPage.id, locale: 'en', data: { layout: newEnLayout } as never })
+
+  console.log(`${tag} ✅ EvoMetaX 六大模块覆写完成`)
 }
 
 // ─── 2 & 3. Safety 页 ─────────────────────────────────────────────────────────
